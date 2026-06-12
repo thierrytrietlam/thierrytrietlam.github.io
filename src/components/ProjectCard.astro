@@ -1,0 +1,49 @@
+---
+import { Icon } from "astro-icon/components";
+import type { CollectionEntry } from "astro:content";
+import { getLangFromUrl, localizePath } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+const { project } = Astro.props;
+const { title, question, cover, stack, synthetic } = project.data;
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const href = localizePath(`/projects/${project.data.key}`, lang);
+---
+
+<a href={href} class="card card-hover group flex flex-col overflow-hidden" data-reveal>
+  <div class="relative aspect-[16/9] overflow-hidden border-b border-line dark:border-dark-line">
+    <img
+      src={cover}
+      alt={`Cover for the project: ${title}`}
+      class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+      width="1200"
+      height="675"
+      loading="lazy"
+    />
+    {
+      synthetic && (
+        <span class="absolute left-3 top-3 inline-flex items-center gap-1.5 rounded-full border border-line bg-white/90 px-2.5 py-1 font-mono text-[0.68rem] text-muted backdrop-blur dark:border-dark-line dark:bg-dark-surface/90 dark:text-dark-muted">
+          <Icon name="lucide:shield-check" class="h-3 w-3" /> {t("projects.synthetic")}
+        </span>
+      )
+    }
+  </div>
+  <div class="flex flex-1 flex-col p-5">
+    <h3 class="font-display text-lg font-semibold leading-snug text-ink dark:text-dark-text">{title}</h3>
+    <p class="mt-2 flex items-start gap-2 text-sm leading-relaxed text-muted dark:text-dark-muted">
+      <Icon name="lucide:help-circle" class="mt-0.5 h-4 w-4 shrink-0 text-accent dark:text-accent-dark" />
+      <span>{question}</span>
+    </p>
+    <ul class="mt-4 flex flex-wrap gap-2">
+      {stack.slice(0, 5).map((s) => <li class="tag">{s}</li>)}
+    </ul>
+    <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-accent dark:text-accent-dark">
+      {t("projects.read")}
+      <Icon name="lucide:arrow-right" class="h-4 w-4 transition group-hover:translate-x-0.5" />
+    </span>
+  </div>
+</a>

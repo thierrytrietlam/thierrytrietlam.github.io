@@ -1,0 +1,26 @@
+---
+import ReviewCard from "./ReviewCard.astro";
+import { reviews } from "../data/reviews";
+import { getLangFromUrl } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+const t = useTranslations(getLangFromUrl(Astro.url));
+---
+
+{
+  reviews.length > 0 && (
+    <section id="reviews" class="border-t border-line py-20 sm:py-24 dark:border-dark-line">
+      <div class="container-content">
+        <div data-reveal>
+          <p class="eyebrow mb-3">{t("reviews.eyebrow")}</p>
+          <h2 class="section-title">{t("reviews.title")}</h2>
+        </div>
+        <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {reviews.map((r) => (
+            <ReviewCard review={r} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}

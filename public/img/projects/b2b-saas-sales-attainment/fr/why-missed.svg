@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" width="920" height="560" role="img" font-family="Inter, 'Segoe UI', system-ui, sans-serif"><title>Pourquoi chacun a manqué</title><desc>SP009 a le pipeline le plus mince et le pire taux de réussite. SP001 travaille dur mais convertit mal. SP005 a le meilleur taux mais trop peu d&#x27;affaires new business.</desc><rect x="0.5" y="0.5" width="919" height="559" rx="18" fill="#FBFBFD" stroke="#E6E8EE"/><text x="40.0" y="44.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11" font-weight="500" fill="#2D5BFF" text-anchor="start" letter-spacing="2">TROIS MANQUES, TROIS CAUSES DIFFÉRENTES</text>
+<text x="40.0" y="74.0" font-family="'Space Grotesk', 'Segoe UI', system-ui, sans-serif" font-size="22" font-weight="600" fill="#0B1220" text-anchor="start">Pourquoi chacun a manqué</text>
+<text x="40.0" y="100.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="13.5" font-weight="400" fill="#5B6472" text-anchor="start">Taux de réussite contre volume de pipeline. La taille des bulles indique les activités par opportunité.</text>
+<line x1="96.0" y1="150.0" x2="96.0" y2="470.0" stroke="#E6E8EE" stroke-width="1"/>
+<line x1="96.0" y1="470.0" x2="770.0" y2="470.0" stroke="#E6E8EE" stroke-width="1"/>
+<line x1="138.1" y1="150.0" x2="138.1" y2="470.0" stroke="#E6E8EE" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>
+<text x="138.1" y="492.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11" font-weight="400" fill="#5B6472" text-anchor="middle">20%</text>
+<line x1="348.8" y1="150.0" x2="348.8" y2="470.0" stroke="#E6E8EE" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>
+<text x="348.8" y="492.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11" font-weight="400" fill="#5B6472" text-anchor="middle">30%</text>
+<line x1="559.4" y1="150.0" x2="559.4" y2="470.0" stroke="#E6E8EE" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>
+<text x="559.4" y="492.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11" font-weight="400" fill="#5B6472" text-anchor="middle">40%</text>
+<line x1="770.0" y1="150.0" x2="770.0" y2="470.0" stroke="#E6E8EE" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>
+<text x="770.0" y="492.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11" font-weight="400" fill="#5B6472" text-anchor="middle">50%</text>
+<line x1="96.0" y1="470.0" x2="770.0" y2="470.0" stroke="#E6E8EE" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>
+<text x="84.0" y="474.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11" font-weight="400" fill="#5B6472" text-anchor="end">0</text>
+<line x1="96.0" y1="390.0" x2="770.0" y2="390.0" stroke="#E6E8EE" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>
+<text x="84.0" y="394.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11" font-weight="400" fill="#5B6472" text-anchor="end">200</text>
+<line x1="96.0" y1="310.0" x2="770.0" y2="310.0" stroke="#E6E8EE" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>
+<text x="84.0" y="314.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11" font-weight="400" fill="#5B6472" text-anchor="end">400</text>
+<line x1="96.0" y1="230.0" x2="770.0" y2="230.0" stroke="#E6E8EE" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>
+<text x="84.0" y="234.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11" font-weight="400" fill="#5B6472" text-anchor="end">600</text>
+<line x1="96.0" y1="150.0" x2="770.0" y2="150.0" stroke="#E6E8EE" stroke-width="1" stroke-dasharray="3 4" opacity="0.6"/>
+<text x="84.0" y="154.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11" font-weight="400" fill="#5B6472" text-anchor="end">800</text>
+<text x="433.0" y="530.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="400" fill="#0B1220" text-anchor="middle">taux de réussite</text>
+<text x="26" y="310" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" fill="#0B1220" text-anchor="middle" transform="rotate(-90 26 310)">pipeline (opportunités)</text>
+<circle cx="369.8" cy="312.0" r="18.6" fill="#D6336C" stroke="white" stroke-width="1.5" opacity="0.85"/>
+<text x="369.8" y="285.4" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11.5" font-weight="600" fill="#D6336C" text-anchor="middle">SP001</text>
+<circle cx="622.6" cy="324.0" r="17.9" fill="#94A3B8" stroke="white" stroke-width="1.5" opacity="0.45"/>
+<text x="622.6" y="300.1" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11.5" font-weight="500" fill="#5B6472" text-anchor="middle">SP002</text>
+<circle cx="454.1" cy="312.4" r="17.9" fill="#94A3B8" stroke="white" stroke-width="1.5" opacity="0.45"/>
+<text x="454.1" y="288.5" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11.5" font-weight="500" fill="#5B6472" text-anchor="middle">SP003</text>
+<circle cx="433.0" cy="343.2" r="15.4" fill="#94A3B8" stroke="white" stroke-width="1.5" opacity="0.45"/>
+<text x="433.0" y="321.8" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11.5" font-weight="500" fill="#5B6472" text-anchor="middle">SP004</text>
+<circle cx="706.8" cy="344.4" r="15.0" fill="#D6336C" stroke="white" stroke-width="1.5" opacity="0.85"/>
+<text x="706.8" y="321.4" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11.5" font-weight="600" fill="#D6336C" text-anchor="middle">SP005</text>
+<circle cx="643.6" cy="344.8" r="15.4" fill="#94A3B8" stroke="white" stroke-width="1.5" opacity="0.45"/>
+<text x="643.6" y="323.4" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11.5" font-weight="500" fill="#5B6472" text-anchor="middle">SP006</text>
+<circle cx="580.4" cy="172.0" r="14.1" fill="#94A3B8" stroke="white" stroke-width="1.5" opacity="0.45"/>
+<text x="580.4" y="151.9" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11.5" font-weight="500" fill="#5B6472" text-anchor="middle">SP007</text>
+<circle cx="643.6" cy="404.0" r="15.0" fill="#94A3B8" stroke="white" stroke-width="1.5" opacity="0.45"/>
+<text x="643.6" y="383.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11.5" font-weight="500" fill="#5B6472" text-anchor="middle">SP008</text>
+<circle cx="159.2" cy="431.6" r="14.4" fill="#D6336C" stroke="white" stroke-width="1.5" opacity="0.85"/>
+<text x="159.2" y="409.2" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11.5" font-weight="600" fill="#D6336C" text-anchor="middle">SP009</text>
+<circle cx="664.7" cy="391.6" r="16.6" fill="#94A3B8" stroke="white" stroke-width="1.5" opacity="0.45"/>
+<text x="664.7" y="369.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11.5" font-weight="500" fill="#5B6472" text-anchor="middle">SP010</text>
+<text x="175.2" y="435.6" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12" font-weight="600" fill="#D6336C" text-anchor="start">SP009  effondrement de pipeline</text>
+<text x="175.2" y="451.6" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#5B6472" text-anchor="start">pipeline mince, pire taux de réussite</text>
+<text x="365.8" y="382.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12" font-weight="600" fill="#D6336C" text-anchor="start">SP001  conversion</text>
+<text x="365.8" y="398.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#5B6472" text-anchor="start">gros effort, plus faible taux France</text>
+<line x1="706.8" y1="326.4" x2="677.3" y2="260.0" stroke="#D6336C" stroke-width="1" stroke-dasharray="2 3" opacity="0.6"/>
+<text x="631.0" y="254.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12" font-weight="600" fill="#D6336C" text-anchor="start">SP005  mix d&#x27;affaires</text>
+<text x="631.0" y="270.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="11.5" font-weight="400" fill="#5B6472" text-anchor="start">meilleur taux, trop peu de logos</text>
+<text x="40.0" y="546.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11" font-weight="400" fill="#5B6472" text-anchor="start" opacity="0.85">Données synthétiques. La taille des bulles indique les activités par opportunité.</text></svg>

@@ -1,0 +1,127 @@
+---
+import { SEO } from "astro-seo";
+import { getSite } from "../data/site";
+import { getLangFromUrl, getAltPath } from "../i18n/utils";
+
+// Self hosted fonts (only the weights used)
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+import "@fontsource/space-grotesk/500.css";
+import "@fontsource/space-grotesk/600.css";
+import "@fontsource/space-grotesk/700.css";
+import "@fontsource/jetbrains-mono/400.css";
+import "@fontsource/jetbrains-mono/500.css";
+
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const lang = getLangFromUrl(Astro.url);
+const site = getSite(lang);
+
+const defaultTitle =
+  lang === "fr"
+    ? `${site.name} · Ingénieur Analytics Senior & Spécialiste Plateforme Data`
+    : `${site.name} · Senior Analytics Engineer & Data Platform Specialist`;
+const defaultDescription =
+  lang === "fr"
+    ? "Ingénieur data et analytics basé à Paris, France. dbt, BigQuery, Snowflake, avec l'IA intégrée au quotidien. Cinq ans à piloter des plateformes analytiques de bout en bout pour 9 clients dans 5 pays."
+    : "Data and analytics engineer based in Paris, France. dbt, BigQuery, Snowflake, with AI integrated into the workflow. Five years owning analytics platforms end to end for 9 clients across 5 countries.";
+
+const { title = defaultTitle, description = defaultDescription } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImage = new URL("/og.png", Astro.site).toString();
+const enHref = new URL(getAltPath(Astro.url, "en"), Astro.site).toString();
+const frHref = new URL(getAltPath(Astro.url, "fr"), Astro.site).toString();
+const ogLocale = lang === "fr" ? "fr_FR" : "en_US";
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  jobTitle: "Senior Analytics Engineer",
+  description,
+  url: Astro.site?.toString(),
+  email: `mailto:${site.email}`,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Paris",
+    addressCountry: "FR",
+  },
+  knowsLanguage: ["French", "English", "Vietnamese"],
+  sameAs: [site.links.linkedin, site.links.github],
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" hreflang="en" href={enHref} />
+    <link rel="alternate" hreflang="fr" href={frHref} />
+    <link rel="alternate" hreflang="x-default" href={enHref} />
+    <meta name="theme-color" content="#FBFBFD" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0A0F1A" media="(prefers-color-scheme: dark)" />
+
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      openGraph={{
+        basic: { title, type: "website", image: ogImage, url: canonical },
+        optional: { description, siteName: site.name, locale: ogLocale },
+        image: { alt: `${site.name}, ${site.eyebrow}` },
+      }}
+      twitter={{ card: "summary_large_image" }}
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
+    <!-- Apply the saved theme before paint to avoid a flash. -->
+    <script is:inline>
+      (function () {
+        try {
+          var t = localStorage.getItem("theme");
+          var dark =
+            t === "dark" ||
+            (!t && window.matchMedia("(prefers-color-scheme: dark)").matches);
+          document.documentElement.classList.toggle("dark", dark);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <slot />
+
+    <!-- Scroll reveal: enhance only when motion is allowed. -->
+    <script>
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if (!reduce.matches) {
+        document.documentElement.classList.add("js-reveal");
+        const els = document.querySelectorAll("[data-reveal]");
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: "0px 0px -8% 0px", threshold: 0.08 },
+        );
+        els.forEach((el) => io.observe(el));
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,134 @@
+---
+import { Icon } from "astro-icon/components";
+import footprint from "../data/footprint.json";
+import { getLangFromUrl } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+// Interactive footprint map with two exclusive views, toggled by the legend
+// buttons: "clients" (default, green) or "traveled" (blue). The heavy SVG
+// (public/img/world.svg, built by scripts/build_worldmap.mjs from
+// @svg-maps/world) starts as a plain <img> and is swapped for inline SVG by
+// the loader script so the page CSS and tooltips can take over. With JS off,
+// the static image shows the default clients view.
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const clients = new Set(footprint.clients);
+
+// Tooltip labels are fully composed at build time, per language.
+const labels: Record<string, string> = {};
+for (const c of footprint.countries) {
+  const parts = [c.times ? `${c[lang]} ${c.times}` : c[lang]];
+  if (c.id === footprint.home) parts.push(t("map.home"));
+  if (clients.has(c.id)) parts.push(t("map.client"));
+  labels[c.id] = parts.join(" · ");
+}
+
+const headline = `${footprint.clientCount} clients · ${footprint.clientCountries} ${t("map.clientsLabel")} · ${footprint.countriesTraveled} ${t("map.traveled")}`;
+
+const toggleCls =
+  "inline-flex items-center gap-1.5 rounded-lg border border-line bg-white px-2.5 py-1 text-xs text-muted transition hover:border-accent hover:text-ink aria-pressed:border-accent/40 aria-pressed:bg-accent-soft aria-pressed:font-medium aria-pressed:text-ink dark:border-dark-line dark:bg-dark-bg dark:text-dark-muted dark:hover:border-accent-dark dark:hover:text-dark-text dark:aria-pressed:border-accent-dark/40 dark:aria-pressed:bg-dark-surface dark:aria-pressed:text-dark-text";
+---
+
+<div class="card p-5" data-wm-mode="clients" data-reveal style="--reveal-delay:120ms">
+  <div class="flex flex-wrap items-center justify-between gap-2">
+    <p class="flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-widest text-muted dark:text-dark-muted">
+      <Icon name="lucide:globe" class="h-4 w-4 text-accent dark:text-accent-dark" />
+      {t("map.eyebrow")}
+    </p>
+    <p class="hidden font-mono text-[0.65rem] text-muted sm:block dark:text-dark-muted">{t("map.hint")}</p>
+  </div>
+
+  <p class="mt-2 text-sm font-semibold text-ink dark:text-dark-text">{headline}</p>
+
+  <div class="relative mt-3" data-wm-root data-src="/img/world.svg">
+    <img src="/img/world.svg" alt={`World map: ${headline}`} class="block h-auto w-full" loading="lazy" decoding="async" />
+    <div
+      data-wm-tip
+      class="pointer-events-none absolute left-0 top-0 z-10 hidden whitespace-nowrap rounded-lg border border-line bg-white px-2.5 py-1 font-mono text-xs text-ink shadow-card dark:border-dark-line dark:bg-dark-bg dark:text-dark-text"
+    >
+    </div>
+  </div>
+
+  <!-- One view at a time: clients (default) or traveled. -->
+  <div class="mt-3 flex flex-wrap items-center gap-2">
+    <button type="button" data-wm-set="clients" aria-pressed="true" class={toggleCls}>
+      <span class="h-2.5 w-2.5 rounded-[3px] bg-emerald-600 dark:bg-emerald-400" aria-hidden="true"></span>
+      {t("map.legendClient")} ({footprint.clientCountries})
+    </button>
+    <button type="button" data-wm-set="traveled" aria-pressed="false" class={toggleCls}>
+      <span class="h-2.5 w-2.5 rounded-[3px] bg-accent dark:bg-accent-dark" aria-hidden="true"></span>
+      {t("map.legendTraveled")} ({footprint.countriesTraveled})
+    </button>
+    <a
+      href="https://github.com/VictorCazanave/svg-maps"
+      target="_blank"
+      rel="noopener"
+      class="ml-auto font-mono text-[0.6rem] text-muted/70 hover:underline dark:text-dark-muted/70"
+      title="Map data from @svg-maps/world"
+    >
+      Map © svg-maps · CC BY 4.0
+    </a>
+  </div>
+
+  <script type="application/json" data-wm-labels set:html={JSON.stringify(labels)} />
+</div>
+
+<script>
+  const card = document.querySelector<HTMLElement>("[data-wm-mode]");
+  const root = document.querySelector<HTMLElement>("[data-wm-root]");
+  const labelsEl = document.querySelector("[data-wm-labels]");
+
+  // Exclusive view toggle: clients (default) or traveled, never both.
+  const buttons = Array.from(document.querySelectorAll<HTMLButtonElement>("[data-wm-set]"));
+  const setMode = (mode: string) => {
+    card?.setAttribute("data-wm-mode", mode);
+    buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.wmSet === mode)));
+  };
+  buttons.forEach((b) => b.addEventListener("click", () => setMode(b.dataset.wmSet || "clients")));
+
+  if (card && root && labelsEl) {
+    const labels: Record<string, string> = JSON.parse(labelsEl.textContent || "{}");
+    fetch(root.dataset.src || "")
+      .then((r) => r.text())
+      .then((txt) => {
+        const doc = new DOMParser().parseFromString(txt, "image/svg+xml");
+        const svg = doc.documentElement;
+        if (svg.querySelector("parsererror") || svg.nodeName !== "svg") return;
+        svg.querySelector("style")?.remove(); // page CSS takes over (incl. dark mode + views)
+        svg.classList.add("wm-svg");
+        root.querySelector("img")?.remove();
+        root.prepend(svg);
+
+        const tip = root.querySelector<HTMLElement>("[data-wm-tip]");
+        if (!tip) return;
+        const move = (e: PointerEvent) => {
+          const r = root.getBoundingClientRect();
+          let x = e.clientX - r.left + 14;
+          let y = e.clientY - r.top - 32;
+          x = Math.max(0, Math.min(x, r.width - tip.offsetWidth - 4));
+          y = Math.max(0, y);
+          tip.style.transform = `translate(${x}px, ${y}px)`;
+        };
+        const onPointer = (e: PointerEvent) => {
+          const target = (e.target as Element | null)?.closest<SVGElement>("[data-id]");
+          const id = target?.dataset.id;
+          // Only countries in the active view get a tooltip.
+          const activeCls = card.getAttribute("data-wm-mode") === "traveled" ? "wm-t" : "wm-c";
+          if (id && labels[id] && target?.classList.contains(activeCls)) {
+            tip.textContent = labels[id];
+            tip.classList.remove("hidden");
+            move(e);
+          } else {
+            tip.classList.add("hidden");
+          }
+        };
+        svg.addEventListener("pointermove", onPointer);
+        svg.addEventListener("pointerdown", onPointer); // tap support
+        svg.addEventListener("pointerleave", () => tip.classList.add("hidden"));
+      })
+      .catch(() => {
+        /* fetch failed: the static <img> fallback stays in place */
+      });
+  }
+</script>

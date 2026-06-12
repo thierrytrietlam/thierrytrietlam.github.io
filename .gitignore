@@ -1,0 +1,19 @@
+# The public repo carries only what the deployed site needs.
+# Everything at the root is ignored by default; the allow list
+# below names the files and folders the build actually uses.
+/*
+!/.github/
+!/.gitignore
+!/README.md
+!/astro.config.mjs
+!/package.json
+!/package-lock.json
+!/tailwind.config.mjs
+!/tsconfig.json
+!/public/
+!/src/
+
+# os / editor noise inside the allowed folders
+.DS_Store
+Thumbs.db
+*.log

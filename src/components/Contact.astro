@@ -1,0 +1,129 @@
+---
+import { Icon } from "astro-icon/components";
+import LineageGraph from "./LineageGraph.astro";
+import CvDownload from "./CvDownload.astro";
+import { getSite } from "../data/site";
+import { getLangFromUrl } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const site = getSite(lang);
+const t = useTranslations(lang);
+
+const subject = lang === "fr" ? "Demande de projet, via votre portfolio" : "Project enquiry, via your portfolio";
+const mailto = `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
+const items = [
+  { icon: "simple-icons:linkedin", label: "LinkedIn", value: "in/thierrytrietlam", href: site.links.linkedin },
+  { icon: "simple-icons:github", label: "GitHub", value: "thierrytrietlam", href: site.links.github },
+];
+---
+
+<section id="contact" class="border-t border-line py-20 sm:py-24 dark:border-dark-line">
+  <div class="container-content">
+    <div class="card relative overflow-hidden p-8 sm:p-12" data-reveal>
+      <div class="pointer-events-none absolute inset-0 -z-0 opacity-[0.10] dark:opacity-[0.14]" aria-hidden="true">
+        <LineageGraph class="h-full w-full" />
+      </div>
+      <div class="relative z-10 grid gap-8 md:grid-cols-[1.3fr_1fr] md:items-center">
+        <div>
+          <p class="eyebrow mb-3">{t("contact.eyebrow")}</p>
+          <h2 class="section-title">{t("contact.title")}</h2>
+          <p class="lead mt-4 max-w-lg">
+            {t("contact.lead")} {t("contact.reach")}
+          </p>
+          <div class="mt-7 flex flex-wrap items-center gap-3">
+            <a href={site.calendly} target="_blank" rel="noopener" class="btn btn-primary h-11"><Icon name="lucide:calendar-clock" class="h-4 w-4" /> {t("book.call")}</a>
+            <a href={mailto} class="btn btn-ghost h-11"><Icon name="lucide:mail" class="h-4 w-4" /> {t("contact.emailMe")}</a>
+            <CvDownload />
+          </div>
+        </div>
+        <ul class="space-y-3">
+          <!-- Email: mailto link, plus a copy button for setups with no mail client -->
+          <li>
+            <div
+              class="group flex items-center gap-3 rounded-xl border border-line bg-white p-3.5 transition hover:border-accent dark:border-dark-line dark:bg-dark-bg dark:hover:border-accent-dark"
+            >
+              <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-accent-soft text-accent dark:bg-dark-surface dark:text-accent-dark">
+                <Icon name="lucide:mail" class="h-4 w-4" />
+              </span>
+              <a href={mailto} class="min-w-0 flex-1">
+                <span class="block font-mono text-[0.7rem] uppercase tracking-widest text-muted dark:text-dark-muted">Email</span>
+                <span class="block truncate text-sm font-medium text-ink dark:text-dark-text">{site.email}</span>
+              </a>
+              <button
+                type="button"
+                data-copy-email={site.email}
+                title={t("contact.copy")}
+                aria-label={t("contact.copy")}
+                class="relative inline-flex h-8 w-8 items-center justify-center rounded-lg border border-line text-muted transition hover:border-accent hover:text-accent dark:border-dark-line dark:text-dark-muted dark:hover:border-accent-dark dark:hover:text-accent-dark"
+              >
+                <Icon name="lucide:copy" class="h-4 w-4" data-copy-icon />
+                <Icon name="lucide:check" class="hidden h-4 w-4 text-emerald-500" data-copied-icon />
+                <span
+                  data-copied-note
+                  class="pointer-events-none absolute -top-8 left-1/2 hidden -translate-x-1/2 whitespace-nowrap rounded-md border border-line bg-white px-2 py-0.5 font-mono text-[0.65rem] text-ink shadow-card dark:border-dark-line dark:bg-dark-surface dark:text-dark-text"
+                >
+                  {t("contact.copied")}
+                </span>
+              </button>
+              <a href={mailto} aria-label="Email" class="text-muted transition group-hover:text-accent dark:text-dark-muted dark:group-hover:text-accent-dark">
+                <Icon name="lucide:arrow-up-right" class="h-4 w-4" />
+              </a>
+            </div>
+          </li>
+          {
+            items.map((it) => (
+              <li>
+                <a
+                  href={it.href}
+                  target="_blank"
+                  rel="noopener"
+                  class="group flex items-center gap-3 rounded-xl border border-line bg-white p-3.5 transition hover:border-accent dark:border-dark-line dark:bg-dark-bg dark:hover:border-accent-dark"
+                >
+                  <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-accent-soft text-accent dark:bg-dark-surface dark:text-accent-dark">
+                    <Icon name={it.icon} class="h-4 w-4" />
+                  </span>
+                  <span class="flex-1">
+                    <span class="block font-mono text-[0.7rem] uppercase tracking-widest text-muted dark:text-dark-muted">{it.label}</span>
+                    <span class="block text-sm font-medium text-ink dark:text-dark-text">{it.value}</span>
+                  </span>
+                  <Icon name="lucide:arrow-up-right" class="h-4 w-4 text-muted transition group-hover:text-accent dark:text-dark-muted dark:group-hover:text-accent-dark" />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>("[data-copy-email]").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      const email = btn.dataset.copyEmail || "";
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch {
+        // Clipboard API unavailable (http, old browser): fall back to a hidden input.
+        const input = document.createElement("input");
+        input.value = email;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        input.remove();
+      }
+      const copyIcon = btn.querySelector("[data-copy-icon]");
+      const copiedIcon = btn.querySelector("[data-copied-icon]");
+      const note = btn.querySelector("[data-copied-note]");
+      copyIcon?.classList.add("hidden");
+      copiedIcon?.classList.remove("hidden");
+      note?.classList.remove("hidden");
+      setTimeout(() => {
+        copyIcon?.classList.remove("hidden");
+        copiedIcon?.classList.add("hidden");
+        note?.classList.add("hidden");
+      }, 1600);
+    });
+  });
+</script>

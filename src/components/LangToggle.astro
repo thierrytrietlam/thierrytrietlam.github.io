@@ -1,0 +1,36 @@
+---
+import { getLangFromUrl, getAltPath, languages, type Lang } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+const url = Astro.url;
+const current = getLangFromUrl(url);
+const t = useTranslations(current);
+
+const items: { code: Lang; href: string }[] = [
+  { code: "en", href: getAltPath(url, "en") },
+  { code: "fr", href: getAltPath(url, "fr") },
+];
+---
+
+<div
+  class="inline-flex items-center rounded-xl border border-line bg-white p-0.5 dark:border-dark-line dark:bg-dark-surface"
+  role="group"
+  aria-label={t("lang.aria")}
+>
+  {
+    items.map(({ code, href }) => (
+      <a
+        href={href}
+        hreflang={code}
+        aria-current={code === current ? "true" : undefined}
+        class={`rounded-lg px-2 py-1 font-mono text-xs font-medium transition ${
+          code === current
+            ? "bg-accent text-white"
+            : "text-muted hover:text-ink dark:text-dark-muted dark:hover:text-dark-text"
+        }`}
+      >
+        {languages[code]}
+      </a>
+    ))
+  }
+</div>

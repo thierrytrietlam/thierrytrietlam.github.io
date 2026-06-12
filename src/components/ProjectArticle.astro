@@ -1,0 +1,126 @@
+---
+import { render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import { Icon } from "astro-icon/components";
+import { getSite } from "../data/site";
+import { getLangFromUrl, localizePath } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+}
+const { project } = Astro.props;
+const { Content } = await render(project);
+const d = project.data;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const site = getSite(lang);
+const projectsHref = `${localizePath("/", lang)}#projects`;
+
+const triptych = [
+  { label: t("project.question"), icon: "lucide:help-circle", body: d.question },
+  { label: t("project.data"), icon: "lucide:database", body: d.dataset },
+  { label: t("project.goal"), icon: "lucide:target", body: d.goal },
+];
+---
+
+<article>
+  <!-- Hero -->
+  <header class="border-b border-line py-14 sm:py-20 dark:border-dark-line">
+    <div class="container-content max-w-3xl">
+      <a
+        href={projectsHref}
+        class="inline-flex items-center gap-1.5 font-mono text-xs text-muted transition hover:text-accent dark:text-dark-muted dark:hover:text-accent-dark"
+      >
+        <Icon name="lucide:arrow-left" class="h-3.5 w-3.5" /> {t("project.back")}
+      </a>
+      <p class="eyebrow mt-6 mb-4">{t("project.eyebrow")}</p>
+      <h1 class="font-display text-3xl font-bold leading-[1.1] tracking-tight text-ink sm:text-4xl lg:text-5xl dark:text-dark-text">
+        {d.title}
+      </h1>
+      <p class="mt-5 max-w-2xl text-lg leading-relaxed text-muted dark:text-dark-muted">{d.summary}</p>
+
+      <div class="mt-7 flex flex-wrap items-center gap-2.5">
+        <span class="chip"><Icon name="lucide:calendar" class="h-3.5 w-3.5" /> {d.date}</span>
+        {
+          d.synthetic && (
+            <span class="chip"><Icon name="lucide:shield-check" class="h-3.5 w-3.5" /> {t("projects.synthetic")}</span>
+          )
+        }
+        {d.stack.map((s) => <span class="tag">{s}</span>)}
+      </div>
+
+      {
+        d.links.length > 0 && (
+          <div class="mt-6 flex flex-wrap gap-4">
+            {d.links.map((l) => (
+              <a
+                href={l.url}
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline dark:text-accent-dark"
+              >
+                {l.label} <Icon name="lucide:arrow-up-right" class="h-4 w-4" />
+              </a>
+            ))}
+          </div>
+        )
+      }
+    </div>
+  </header>
+
+  <!-- Lead with the answer -->
+  {
+    d.outcome && (
+      <div class="container-content max-w-3xl">
+        <div class="mt-12 rounded-2xl border border-accent/20 bg-accent-soft p-6 sm:p-7 dark:border-accent-dark/25 dark:bg-dark-surface">
+          <p class="flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-widest text-accent dark:text-accent-dark">
+            <Icon name="lucide:flag" class="h-3.5 w-3.5" /> {t("project.answer")}
+          </p>
+          <p class="mt-3 text-lg font-medium leading-relaxed text-ink dark:text-dark-text">{d.outcome}</p>
+        </div>
+      </div>
+    )
+  }
+
+  <!-- Question / Data / Goal -->
+  <div class="container-content max-w-3xl">
+    <div class="mt-10 grid gap-4 sm:grid-cols-3">
+      {
+        triptych.map((tri) => (
+          <div class="card p-5">
+            <p class="flex items-center gap-2 font-mono text-[0.7rem] uppercase tracking-widest text-muted dark:text-dark-muted">
+              <Icon name={tri.icon} class="h-4 w-4 text-accent dark:text-accent-dark" />
+              {tri.label}
+            </p>
+            <p class="mt-2.5 text-sm leading-relaxed text-ink dark:text-dark-text">{tri.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <!-- The data story body -->
+  <div class="container-content max-w-3xl">
+    <div class="story mt-14">
+      <Content />
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="container-content max-w-3xl">
+    <div class="mt-16 flex flex-col items-start justify-between gap-5 rounded-2xl border border-line bg-white p-7 sm:flex-row sm:items-center dark:border-dark-line dark:bg-dark-surface">
+      <div>
+        <p class="font-display text-lg font-semibold text-ink dark:text-dark-text">{t("project.ctaTitle")}</p>
+        <p class="mt-1 text-sm text-muted dark:text-dark-muted">{t("project.ctaLead")}</p>
+      </div>
+      <div class="flex gap-3">
+        <a href={projectsHref} class="btn btn-ghost">{t("project.ctaMore")}</a>
+        <a href={`mailto:${site.email}`} class="btn btn-primary">
+          <Icon name="lucide:mail" class="h-4 w-4" /> {t("project.ctaContact")}
+        </a>
+      </div>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,36 @@
+---
+import { Icon } from "astro-icon/components";
+import DemoCard from "./DemoCard.astro";
+import { getDemos } from "../data/demos";
+import { getSite } from "../data/site";
+import { getLangFromUrl } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const demos = getDemos(lang);
+const site = getSite(lang);
+const t = useTranslations(lang);
+---
+
+<section id="demos" class="border-t border-line py-20 sm:py-24 dark:border-dark-line">
+  <div class="container-content">
+    <div class="flex flex-wrap items-end justify-between gap-4" data-reveal>
+      <div class="max-w-2xl">
+        <p class="eyebrow mb-3">{t("demos.eyebrow")}</p>
+        <h2 class="section-title">{t("demos.title")}</h2>
+        <p class="lead mt-4">{t("demos.lead")}</p>
+      </div>
+      <a
+        href={site.links.github}
+        target="_blank"
+        rel="noopener"
+        class="inline-flex items-center gap-1.5 text-sm font-medium text-accent hover:underline dark:text-accent-dark"
+      >
+        {t("demos.more")} <Icon name="lucide:arrow-up-right" class="h-4 w-4" />
+      </a>
+    </div>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2">
+      {demos.map((d) => <DemoCard demo={d} />)}
+    </div>
+  </div>
+</section>

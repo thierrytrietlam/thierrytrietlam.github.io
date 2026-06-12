@@ -1,0 +1,72 @@
+---
+// The signature element: a faint dbt-style lineage DAG.
+// Sources flow left to right through staging, intermediate and mart nodes.
+// Edges draw once on load via CSS stroke-dashoffset; static under reduced motion.
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+
+const cols = [110, 360, 610, 860, 1050];
+const layout = [
+  { c: 0, y: 90 },
+  { c: 0, y: 210 },
+  { c: 0, y: 330 },
+  { c: 0, y: 440 },
+  { c: 1, y: 150 },
+  { c: 1, y: 300 },
+  { c: 1, y: 430 },
+  { c: 2, y: 120 },
+  { c: 2, y: 270 },
+  { c: 2, y: 400 },
+  { c: 3, y: 190 },
+  { c: 3, y: 340 },
+  { c: 4, y: 265 },
+];
+const nodes = layout.map((n, i) => ({ id: i, x: cols[n.c], y: n.y, c: n.c }));
+
+const edges: [number, number][] = [
+  [0, 4], [1, 4], [1, 5], [2, 5], [2, 6], [3, 6],
+  [4, 7], [5, 8], [5, 9], [6, 9],
+  [7, 10], [8, 10], [8, 11], [9, 11],
+  [10, 12], [11, 12],
+];
+
+const edgePath = (a: number, b: number) => {
+  const A = nodes[a];
+  const B = nodes[b];
+  const mx = (A.x + B.x) / 2;
+  return `M ${A.x} ${A.y} C ${mx} ${A.y}, ${mx} ${B.y}, ${B.x} ${B.y}`;
+};
+---
+
+<svg
+  class={`text-accent dark:text-accent-dark ${className}`}
+  viewBox="0 0 1160 520"
+  fill="none"
+  aria-hidden="true"
+  preserveAspectRatio="xMidYMid slice"
+>
+  <g stroke="currentColor" stroke-width="1.5" stroke-opacity="0.5">
+    {
+      edges.map(([a, b], i) => (
+        <path
+          class="lineage-edge"
+          d={edgePath(a, b)}
+          pathLength="1"
+          style={`--draw-delay:${i * 70}ms`}
+        />
+      ))
+    }
+  </g>
+  <g fill="currentColor">
+    {
+      nodes.map((n, i) => (
+        <g class="lineage-node" style={`--pop-delay:${600 + i * 45}ms`}>
+          <circle cx={n.x} cy={n.y} r={5 + n.c} fill-opacity="0.85" />
+          <circle cx={n.x} cy={n.y} r={11 + n.c} fill-opacity="0.12" />
+        </g>
+      ))
+    }
+  </g>
+</svg>

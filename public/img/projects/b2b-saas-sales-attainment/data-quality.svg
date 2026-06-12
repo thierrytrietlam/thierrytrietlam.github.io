@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" width="920" height="560" role="img" font-family="Inter, 'Segoe UI', system-ui, sans-serif"><title>Data quality scoreboard</title><desc>Ten data quality issues found and handled, from 2795 ARR values on non won opportunities down to 8 won deals with zero ARR.</desc><rect x="0.5" y="0.5" width="919" height="559" rx="18" fill="#FBFBFD" stroke="#E6E8EE"/><text x="40.0" y="44.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11" font-weight="500" fill="#2D5BFF" text-anchor="start" letter-spacing="2">TRUST THE NUMBER BEFORE YOU REPORT IT</text>
+<text x="40.0" y="74.0" font-family="'Space Grotesk', 'Segoe UI', system-ui, sans-serif" font-size="22" font-weight="600" fill="#0B1220" text-anchor="start">Ten data quality issues, found and handled</text>
+<text x="40.0" y="100.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="13.5" font-weight="400" fill="#5B6472" text-anchor="start">Each issue carries a count and a rule. Red is repaired in staging. Blue is kept with a flag so totals still reconcile.</text>
+<rect x="640.0" y="60.0" width="12.0" height="12.0" rx="3" fill="#D6336C"/>
+<text x="658.0" y="70.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="400" fill="#0B1220" text-anchor="start">fixed</text>
+<rect x="720.0" y="60.0" width="12.0" height="12.0" rx="3" fill="#2D5BFF"/>
+<text x="738.0" y="70.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="400" fill="#0B1220" text-anchor="start">flagged</text>
+<rect x="360.0" y="150.0" width="450.0" height="26.0" rx="4" fill="#EAF0FF" opacity="0.5"/>
+<rect x="360.0" y="150.0" width="450.0" height="26.0" rx="4" fill="#2D5BFF" opacity="0.9"/>
+<text x="40.0" y="167.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">arr filled on non won opps</text>
+<text x="820.0" y="167.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#2D5BFF" text-anchor="start">2,795</text>
+<rect x="360.0" y="187.0" width="450.0" height="26.0" rx="4" fill="#EAF0FF" opacity="0.5"/>
+<rect x="360.0" y="187.0" width="431.6" height="26.0" rx="4" fill="#2D5BFF" opacity="0.9"/>
+<text x="40.0" y="204.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">closed_date set on open opps</text>
+<text x="801.6" y="204.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#2D5BFF" text-anchor="start">2,019</text>
+<rect x="360.0" y="224.0" width="450.0" height="26.0" rx="4" fill="#EAF0FF" opacity="0.5"/>
+<rect x="360.0" y="224.0" width="361.1" height="26.0" rx="4" fill="#2D5BFF" opacity="0.9"/>
+<text x="40.0" y="241.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">activities dated after the window</text>
+<text x="731.1" y="241.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#2D5BFF" text-anchor="start">582</text>
+<rect x="360.0" y="261.0" width="450.0" height="26.0" rx="4" fill="#FCE7EF" opacity="0.5"/>
+<rect x="360.0" y="261.0" width="277.3" height="26.0" rx="4" fill="#D6336C" opacity="0.9"/>
+<text x="40.0" y="278.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">mixed date formats (4 patterns)</text>
+<text x="647.3" y="278.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#D6336C" text-anchor="start">132</text>
+<rect x="360.0" y="298.0" width="450.0" height="26.0" rx="4" fill="#FCE7EF" opacity="0.5"/>
+<rect x="360.0" y="298.0" width="260.6" height="26.0" rx="4" fill="#D6336C" opacity="0.9"/>
+<text x="40.0" y="315.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">blank source / activity_type</text>
+<text x="630.6" y="315.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#D6336C" text-anchor="start">98</text>
+<rect x="360.0" y="335.0" width="450.0" height="26.0" rx="4" fill="#FCE7EF" opacity="0.5"/>
+<rect x="360.0" y="335.0" width="214.6" height="26.0" rx="4" fill="#D6336C" opacity="0.9"/>
+<text x="40.0" y="352.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">slash dates are day first</text>
+<text x="584.6" y="352.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#D6336C" text-anchor="start">43</text>
+<rect x="360.0" y="372.0" width="450.0" height="26.0" rx="4" fill="#FCE7EF" opacity="0.5"/>
+<rect x="360.0" y="372.0" width="194.7" height="26.0" rx="4" fill="#D6336C" opacity="0.9"/>
+<text x="40.0" y="389.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">duplicate activity_id</text>
+<text x="564.7" y="389.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#D6336C" text-anchor="start">30</text>
+<rect x="360.0" y="409.0" width="450.0" height="26.0" rx="4" fill="#EAF0FF" opacity="0.5"/>
+<rect x="360.0" y="409.0" width="145.4" height="26.0" rx="4" fill="#2D5BFF" opacity="0.9"/>
+<text x="40.0" y="426.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">closed_date before created_date</text>
+<text x="515.4" y="426.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#2D5BFF" text-anchor="start">12</text>
+<rect x="360.0" y="446.0" width="450.0" height="26.0" rx="4" fill="#EAF0FF" opacity="0.5"/>
+<rect x="360.0" y="446.0" width="136.0" height="26.0" rx="4" fill="#2D5BFF" opacity="0.9"/>
+<text x="40.0" y="463.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">orphan account_id</text>
+<text x="506.0" y="463.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#2D5BFF" text-anchor="start">10</text>
+<rect x="360.0" y="483.0" width="450.0" height="26.0" rx="4" fill="#EAF0FF" opacity="0.5"/>
+<rect x="360.0" y="483.0" width="124.6" height="26.0" rx="4" fill="#2D5BFF" opacity="0.9"/>
+<text x="40.0" y="500.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">won opps with arr = 0</text>
+<text x="494.6" y="500.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#2D5BFF" text-anchor="start">8</text>
+<text x="40.0" y="538.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11" font-weight="400" fill="#5B6472" text-anchor="start" opacity="0.85">Synthetic data. Counts reproduced end to end by the pipeline. Log scale on the bars.</text></svg>

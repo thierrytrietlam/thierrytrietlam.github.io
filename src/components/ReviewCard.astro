@@ -1,0 +1,41 @@
+---
+import { Icon } from "astro-icon/components";
+import type { Review } from "../data/reviews";
+
+interface Props {
+  review: Review;
+}
+const { review } = Astro.props;
+const initials = review.name
+  .split(" ")
+  .map((n) => n[0])
+  .slice(0, 2)
+  .join("");
+---
+
+<figure class="card flex h-full flex-col p-6">
+  <Icon name="lucide:quote" class="h-6 w-6 text-accent/40 dark:text-accent-dark/40" />
+  <blockquote class="mt-3 flex-1 text-sm leading-relaxed text-ink dark:text-dark-text">{review.quote}</blockquote>
+  <figcaption class="mt-5 flex items-center gap-3">
+    {
+      review.avatar ? (
+        <img src={review.avatar} alt={review.name} class="h-10 w-10 rounded-full object-cover" width="40" height="40" loading="lazy" />
+      ) : (
+        <span class="flex h-10 w-10 items-center justify-center rounded-full bg-accent-soft font-mono text-sm font-medium text-accent dark:bg-dark-bg dark:text-accent-dark">
+          {initials}
+        </span>
+      )
+    }
+    <span>
+      <span class="block text-sm font-semibold text-ink dark:text-dark-text">{review.name}</span>
+      <span class="block text-xs text-muted dark:text-dark-muted">{review.title}, {review.company}</span>
+    </span>
+    {
+      review.linkedin && (
+        <a href={review.linkedin} target="_blank" rel="noopener" aria-label={`${review.name} on LinkedIn`} class="ml-auto text-muted hover:text-accent dark:text-dark-muted dark:hover:text-accent-dark">
+          <Icon name="simple-icons:linkedin" class="h-4 w-4" />
+        </a>
+      )
+    }
+  </figcaption>
+</figure>

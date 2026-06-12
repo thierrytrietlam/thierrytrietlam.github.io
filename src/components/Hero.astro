@@ -1,0 +1,99 @@
+---
+import { Icon } from "astro-icon/components";
+import LineageGraph from "./LineageGraph.astro";
+import CvDownload from "./CvDownload.astro";
+import { getSite } from "../data/site";
+import { getLangFromUrl } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const site = getSite(lang);
+const t = useTranslations(lang);
+---
+
+<section id="top" class="relative overflow-hidden">
+  <!-- lineage signature backdrop -->
+  <div class="pointer-events-none absolute inset-0 -z-10 opacity-[0.22] dark:opacity-[0.26]" aria-hidden="true">
+    <LineageGraph class="h-full w-full" />
+  </div>
+  <div
+    class="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-transparent via-transparent to-paper dark:to-dark-bg"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="container-content grid items-center gap-10 py-20 sm:py-28 md:grid-cols-[1.45fr_1fr] md:gap-14">
+    <div class="motion-safe:animate-rise">
+      <p class="mb-5 font-mono text-sm font-medium uppercase tracking-[0.22em] text-accent sm:text-base dark:text-accent-dark">
+        {site.eyebrow}
+      </p>
+      <h1 class="font-display text-4xl font-bold leading-[1.05] tracking-tight text-ink sm:text-5xl lg:text-6xl dark:text-dark-text">
+        {site.headline}
+      </h1>
+      <p class="mt-6 max-w-xl text-lg leading-relaxed text-muted dark:text-dark-muted">
+        {site.subhead}
+      </p>
+
+      <div class="mt-8 flex flex-wrap items-center gap-3">
+        <a
+          href={site.calendly}
+          target="_blank"
+          rel="noopener"
+          class="btn btn-primary group h-11 px-6 text-base shadow-lift"
+        >
+          <span class="relative flex h-2.5 w-2.5">
+            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-70"></span>
+            <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-300"></span>
+          </span>
+          {t("book.call")}
+          <Icon name="lucide:arrow-up-right" class="h-4 w-4 opacity-80 transition group-hover:translate-x-0.5" />
+        </a>
+
+        <!-- CV in either language, no site language switch needed -->
+        <CvDownload />
+      </div>
+
+      <div class="mt-4 flex flex-wrap items-center gap-3">
+        <a href="#contact" class="btn btn-ghost h-11 px-5">
+          <Icon name="lucide:mail" class="h-4 w-4" /> {t("hero.getInTouch")}
+        </a>
+        <div class="ml-1 flex items-center gap-1">
+          <a
+            href={site.links.linkedin}
+            target="_blank"
+            rel="noopener"
+            aria-label="LinkedIn"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-xl text-muted transition hover:text-accent dark:text-dark-muted dark:hover:text-accent-dark"
+          >
+            <Icon name="simple-icons:linkedin" class="h-5 w-5" />
+          </a>
+          <a
+            href={site.links.github}
+            target="_blank"
+            rel="noopener"
+            aria-label="GitHub"
+            class="inline-flex h-10 w-10 items-center justify-center rounded-xl text-muted transition hover:text-accent dark:text-dark-muted dark:hover:text-accent-dark"
+          >
+            <Icon name="simple-icons:github" class="h-5 w-5" />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative mx-auto w-full max-w-xs motion-safe:animate-rise md:max-w-none" style="animation-delay:120ms">
+      <div class="relative aspect-[4/5] overflow-hidden rounded-3xl border border-line bg-white shadow-lift ring-1 ring-black/5 dark:border-dark-line dark:bg-dark-surface dark:ring-white/5">
+        <img
+          src="/img/profile.jpg"
+          alt={`${site.name}, ${site.eyebrow}`}
+          width="800"
+          height="1000"
+          class="h-full w-full object-cover"
+          loading="eager"
+        />
+      </div>
+      <span class="absolute -bottom-3 -right-3 rounded-xl border border-line bg-white px-3 py-1.5 font-mono text-xs text-muted shadow-card dark:border-dark-line dark:bg-dark-surface dark:text-dark-muted">
+        {site.location}
+      </span>
+    </div>
+  </div>
+</section>

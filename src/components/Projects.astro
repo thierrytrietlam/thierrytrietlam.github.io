@@ -1,0 +1,28 @@
+---
+import { getCollection } from "astro:content";
+import ProjectCard from "./ProjectCard.astro";
+import { getLangFromUrl } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const featured = (await getCollection("projects", ({ data }) => data.featured && data.lang === lang)).sort(
+  (a, b) => b.data.order - a.data.order,
+);
+---
+
+<section id="projects" class="border-t border-line py-20 sm:py-24 dark:border-dark-line">
+  <div class="container-content">
+    <div class="max-w-2xl" data-reveal>
+      <p class="eyebrow mb-3">{t("projects.eyebrow")}</p>
+      <h2 class="section-title">{t("projects.title")}</h2>
+      <p class="lead mt-4">
+        {t("projects.lead")}
+      </p>
+    </div>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2">
+      {featured.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </div>
+</section>

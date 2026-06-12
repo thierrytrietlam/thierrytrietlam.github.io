@@ -1,0 +1,96 @@
+---
+import { Icon } from "astro-icon/components";
+import ThemeToggle from "./ThemeToggle.astro";
+import LangToggle from "./LangToggle.astro";
+import { getSite } from "../data/site";
+import { getLangFromUrl } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+// `base` is "" on the homepage (anchors stay on the page) and the localized
+// homepage path on subpages, so the same anchors jump back to the right page.
+interface Props {
+  base?: string;
+}
+const { base = "" } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const site = getSite(lang);
+const t = useTranslations(lang);
+
+const sections = [
+  { id: "about", key: "nav.about" },
+  { id: "skills", key: "nav.skills" },
+  { id: "case-studies", key: "nav.caseStudies" },
+  { id: "projects", key: "nav.projects" },
+  { id: "experience", key: "nav.experience" },
+] as const;
+const links = sections.map((s) => ({ href: `${base}#${s.id}`, label: t(s.key) }));
+const homeHref = base ? base : "#top";
+const contactHref = `${base}#contact`;
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-line/80 bg-paper/80 backdrop-blur-md dark:border-dark-line/80 dark:bg-dark-bg/80"
+>
+  <nav class="container-content flex h-16 items-center justify-between gap-4">
+    <a href={homeHref} class="flex items-center gap-2.5">
+      <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-accent font-mono text-sm font-semibold text-white">TL</span>
+      <span class="font-display text-sm font-semibold tracking-tight">{site.name}</span>
+    </a>
+
+    <div class="hidden items-center gap-7 md:flex">
+      {links.map((l) => <a href={l.href} class="nav-link">{l.label}</a>)}
+    </div>
+
+    <div class="flex items-center gap-2">
+      <a href={contactHref} class="btn btn-primary hidden sm:inline-flex">{t("nav.contact")}</a>
+      <LangToggle />
+      <ThemeToggle />
+      <button
+        id="menu-btn"
+        type="button"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white text-ink md:hidden dark:border-dark-line dark:bg-dark-surface dark:text-dark-text"
+        aria-label={t("nav.openMenu")}
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <Icon name="lucide:menu" id="menu-open-icon" class="h-5 w-5" />
+        <Icon name="lucide:x" id="menu-close-icon" class="hidden h-5 w-5" />
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobile-menu" class="hidden border-t border-line bg-paper md:hidden dark:border-dark-line dark:bg-dark-bg">
+    <div class="container-content flex flex-col gap-1 py-3">
+      {
+        links.map((l) => (
+          <a
+            href={l.href}
+            class="rounded-lg px-3 py-2 text-sm text-muted hover:bg-accent-soft hover:text-ink dark:text-dark-muted dark:hover:bg-dark-surface dark:hover:text-dark-text"
+            data-mobile-link
+          >
+            {l.label}
+          </a>
+        ))
+      }
+      <a href={contactHref} class="btn btn-primary mt-1" data-mobile-link>{t("nav.contact")}</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById("menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  const openI = document.getElementById("menu-open-icon");
+  const closeI = document.getElementById("menu-close-icon");
+  const setOpen = (open: boolean) => {
+    menu?.classList.toggle("hidden", !open);
+    openI?.classList.toggle("hidden", open);
+    closeI?.classList.toggle("hidden", !open);
+    btn?.setAttribute("aria-expanded", String(open));
+  };
+  btn?.addEventListener("click", () => setOpen(menu?.classList.contains("hidden") ?? false));
+  document
+    .querySelectorAll("[data-mobile-link]")
+    .forEach((a) => a.addEventListener("click", () => setOpen(false)));
+</script>

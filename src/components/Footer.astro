@@ -1,0 +1,17 @@
+---
+import { getSite } from "../data/site";
+import { getLangFromUrl } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const site = getSite(lang);
+const t = useTranslations(lang);
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-line py-10 dark:border-dark-line">
+  <div class="container-content flex flex-col items-center justify-between gap-3 text-center sm:flex-row sm:text-left">
+    <p class="font-mono text-xs text-muted dark:text-dark-muted">© {year} {site.name} · {site.role}</p>
+    <p class="font-mono text-xs text-muted dark:text-dark-muted">{t("footer.built")}</p>
+  </div>
+</footer>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 560" width="920" height="560" role="img" font-family="Inter, 'Segoe UI', system-ui, sans-serif"><title>Tableau de bord qualité des données</title><desc>Dix problèmes de qualité trouvés et traités, de 2795 valeurs d&#x27;ARR sur des opportunités non gagnées jusqu&#x27;à 8 affaires gagnées à ARR nul.</desc><rect x="0.5" y="0.5" width="919" height="559" rx="18" fill="#FBFBFD" stroke="#E6E8EE"/><text x="40.0" y="44.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11" font-weight="500" fill="#2D5BFF" text-anchor="start" letter-spacing="2">VÉRIFIER LE CHIFFRE AVANT DE LE REPORTER</text>
+<text x="40.0" y="74.0" font-family="'Space Grotesk', 'Segoe UI', system-ui, sans-serif" font-size="22" font-weight="600" fill="#0B1220" text-anchor="start">Dix problèmes de qualité, trouvés et traités</text>
+<text x="40.0" y="100.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="13.5" font-weight="400" fill="#5B6472" text-anchor="start">Chaque problème porte un compte et une règle. Le rouge est réparé en staging, le bleu est signalé et conservé.</text>
+<rect x="640.0" y="60.0" width="12.0" height="12.0" rx="3" fill="#D6336C"/>
+<text x="658.0" y="70.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="400" fill="#0B1220" text-anchor="start">réparé</text>
+<rect x="720.0" y="60.0" width="12.0" height="12.0" rx="3" fill="#2D5BFF"/>
+<text x="738.0" y="70.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="400" fill="#0B1220" text-anchor="start">signalé</text>
+<rect x="360.0" y="150.0" width="450.0" height="26.0" rx="4" fill="#EAF0FF" opacity="0.5"/>
+<rect x="360.0" y="150.0" width="450.0" height="26.0" rx="4" fill="#2D5BFF" opacity="0.9"/>
+<text x="40.0" y="167.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">ARR posé sur des opportunités non gagnées</text>
+<text x="820.0" y="167.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#2D5BFF" text-anchor="start">2,795</text>
+<rect x="360.0" y="187.0" width="450.0" height="26.0" rx="4" fill="#EAF0FF" opacity="0.5"/>
+<rect x="360.0" y="187.0" width="431.6" height="26.0" rx="4" fill="#2D5BFF" opacity="0.9"/>
+<text x="40.0" y="204.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">date de clôture sur opportunités ouvertes</text>
+<text x="801.6" y="204.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#2D5BFF" text-anchor="start">2,019</text>
+<rect x="360.0" y="224.0" width="450.0" height="26.0" rx="4" fill="#EAF0FF" opacity="0.5"/>
+<rect x="360.0" y="224.0" width="361.1" height="26.0" rx="4" fill="#2D5BFF" opacity="0.9"/>
+<text x="40.0" y="241.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">activités datées après la fenêtre</text>
+<text x="731.1" y="241.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#2D5BFF" text-anchor="start">582</text>
+<rect x="360.0" y="261.0" width="450.0" height="26.0" rx="4" fill="#FCE7EF" opacity="0.5"/>
+<rect x="360.0" y="261.0" width="277.3" height="26.0" rx="4" fill="#D6336C" opacity="0.9"/>
+<text x="40.0" y="278.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">formats de date mélangés (4 motifs)</text>
+<text x="647.3" y="278.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#D6336C" text-anchor="start">132</text>
+<rect x="360.0" y="298.0" width="450.0" height="26.0" rx="4" fill="#FCE7EF" opacity="0.5"/>
+<rect x="360.0" y="298.0" width="260.6" height="26.0" rx="4" fill="#D6336C" opacity="0.9"/>
+<text x="40.0" y="315.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">source / type d&#x27;activité vides</text>
+<text x="630.6" y="315.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#D6336C" text-anchor="start">98</text>
+<rect x="360.0" y="335.0" width="450.0" height="26.0" rx="4" fill="#FCE7EF" opacity="0.5"/>
+<rect x="360.0" y="335.0" width="214.6" height="26.0" rx="4" fill="#D6336C" opacity="0.9"/>
+<text x="40.0" y="352.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">dates en jour d&#x27;abord (JJ/MM)</text>
+<text x="584.6" y="352.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#D6336C" text-anchor="start">43</text>
+<rect x="360.0" y="372.0" width="450.0" height="26.0" rx="4" fill="#FCE7EF" opacity="0.5"/>
+<rect x="360.0" y="372.0" width="194.7" height="26.0" rx="4" fill="#D6336C" opacity="0.9"/>
+<text x="40.0" y="389.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">activity_id en double</text>
+<text x="564.7" y="389.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#D6336C" text-anchor="start">30</text>
+<rect x="360.0" y="409.0" width="450.0" height="26.0" rx="4" fill="#EAF0FF" opacity="0.5"/>
+<rect x="360.0" y="409.0" width="145.4" height="26.0" rx="4" fill="#2D5BFF" opacity="0.9"/>
+<text x="40.0" y="426.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">date de clôture avant la création</text>
+<text x="515.4" y="426.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#2D5BFF" text-anchor="start">12</text>
+<rect x="360.0" y="446.0" width="450.0" height="26.0" rx="4" fill="#EAF0FF" opacity="0.5"/>
+<rect x="360.0" y="446.0" width="136.0" height="26.0" rx="4" fill="#2D5BFF" opacity="0.9"/>
+<text x="40.0" y="463.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">account_id orphelin</text>
+<text x="506.0" y="463.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#2D5BFF" text-anchor="start">10</text>
+<rect x="360.0" y="483.0" width="450.0" height="26.0" rx="4" fill="#EAF0FF" opacity="0.5"/>
+<rect x="360.0" y="483.0" width="124.6" height="26.0" rx="4" fill="#2D5BFF" opacity="0.9"/>
+<text x="40.0" y="500.0" font-family="Inter, 'Segoe UI', system-ui, sans-serif" font-size="12.5" font-weight="400" fill="#0B1220" text-anchor="start">opportunités gagnées à ARR = 0</text>
+<text x="494.6" y="500.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="12" font-weight="600" fill="#2D5BFF" text-anchor="start">8</text>
+<text x="40.0" y="538.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="11" font-weight="400" fill="#5B6472" text-anchor="start" opacity="0.85">Données synthétiques. Comptes reproduits de bout en bout par le pipeline. Échelle log sur les barres.</text></svg>

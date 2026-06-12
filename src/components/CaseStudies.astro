@@ -1,0 +1,25 @@
+---
+import CaseStudyCard from "./CaseStudyCard.astro";
+import { getCaseStudies } from "../data/projects";
+import { getLangFromUrl } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const caseStudies = getCaseStudies(lang);
+const t = useTranslations(lang);
+---
+
+<section id="case-studies" class="border-t border-line py-20 sm:py-24 dark:border-dark-line">
+  <div class="container-content">
+    <div class="max-w-2xl" data-reveal>
+      <p class="eyebrow mb-3">{t("cases.eyebrow")}</p>
+      <h2 class="section-title">{t("cases.title")}</h2>
+      <p class="lead mt-4">
+        {t("cases.lead")}
+      </p>
+    </div>
+    <div class="mt-10 space-y-6">
+      {caseStudies.map((cs, i) => <CaseStudyCard cs={cs} index={i} />)}
+    </div>
+  </div>
+</section>

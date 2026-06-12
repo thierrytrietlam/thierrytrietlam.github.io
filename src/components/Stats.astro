@@ -1,0 +1,79 @@
+---
+import { getLangFromUrl } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+const t = useTranslations(getLangFromUrl(Astro.url));
+
+// Truthful, value oriented numbers drawn from the CV. The €2M belongs to a
+// single dbt project (Refused Store at Kering), not to the 60 projects.
+const stats = [
+  { value: 5, suffix: "+", label: t("stats.years") },
+  { value: 9, label: t("stats.clients") },
+  { value: 60, prefix: "~", label: t("stats.projects") },
+  { value: 2, prefix: "€", suffix: "M", label: t("stats.impact") },
+];
+---
+
+<section id="stats" class="border-t border-line py-16 sm:py-20 dark:border-dark-line">
+  <div class="container-content">
+    <p class="eyebrow mb-10 text-center">{t("stats.eyebrow")}</p>
+    <dl class="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4">
+      {
+        stats.map((s) => (
+          <div class="text-center">
+            <dd class="font-display text-4xl font-bold tracking-tight text-accent sm:text-5xl dark:text-accent-dark">
+              <span
+                class="stat-num"
+                data-value={s.value}
+                data-prefix={s.prefix ?? ""}
+                data-suffix={s.suffix ?? ""}
+              >
+                {(s.prefix ?? "") + "0" + (s.suffix ?? "")}
+              </span>
+            </dd>
+            <dt class="mx-auto mt-3 max-w-[12rem] font-mono text-[0.7rem] uppercase leading-relaxed tracking-widest text-muted dark:text-dark-muted">
+              {s.label}
+            </dt>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
+
+<script>
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const format = (n: number, p: string, s: string) => `${p}${n}${s}`;
+
+  const run = (el: HTMLElement) => {
+    const target = parseFloat(el.dataset.value || "0");
+    const prefix = el.dataset.prefix || "";
+    const suffix = el.dataset.suffix || "";
+    if (reduce) {
+      el.textContent = format(target, prefix, suffix);
+      return;
+    }
+    const duration = 1200;
+    const start = performance.now();
+    const step = (now: number) => {
+      const progress = Math.min(1, (now - start) / duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = format(Math.round(target * eased), prefix, suffix);
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+
+  const io = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          run(e.target as HTMLElement);
+          io.unobserve(e.target);
+        }
+      }
+    },
+    { threshold: 0.4 },
+  );
+  document.querySelectorAll<HTMLElement>(".stat-num").forEach((el) => io.observe(el));
+</script>

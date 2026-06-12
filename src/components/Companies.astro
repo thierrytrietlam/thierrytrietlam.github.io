@@ -1,0 +1,49 @@
+---
+import { getLangFromUrl } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+const t = useTranslations(getLangFromUrl(Astro.url));
+
+// A quiet trust band. Most recent company first, left to right.
+// Every logo links to the company site.
+const companies = [
+  { name: "Colonies", url: "https://www.livecolonies.com", logo: "/img/logos/colonies.jpg" },
+  { name: "Connecty AI", url: "https://www.getconnectyai.com", logo: "/img/logos/connecty-ai.jpg" },
+  { name: "Kering", url: "https://www.kering.com", logo: "/img/logos/kering.jpg" },
+  { name: "Accenture", url: "https://www.accenture.com", logo: "/img/logos/accenture.jpg" },
+  { name: "Veepee", url: "https://www.veepee.com", logo: "/img/logos/veepee.jpg" },
+  { name: "Dassault Systèmes", url: "https://www.3ds.com", logo: "/img/logos/dassault-systemes.jpg" },
+];
+---
+
+<section aria-label="Companies I have worked with" class="border-t border-line py-10 dark:border-dark-line">
+  <div class="container-content" data-reveal>
+    <p class="text-center font-mono text-[0.7rem] uppercase tracking-[0.2em] text-muted dark:text-dark-muted">
+      {t("companies.heading")}
+    </p>
+    <ul class="mt-6 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+      {
+        companies.map((c) => (
+          <li>
+            <a
+              href={c.url}
+              target="_blank"
+              rel="noopener"
+              title={c.name}
+              aria-label={`${c.name} website`}
+              class="flex h-14 w-32 items-center justify-center rounded-xl border border-line bg-white px-4 opacity-80 transition hover:-translate-y-0.5 hover:border-accent hover:opacity-100 hover:shadow-card"
+            >
+              <img
+                src={c.logo}
+                alt={`${c.name} logo`}
+                height="28"
+                class="max-h-7 w-auto max-w-full object-contain mix-blend-multiply"
+                loading="lazy"
+              />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

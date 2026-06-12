@@ -1,0 +1,381 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem; /* clear the sticky nav when jumping to anchors */
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  html.dark body {
+    @apply bg-dark-bg text-dark-text;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight;
+  }
+
+  ::selection {
+    @apply bg-accent/20 text-ink;
+  }
+  html.dark ::selection {
+    @apply bg-accent-dark/30 text-dark-text;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent ring-offset-2 ring-offset-paper rounded-md;
+  }
+  html.dark :focus-visible {
+    @apply ring-accent-dark ring-offset-dark-bg;
+  }
+}
+
+/* ============================================================
+   Components
+   ============================================================ */
+@layer components {
+  .container-content {
+    @apply mx-auto w-full max-w-content px-5 sm:px-6 lg:px-8;
+  }
+
+  .eyebrow {
+    @apply font-mono text-[0.7rem] font-medium uppercase tracking-[0.22em] text-accent;
+  }
+  html.dark .eyebrow {
+    @apply text-accent-dark;
+  }
+
+  .section-title {
+    @apply font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl;
+  }
+  html.dark .section-title {
+    @apply text-dark-text;
+  }
+
+  .lead {
+    @apply text-muted;
+  }
+  html.dark .lead {
+    @apply text-dark-muted;
+  }
+
+  .card {
+    @apply rounded-2xl border border-line bg-white shadow-card transition duration-300;
+  }
+  html.dark .card {
+    @apply border-dark-line bg-dark-surface;
+  }
+  .card-hover:hover {
+    @apply -translate-y-1 shadow-lift;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-accent/20 bg-accent-soft px-3 py-1 font-mono text-xs text-ink;
+  }
+  html.dark .chip {
+    @apply border-dark-line bg-dark-surface text-dark-text;
+  }
+
+  .tag {
+    @apply inline-flex items-center gap-1.5 rounded-lg border border-line bg-white px-2.5 py-1 font-mono text-[0.78rem] text-ink transition;
+  }
+  html.dark .tag {
+    @apply border-dark-line bg-dark-bg text-dark-text;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-medium transition duration-200;
+  }
+  .btn-primary {
+    @apply bg-accent text-white shadow-card hover:-translate-y-0.5 hover:brightness-110;
+  }
+  .btn-ghost {
+    @apply border border-line bg-white text-ink hover:border-accent hover:text-accent;
+  }
+  html.dark .btn-ghost {
+    @apply border-dark-line bg-dark-surface text-dark-text hover:border-accent-dark hover:text-accent-dark;
+  }
+
+  .nav-link {
+    @apply text-sm text-muted transition-colors hover:text-ink;
+  }
+  html.dark .nav-link {
+    @apply text-dark-muted hover:text-dark-text;
+  }
+}
+
+/* ============================================================
+   Scroll reveal (progressive enhancement).
+   With no JS or reduced motion, content stays fully visible.
+   ============================================================ */
+.js-reveal [data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.js-reveal [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================================
+   Lineage signature graph (hand coded SVG)
+   ============================================================ */
+.lineage-edge {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: lineage-draw 1.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+  animation-delay: var(--draw-delay, 0ms);
+}
+.lineage-node {
+  opacity: 0;
+  animation: lineage-pop 0.5s ease forwards;
+  animation-delay: var(--pop-delay, 0ms);
+}
+@keyframes lineage-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes lineage-pop {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ============================================================
+   Data story prose (project detail body)
+   Hand styled so no typography plugin is needed.
+   ============================================================ */
+.story {
+  color: #0b1220;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+html.dark .story {
+  color: #e6e9ef;
+}
+.story > * + * {
+  margin-top: 1.15rem;
+}
+.story h2 {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: #0b1220;
+  margin-top: 3rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid #e6e8ee;
+}
+html.dark .story h2 {
+  color: #e6e9ef;
+  border-color: #1f2937;
+}
+.story h3 {
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #0b1220;
+  margin-top: 2rem;
+}
+html.dark .story h3 {
+  color: #e6e9ef;
+}
+.story p {
+  color: #384150;
+}
+html.dark .story p {
+  color: #c6cdda;
+}
+.story strong {
+  font-weight: 600;
+  color: #0b1220;
+}
+html.dark .story strong {
+  color: #ffffff;
+}
+.story a {
+  color: #2d5bff;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+html.dark .story a {
+  color: #5b82ff;
+}
+.story ul,
+.story ol {
+  padding-left: 1.4rem;
+}
+.story ul {
+  list-style: disc;
+}
+.story ol {
+  list-style: decimal;
+}
+.story li {
+  margin-top: 0.4rem;
+  color: #384150;
+}
+html.dark .story li {
+  color: #c6cdda;
+}
+.story li::marker {
+  color: #2d5bff;
+}
+html.dark .story li::marker {
+  color: #5b82ff;
+}
+.story code {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  font-size: 0.86em;
+  background: #eaf0ff;
+  color: #1e3a8a;
+  padding: 0.12em 0.4em;
+  border-radius: 0.35rem;
+}
+html.dark .story code {
+  background: #111827;
+  color: #93b0ff;
+}
+.story figure {
+  margin-top: 2.25rem;
+  margin-bottom: 2.25rem;
+}
+.story figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  box-shadow:
+    0 1px 2px rgba(11, 18, 32, 0.04),
+    0 12px 32px rgba(11, 18, 32, 0.08);
+}
+.story figcaption {
+  margin-top: 0.85rem;
+  padding-left: 0.9rem;
+  border-left: 2px solid #2d5bff;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: #5b6472;
+}
+html.dark .story figcaption {
+  border-color: #5b82ff;
+  color: #94a3b8;
+}
+
+/* ============================================================
+   Footprint world map (inline SVG injected by WorldMap.astro).
+   The SVG ships with fallback colors for the <img> state; once
+   inlined, its internal <style> is stripped and these rules win.
+   Two exclusive views, switched via [data-wm-mode] on the card:
+   "clients" (green, default) or "traveled" (blue).
+   ============================================================ */
+.wm-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.wm-svg .wm {
+  fill: #e3e7f0;
+  stroke: #fbfbfd;
+  stroke-width: 0.4;
+  transition: fill 0.15s ease;
+}
+html.dark .wm-svg .wm {
+  fill: #1c2536;
+  stroke: #0a0f1a;
+}
+.wm-svg circle.wm-dot {
+  stroke: #fbfbfd;
+  stroke-width: 0.8;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+}
+html.dark .wm-svg circle.wm-dot {
+  stroke: #0a0f1a;
+}
+
+/* Clients view: client countries in green, everything else neutral. */
+[data-wm-mode="clients"] .wm-svg .wm-c {
+  fill: #059669;
+}
+html.dark [data-wm-mode="clients"] .wm-svg .wm-c {
+  fill: #34d399;
+}
+[data-wm-mode="clients"] .wm-svg path.wm-c:hover {
+  fill: #047857;
+  cursor: pointer;
+}
+html.dark [data-wm-mode="clients"] .wm-svg path.wm-c:hover {
+  fill: #6ee7b7;
+}
+
+/* Traveled view: traveled countries in blue, everything else neutral. */
+[data-wm-mode="traveled"] .wm-svg .wm-t {
+  fill: #2d5bff;
+}
+html.dark [data-wm-mode="traveled"] .wm-svg .wm-t {
+  fill: #5b82ff;
+}
+[data-wm-mode="traveled"] .wm-svg path.wm-t:hover {
+  fill: #1e44d9;
+  cursor: pointer;
+}
+html.dark [data-wm-mode="traveled"] .wm-svg path.wm-t:hover {
+  fill: #8babff;
+}
+[data-wm-mode="traveled"] .wm-svg circle.wm-dot {
+  opacity: 1;
+  pointer-events: auto;
+  fill: #2d5bff;
+}
+html.dark [data-wm-mode="traveled"] .wm-svg circle.wm-dot {
+  fill: #5b82ff;
+}
+
+/* ============================================================
+   Reduced motion: everything static
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .lineage-edge {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .lineage-node {
+    animation: none;
+    opacity: 1;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

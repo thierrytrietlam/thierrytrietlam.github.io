@@ -1,0 +1,102 @@
+---
+import { Icon } from "astro-icon/components";
+import type { CaseStudy } from "../data/projects";
+import { getLangFromUrl } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+interface Props {
+  cs: CaseStudy;
+  index: number;
+}
+const { cs, index } = Astro.props;
+const num = String(index + 1).padStart(2, "0");
+const t = useTranslations(getLangFromUrl(Astro.url));
+const metricCols = cs.metrics.length >= 3 ? "sm:grid-cols-3" : "sm:grid-cols-2";
+---
+
+<article class="card card-hover relative overflow-hidden p-6 sm:p-8" data-reveal>
+  <!-- accent hairline -->
+  <span class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-accent via-accent/40 to-transparent dark:from-accent-dark dark:via-accent-dark/40" aria-hidden="true"></span>
+
+  <!-- header: company name left, logo right, both linked -->
+  <div class="flex items-start justify-between gap-4">
+    <div class="min-w-0">
+      <p class="font-mono text-xs text-accent dark:text-accent-dark">
+        {num} · {cs.period}{cs.team ? ` · ${cs.team}` : ""}
+      </p>
+      <h3 class="mt-1.5 font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl dark:text-dark-text">
+        {
+          cs.website ? (
+            <a
+              href={cs.website}
+              target="_blank"
+              rel="noopener"
+              class="group/title inline-flex items-center gap-2 transition hover:text-accent dark:hover:text-accent-dark"
+            >
+              {cs.client}
+              <Icon
+                name="lucide:arrow-up-right"
+                class="h-5 w-5 shrink-0 text-muted opacity-40 transition group-hover/title:translate-x-0.5 group-hover/title:opacity-100 dark:text-dark-muted"
+              />
+            </a>
+          ) : (
+            cs.client
+          )
+        }
+      </h3>
+      <p class="mt-1.5 font-mono text-xs uppercase tracking-wider text-muted dark:text-dark-muted">
+        {cs.sector}{cs.sector ? " · " : ""}{cs.role}
+      </p>
+    </div>
+    {
+      cs.logo && (
+        <a
+          href={cs.website}
+          target="_blank"
+          rel="noopener"
+          aria-label={`${cs.client} website`}
+          class="flex h-12 w-24 shrink-0 items-center justify-center rounded-xl border border-line bg-white px-3 transition hover:-translate-y-0.5 hover:border-accent hover:shadow-card sm:h-14 sm:w-28"
+        >
+          <img
+            src={cs.logo}
+            alt={`${cs.client} logo`}
+            height="24"
+            class="max-h-6 w-auto max-w-full object-contain mix-blend-multiply sm:max-h-7"
+            loading="lazy"
+          />
+        </a>
+      )
+    }
+  </div>
+
+  <p class="mt-4 max-w-3xl text-base leading-relaxed text-ink dark:text-dark-text">{cs.summary}</p>
+
+  <!-- impact, as numbers instead of paragraphs -->
+  <div class={`mt-6 grid grid-cols-1 gap-3 ${metricCols}`}>
+    {
+      cs.metrics.map((m) => (
+        <div class="rounded-2xl border border-accent/15 bg-gradient-to-br from-accent-soft to-white p-4 dark:border-accent-dark/20 dark:from-accent-dark/10 dark:to-dark-surface">
+          <p class="font-display text-2xl font-bold tracking-tight text-accent sm:text-[1.65rem] dark:text-accent-dark">{m.value}</p>
+          <p class="mt-1 text-xs leading-snug text-muted dark:text-dark-muted">{m.label}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- how, in three lines max -->
+  <h4 class="mt-6 font-mono text-[0.7rem] uppercase tracking-widest text-muted dark:text-dark-muted">{t("cases.approach")}</h4>
+  <ul class="mt-2.5 space-y-2">
+    {
+      cs.approach.map((step) => (
+        <li class="flex gap-2.5 text-sm leading-relaxed text-muted dark:text-dark-muted">
+          <Icon name="lucide:check" class="mt-0.5 h-4 w-4 shrink-0 text-accent dark:text-accent-dark" />
+          <span>{step}</span>
+        </li>
+      ))
+    }
+  </ul>
+
+  <ul class="mt-5 flex flex-wrap gap-2">
+    {cs.stack.map((s) => <li class="tag">{s}</li>)}
+  </ul>
+</article>
