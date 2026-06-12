@@ -141,14 +141,14 @@ const caseStudies: RawCaseStudy[] = [
       summary:
         "Inside Kering Technologies, I helped modernize the group analytics platform for global reporting, and my own initiative, the Refused Store project, turned stock distribution insight into recovered revenue.",
       metrics: [
-        { value: "€2M", label: "revenue shortfall (2022 global sales): 92% recovered by the Refused Store project" },
+        { value: "€2M", label: "annual revenue loss (2022 global sales): cut by 92% with the Refused Store project" },
         { value: "3,000", label: "line SQL monolith refactored into modular, tested dbt models" },
-        { value: "4", label: "brands consolidated with forex conversion for group wide KPIs" },
+        { value: "4", label: "brands consolidated with forex conversion and order lifecycle control for group wide KPIs" },
       ],
       approach: [
         "Launched the Refused Store project on my own initiative: a Tableau dashboard crossing OMS, Salesforce and SAP on in store order refusals.",
-        "Migrated the platform from AWS (Athena, S3) to BigQuery under a Medallion architecture.",
-        "Implemented dbt checks (freshness, volume thresholds, parameter consistency) across all pipelines.",
+        "Migrated the dbt project from AWS (Athena, S3) to BigQuery under a Medallion architecture, applying the group's Data Mesh strategy.",
+        "Implemented dbt checks (freshness, volume thresholds, parameter consistency) for technical tests and a Tableau monitoring dashboard for functional tests across all pipelines.",
       ],
     },
     fr: {
@@ -159,14 +159,14 @@ const caseStudies: RawCaseStudy[] = [
       summary:
         "Au sein de Kering Technologies, j'ai contribué à moderniser la plateforme analytique du groupe pour le reporting mondial, et mon initiative, le projet Refused Store, a transformé l'analyse de la distribution des stocks en revenu récupéré.",
       metrics: [
-        { value: "2 M€", label: "de manque à gagner (ventes mondiales 2022) : 92 % résorbés par le projet Refused Store" },
+        { value: "2 M€", label: "de manque à gagner annuel (ventes mondiales 2022) : réduit de 92 % par le projet Refused Store" },
         { value: "3 000", label: "lignes de SQL monolithique refondues en modèles dbt modulaires et testés" },
-        { value: "4", label: "maisons consolidées avec conversion de devises pour les KPIs du groupe" },
+        { value: "4", label: "maisons consolidées avec conversion de devises et contrôle du cycle de vie des commandes pour les KPIs du groupe" },
       ],
       approach: [
         "Lancement, de ma propre initiative, du projet Refused Store : un dashboard Tableau croisant OMS, Salesforce et SAP sur les refus de commandes en magasin.",
-        "Migration de la plateforme d'AWS (Athena, S3) vers BigQuery selon une architecture Médaillon.",
-        "Mise en place de contrôles dbt (freshness, seuils de volume, cohérence des paramètres) sur l'ensemble des pipelines.",
+        "Migration du projet dbt d'AWS (Athena, S3) vers BigQuery selon une architecture Médaillon, en application de la stratégie Data Mesh du groupe.",
+        "Mise en place de contrôles dbt (freshness, seuils de volume, cohérence des paramètres) pour les tests techniques et d'un dashboard Tableau de monitoring pour les tests fonctionnels, sur l'ensemble des pipelines.",
       ],
     },
   },

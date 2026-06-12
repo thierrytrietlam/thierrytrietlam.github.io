@@ -34,7 +34,7 @@ const byLang = {
     platformsIntro: "I have rebuilt three data platforms from scratch:",
     platforms: [
       { name: "Colonies", text: "225 production dbt models, solo, from Finance to Asset Management." },
-      { name: "Kering", text: "a 3,000 line SQL monolith broken into clean dbt models, and the Refused Store project that recovered 92% of a nearly €2M revenue shortfall." },
+      { name: "Kering", text: "a 3,000 line SQL monolith broken into clean dbt models, and the Refused Store project that cut a nearly €2M annual revenue loss by 92%." },
       { name: "Connecty AI", text: "a full stack (Snowflake, dbt, Power BI) with an LLM semantic layer." },
     ],
     aboutClose:
@@ -53,7 +53,7 @@ const byLang = {
     platformsIntro: "J'ai reconstruit trois plateformes data depuis zéro :",
     platforms: [
       { name: "Colonies", text: "225 modèles dbt en production, en solo, de la Finance à l'Asset Management." },
-      { name: "Kering", text: "un monolithe SQL de 3 000 lignes découpé en modèles dbt propres, et le projet Refused Store qui a récupéré 92 % d'un manque à gagner de près de 2 M€." },
+      { name: "Kering", text: "un monolithe SQL de 3 000 lignes découpé en modèles dbt propres, et le projet Refused Store qui a réduit de 92 % un manque à gagner annuel de près de 2 M€." },
       { name: "Connecty AI", text: "une stack complète (Snowflake, dbt, Power BI) avec couche sémantique LLM." },
     ],
     aboutClose:

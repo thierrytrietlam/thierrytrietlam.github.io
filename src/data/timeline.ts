@@ -71,13 +71,13 @@ const timeline: RawTimeline[] = [
       title: "Senior Analytics Engineer Consultant (Data Platform)",
       period: "Feb 2023 to Dec 2025",
       detail:
-        "Led the migration from AWS to BigQuery on a Medallion architecture. Refactored a 3,000+ line SQL monolith into dbt. The Refused Store project recovered 92% of a nearly €2M revenue shortfall. Team of 14.",
+        "Led the migration from AWS to BigQuery on a Medallion architecture. Refactored a 3,000+ line SQL monolith into dbt. The Refused Store project cut a nearly €2M annual revenue loss by 92%. Team of 14.",
     },
     fr: {
       title: "Consultant Ingénieur Analytics Senior (Plateforme de Données)",
       period: "Fév 2023 à Déc 2025",
       detail:
-        "Migration d'AWS vers BigQuery sur architecture Médaillon. Refonte d'un monolithe SQL de plus de 3 000 lignes en dbt. Le projet Refused Store a résorbé 92 % d'un manque à gagner de près de 2 M€. Équipe de 14.",
+        "Migration d'AWS vers BigQuery sur architecture Médaillon. Refonte d'un monolithe SQL de plus de 3 000 lignes en dbt. Le projet Refused Store a réduit de 92 % un manque à gagner annuel de près de 2 M€. Équipe de 14.",
     },
   },
   {

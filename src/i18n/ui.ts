@@ -35,7 +35,7 @@ export const ui = {
     "stats.years": "Years of experience",
     "stats.clients": "Clients across 5 countries",
     "stats.projects": "dbt projects · ~1,000 models",
-    "stats.impact": "Shortfall recovered by a single dbt project",
+    "stats.impact": "Annual revenue loss cut by 92% with a single dbt project",
     "skills.eyebrow": "Stack",
     "skills.title": "Skills and tools",
     "skills.lead": "The stack I use to design, build and ship analytics platforms, from ingestion to the dashboard.",
@@ -117,7 +117,7 @@ export const ui = {
     "stats.years": "Années d'expérience",
     "stats.clients": "Clients dans 5 pays",
     "stats.projects": "Projets dbt · ~1 000 modèles",
-    "stats.impact": "Manque à gagner résorbé par un seul projet dbt",
+    "stats.impact": "Manque à gagner annuel réduit de 92 % par un seul projet dbt",
     "skills.eyebrow": "Stack",
     "skills.title": "Compétences et outils",
     "skills.lead":
