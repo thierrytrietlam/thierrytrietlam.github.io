@@ -2,6 +2,7 @@
 import { SEO } from "astro-seo";
 import { getSite } from "../data/site";
 import { getLangFromUrl, getAltPath } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
 
 // Self hosted fonts (only the weights used)
 import "@fontsource/inter/400.css";
@@ -23,6 +24,7 @@ interface Props {
 
 const lang = getLangFromUrl(Astro.url);
 const site = getSite(lang);
+const t = useTranslations(lang);
 
 const defaultTitle =
   lang === "fr"
@@ -102,6 +104,88 @@ const personSchema = {
   </head>
   <body>
     <slot />
+
+    <!-- mailto fallback: shown when no email app handles the click. -->
+    <div
+      id="mailto-fallback"
+      role="status"
+      aria-live="polite"
+      class="fixed bottom-5 left-1/2 z-50 hidden w-[calc(100%-2rem)] max-w-md -translate-x-1/2 rounded-xl border border-line bg-white p-4 shadow-card dark:border-dark-line dark:bg-dark-surface"
+    >
+      <div class="flex items-start gap-3">
+        <p class="min-w-0 flex-1 text-sm text-ink dark:text-dark-text">
+          {t("contact.mailFallback")}
+          <span class="mt-1 block truncate font-mono text-[0.8rem] font-semibold" data-mf-email></span>
+        </p>
+        <button
+          type="button"
+          data-mf-close
+          aria-label={t("contact.mailFallbackClose")}
+          class="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border border-line text-muted transition hover:border-accent hover:text-accent dark:border-dark-line dark:text-dark-muted dark:hover:border-accent-dark dark:hover:text-accent-dark"
+        >×</button>
+      </div>
+      <a
+        data-mf-gmail
+        href="https://mail.google.com/"
+        target="_blank"
+        rel="noopener"
+        class="btn btn-ghost mt-3 h-9 w-full text-sm"
+      >{t("contact.mailFallbackGmail")}</a>
+    </div>
+
+    <!-- mailto links fail silently when no mail app is registered (common on
+         Windows with webmail). Detect the unhandled click: if the window never
+         loses focus, copy the address and surface the fallback card. -->
+    <script>
+      const fb = document.getElementById("mailto-fallback");
+      const fbEmail = fb?.querySelector<HTMLElement>("[data-mf-email]");
+      const fbGmail = fb?.querySelector<HTMLAnchorElement>("[data-mf-gmail]");
+      let fbTimer: number | undefined;
+      const hideFb = () => {
+        fb?.classList.add("hidden");
+        if (fbTimer) window.clearTimeout(fbTimer);
+      };
+      fb?.querySelector("[data-mf-close]")?.addEventListener("click", hideFb);
+
+      const copyText = async (text: string) => {
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch {
+          const input = document.createElement("input");
+          input.value = text;
+          document.body.appendChild(input);
+          input.select();
+          document.execCommand("copy");
+          input.remove();
+        }
+      };
+
+      document.querySelectorAll<HTMLAnchorElement>('a[href^="mailto:"]').forEach((a) => {
+        a.addEventListener("click", () => {
+          const [addr, query] = a.href.replace(/^mailto:/, "").split("?");
+          const email = decodeURIComponent(addr);
+          const subject = new URLSearchParams(query || "").get("subject") || "";
+          let handled = false;
+          const onAway = () => {
+            handled = true;
+          };
+          window.addEventListener("blur", onAway, { once: true });
+          document.addEventListener("visibilitychange", onAway, { once: true });
+          window.setTimeout(() => {
+            window.removeEventListener("blur", onAway);
+            document.removeEventListener("visibilitychange", onAway);
+            if (handled || document.visibilityState === "hidden" || !fb) return;
+            copyText(email);
+            if (fbEmail) fbEmail.textContent = email;
+            if (fbGmail)
+              fbGmail.href = `https://mail.google.com/mail/?view=cm&fm=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(subject)}`;
+            fb.classList.remove("hidden");
+            if (fbTimer) window.clearTimeout(fbTimer);
+            fbTimer = window.setTimeout(hideFb, 12000);
+          }, 900);
+        });
+      });
+    </script>
 
     <!-- Scroll reveal: enhance only when motion is allowed. -->
     <script>

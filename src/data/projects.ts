@@ -100,7 +100,7 @@ const caseStudies: RawCaseStudy[] = [
       metrics: [
         { value: "20 → 10 min", label: "SQL generation time, halved by the semantic layer redesign" },
         { value: "3 axes", label: "LLM benchmark (accuracy, latency, cost) that guided the engine choice" },
-        { value: "DAX → dbt", label: "measures extracted from TMDL files into versioned, testable models" },
+        { value: "Power BI (DAX) → dbt", label: "measures extracted from TMDL files into versioned, testable models" },
       ],
       approach: [
         "Designed the JSON semantic layer and marketing funnel templates.",
@@ -118,7 +118,7 @@ const caseStudies: RawCaseStudy[] = [
       metrics: [
         { value: "20 → 10 min", label: "de temps de génération SQL, divisé par deux par la refonte de la couche sémantique" },
         { value: "3 axes", label: "de benchmark LLM (précision, latence, coût) qui ont orienté le choix du moteur" },
-        { value: "DAX → dbt", label: "mesures extraites des fichiers TMDL en modèles versionnés et testables" },
+        { value: "Power BI (DAX) → dbt", label: "mesures extraites des fichiers TMDL en modèles versionnés et testables" },
       ],
       approach: [
         "Conception de la couche sémantique (JSON) et des templates de funnel marketing.",
