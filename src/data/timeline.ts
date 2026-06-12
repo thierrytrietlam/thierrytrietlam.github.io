@@ -45,7 +45,7 @@ const timeline: RawTimeline[] = [
   {
     kind: "work",
     org: "Connecty AI",
-    url: "https://www.getconnectyai.com",
+    url: "https://www.connectyai.com",
     logo: "/img/logos/connecty-ai.jpg",
     location: "California, USA (Remote)",
     en: {

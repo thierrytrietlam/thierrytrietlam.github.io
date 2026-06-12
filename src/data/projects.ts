@@ -87,7 +87,7 @@ const caseStudies: RawCaseStudy[] = [
   {
     slug: "connecty-ai",
     client: "Connecty AI",
-    website: "https://www.getconnectyai.com",
+    website: "https://www.connectyai.com",
     logo: "/img/logos/connecty-ai.jpg",
     stack: ["Snowflake", "dbt", "Power BI", "Semantic layer", "GA4", "Facebook Ads", "Shopify", "LLM prompt engineering"],
     en: {
