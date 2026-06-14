@@ -1,0 +1,47 @@
+---
+import { Icon } from "astro-icon/components";
+import { getCertifications } from "../data/timeline";
+import { getLangFromUrl } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+const lang = getLangFromUrl(Astro.url);
+const certifications = getCertifications(lang);
+const t = useTranslations(lang);
+---
+
+<section id="certifications" class="border-t border-line py-20 sm:py-24 dark:border-dark-line">
+  <div class="container-content">
+    <div data-reveal>
+      <p class="eyebrow mb-3">{t("certs.eyebrow")}</p>
+      <h2 class="section-title">{t("certs.title")}</h2>
+      <p class="lead mt-4 max-w-2xl">{t("certs.lead")}</p>
+    </div>
+
+    <ul class="mt-10 grid gap-2.5 sm:grid-cols-2 lg:grid-cols-3" data-reveal>
+      {
+        certifications.map((c) => (
+          <li>
+            <a
+              href={c.url}
+              target="_blank"
+              rel="noopener"
+              class="group flex h-full items-start gap-3 rounded-xl border border-line bg-white p-3.5 transition hover:border-accent hover:shadow-card dark:border-dark-line dark:bg-dark-surface dark:hover:border-accent-dark"
+            >
+              <Icon name="lucide:award" class="mt-0.5 h-4 w-4 shrink-0 text-accent dark:text-accent-dark" />
+              <span class="min-w-0 flex-1">
+                <span class="block text-sm font-medium text-ink dark:text-dark-text">{c.name}</span>
+                <span class="mt-0.5 block font-mono text-xs text-muted dark:text-dark-muted">
+                  {c.issuer} · {c.when}
+                </span>
+              </span>
+              <Icon
+                name="lucide:arrow-up-right"
+                class="h-3.5 w-3.5 shrink-0 text-muted opacity-0 transition group-hover:opacity-100 dark:text-dark-muted"
+              />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

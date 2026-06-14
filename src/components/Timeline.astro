@@ -1,12 +1,11 @@
 ---
 import { Icon } from "astro-icon/components";
-import { getTimeline, getCertifications } from "../data/timeline";
+import { getTimeline } from "../data/timeline";
 import { getLangFromUrl } from "../i18n/utils";
 import { useTranslations } from "../i18n/ui";
 
 const lang = getLangFromUrl(Astro.url);
 const timeline = getTimeline(lang);
-const certifications = getCertifications(lang);
 const tr = useTranslations(lang);
 ---
 
@@ -17,85 +16,53 @@ const tr = useTranslations(lang);
       <h2 class="section-title">{tr("timeline.title")}</h2>
     </div>
 
-    <div class="mt-10 grid gap-12 lg:grid-cols-[1.5fr_1fr] lg:gap-16">
-      <ol class="relative border-l border-line pl-8 dark:border-dark-line" data-reveal>
-        {
-          timeline.map((t) => (
-            <li class="relative pb-8 last:pb-0">
-              <span
-                class={`absolute -left-[2.5rem] top-0.5 flex h-6 w-6 items-center justify-center rounded-full border bg-white dark:bg-dark-surface ${
-                  t.kind === "education"
-                    ? "border-line text-muted dark:border-dark-line dark:text-dark-muted"
-                    : "border-accent/40 text-accent dark:border-accent-dark/50 dark:text-accent-dark"
-                }`}
-              >
-                <Icon name={t.kind === "education" ? "lucide:graduation-cap" : "lucide:briefcase"} class="h-3 w-3" />
-              </span>
-              <p class="font-mono text-xs text-muted dark:text-dark-muted">
-                {t.period}
-                {t.location ? ` · ${t.location}` : ""}
-              </p>
-              <h3 class="mt-1 font-display text-base font-semibold text-ink dark:text-dark-text">{t.title}</h3>
-              <div class="mt-0.5 flex items-center gap-2">
-                {t.logo && (
-                  <span class="flex h-6 items-center justify-center rounded border border-line bg-white px-1.5">
-                    <img
-                      src={t.logo}
-                      alt={`${t.org} logo`}
-                      height="14"
-                      class="max-h-3.5 w-auto object-contain mix-blend-multiply"
-                      loading="lazy"
-                    />
-                  </span>
-                )}
-                {t.url ? (
-                  <a
-                    href={t.url}
-                    target="_blank"
-                    rel="noopener"
-                    class="text-sm font-medium text-accent hover:underline dark:text-accent-dark"
-                  >
-                    {t.org}
-                  </a>
-                ) : (
-                  <span class="text-sm font-medium text-accent dark:text-accent-dark">{t.org}</span>
-                )}
-              </div>
-              <p class="mt-1.5 text-sm leading-relaxed text-muted dark:text-dark-muted">{t.detail}</p>
-            </li>
-          ))
-        }
-      </ol>
-
-      <div data-reveal style="--reveal-delay:80ms">
-        <h3 class="font-mono text-xs uppercase tracking-widest text-muted dark:text-dark-muted">{tr("timeline.certifications")}</h3>
-        <ul class="mt-4 space-y-2.5">
-          {
-            certifications.map((c) => (
-              <li>
+    <ol class="relative mt-10 max-w-3xl border-l border-line pl-8 dark:border-dark-line" data-reveal>
+      {
+        timeline.map((t) => (
+          <li class="relative pb-8 last:pb-0">
+            <span
+              class={`absolute -left-[2.5rem] top-0.5 flex h-6 w-6 items-center justify-center rounded-full border bg-white dark:bg-dark-surface ${
+                t.kind === "education"
+                  ? "border-line text-muted dark:border-dark-line dark:text-dark-muted"
+                  : "border-accent/40 text-accent dark:border-accent-dark/50 dark:text-accent-dark"
+              }`}
+            >
+              <Icon name={t.kind === "education" ? "lucide:graduation-cap" : "lucide:briefcase"} class="h-3 w-3" />
+            </span>
+            <p class="font-mono text-xs text-muted dark:text-dark-muted">
+              {t.period}
+              {t.location ? ` · ${t.location}` : ""}
+            </p>
+            <h3 class="mt-1 font-display text-base font-semibold text-ink dark:text-dark-text">{t.title}</h3>
+            <div class="mt-0.5 flex items-center gap-2">
+              {t.logo && (
+                <span class="flex h-6 items-center justify-center rounded border border-line bg-white px-1.5">
+                  <img
+                    src={t.logo}
+                    alt={`${t.org} logo`}
+                    height="14"
+                    class="max-h-3.5 w-auto object-contain mix-blend-multiply"
+                    loading="lazy"
+                  />
+                </span>
+              )}
+              {t.url ? (
                 <a
-                  href={c.url}
+                  href={t.url}
                   target="_blank"
                   rel="noopener"
-                  class="group flex items-start gap-3 rounded-xl border border-line bg-white p-3 transition hover:border-accent dark:border-dark-line dark:bg-dark-surface dark:hover:border-accent-dark"
+                  class="text-sm font-medium text-accent hover:underline dark:text-accent-dark"
                 >
-                  <Icon name="lucide:award" class="mt-0.5 h-4 w-4 shrink-0 text-accent dark:text-accent-dark" />
-                  <span class="flex-1">
-                    <span class="block text-sm font-medium text-ink dark:text-dark-text">{c.name}</span>
-                    <span class="block font-mono text-xs text-muted dark:text-dark-muted">
-                      {c.issuer} · {c.when}
-                    </span>
-                  </span>
-                  <Icon
-                    name="lucide:arrow-up-right"
-                    class="h-3.5 w-3.5 text-muted opacity-0 transition group-hover:opacity-100 dark:text-dark-muted"
-                  />
+                  {t.org}
                 </a>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-    </div>
+              ) : (
+                <span class="text-sm font-medium text-accent dark:text-accent-dark">{t.org}</span>
+              )}
+            </div>
+            <p class="mt-1.5 text-sm leading-relaxed text-muted dark:text-dark-muted">{t.detail}</p>
+          </li>
+        ))
+      }
+    </ol>
   </div>
 </section>
