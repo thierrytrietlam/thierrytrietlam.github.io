@@ -28,8 +28,8 @@ const t = useTranslations(lang);
 
 const defaultTitle =
   lang === "fr"
-    ? `${site.name} · Ingénieur Analytics Senior & Spécialiste Plateforme Data`
-    : `${site.name} · Senior Analytics Engineer & Data Platform Specialist`;
+    ? `${site.name} · Ingénieur Analytics Senior · dbt, BigQuery, Paris`
+    : `${site.name} · Senior Analytics Engineer · dbt, BigQuery, Paris`;
 const defaultDescription =
   lang === "fr"
     ? "Ingénieur data et analytics basé à Paris, France. dbt, BigQuery, Snowflake, avec l'IA intégrée au quotidien. Cinq ans à piloter des plateformes analytiques de bout en bout pour 9 entreprises dans 4 pays."
@@ -47,6 +47,7 @@ const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: site.name,
+  alternateName: ["Thierry Lam", "Triet Lam", "Thierry Triet Lam"],
   jobTitle: lang === "fr" ? "Ingénieur Analytics Senior" : "Senior Analytics Engineer",
   description,
   url: Astro.site?.toString(),
