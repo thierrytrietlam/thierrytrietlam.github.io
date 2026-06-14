@@ -20,6 +20,7 @@ export default defineConfig({
         "base-uri 'self'",
         "form-action 'self'",
         "frame-ancestors 'none'",
+        "upgrade-insecure-requests",
       ],
       // The theme script uses is:inline so it runs before first paint and
       // avoids a flash, which means Astro does not hash it. Pin its hash here.
