@@ -7,7 +7,7 @@ question: "Pourquoi certains commerciaux ratent leur objectif trimestriel quand 
 dataset: "Données synthétiques qui reproduisent une mission réelle. Cinq exports CRM : opportunités, activités, comptes, commerciaux et objectifs. Quinze mois, environ 3 300 opportunités et 8 200 activités."
 goal: "Orienter le coaching et le recrutement vers les personnes qui en ont besoin, pas vers les bureaux qui semblent seulement occupés."
 outcome: "Trois objectifs manqués, cachés dans des bureaux d'apparence saine, chacun avec une cause différente et un remède différent."
-stack: ["dbt", "DuckDB", "SQL", "Python", "Compatible cloud"]
+stack: ["dbt", "DuckDB", "SQL", "Python"]
 cover: "/img/projects/b2b-saas-sales-attainment/fr/cover.svg"
 date: "2026-05"
 featured: true
@@ -22,7 +22,7 @@ Une entreprise SaaS B2B a clôturé un trimestre solide. Le new business a attei
 
 J'ai traité le cas comme un pipeline de production, pas comme une requête jetable. Huit étapes. Explorer chaque fichier et le profiler avant de faire confiance à un seul chiffre. Modéliser la cible comme un entrepôt en couches façon dbt et fixer la maille. Dessiner le lignage pour garder le modèle lisible. Vérifier les jointures et les clés. Cataloguer chaque problème de qualité avec un compte et une règle. Lire les distributions qui portent le résultat. Produire la réponse attendue par la question. La livrer comme un pipeline que chacun peut relancer.
 
-L'outillage reste volontairement léger. La bibliothèque standard de Python pour le profilage, sans risque de dépendance face aux fichiers bruts. DuckDB pour exécuter le SQL de transformation de bout en bout et confirmer chaque chiffre. dbt pour le modèle de production, en couches staging, intermediate et marts, pour que chaque responsabilité vive au même endroit. Le SQL est standard, donc les mêmes modèles montent sur un entrepôt cloud en changeant l'adaptateur.
+L'outillage reste volontairement léger. La bibliothèque standard de Python pour le profilage, sans risque de dépendance face aux fichiers bruts. DuckDB pour exécuter le SQL de transformation de bout en bout et confirmer chaque chiffre. dbt pour le modèle de production, en couches staging, intermediate et marts, pour que chaque responsabilité vive au même endroit. Le SQL est standard de bout en bout.
 
 Avant toute analyse, je fais confiance aux entrées. Le profilage a fait remonter dix problèmes de qualité dans les exports. Chacun porte un compte et une règle de traitement. Certains sont réparés en staging. D'autres sont conservés avec un drapeau, pour que les totaux se réconcilient et que rien ne disparaisse en silence.
 

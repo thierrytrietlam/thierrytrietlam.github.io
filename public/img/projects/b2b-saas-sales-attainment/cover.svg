@@ -39,5 +39,4 @@
 <text x="237.5" y="625.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="13" font-weight="400" fill="#0B1220" text-anchor="start">SQL</text>
 <rect x="288.0" y="605.0" width="79.0" height="30.0" rx="8" fill="white" stroke="#E6E8EE" stroke-width="1"/>
 <text x="300.0" y="625.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="13" font-weight="400" fill="#0B1220" text-anchor="start">Python</text>
-<rect x="379.0" y="605.0" width="155.0" height="30.0" rx="8" fill="white" stroke="#E6E8EE" stroke-width="1"/>
-<text x="391.0" y="625.0" font-family="'JetBrains Mono', ui-monospace, 'Cascadia Mono', monospace" font-size="13" font-weight="400" fill="#0B1220" text-anchor="start">Cloud ready</text></svg>
+</svg>
