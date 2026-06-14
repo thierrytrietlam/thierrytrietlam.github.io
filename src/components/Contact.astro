@@ -48,7 +48,7 @@ const items = [
               </span>
               <a href={mailto} class="min-w-0 flex-1">
                 <span class="block font-mono text-[0.7rem] uppercase tracking-widest text-muted dark:text-dark-muted">Email</span>
-                <span class="block truncate text-sm font-medium text-ink dark:text-dark-text">{site.email}</span>
+                <span class="block break-all text-sm font-medium text-ink dark:text-dark-text">{site.email}</span>
               </a>
               <button
                 type="button"
@@ -83,9 +83,9 @@ const items = [
                   <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-accent-soft text-accent dark:bg-dark-surface dark:text-accent-dark">
                     <Icon name={it.icon} class="h-4 w-4" />
                   </span>
-                  <span class="flex-1">
+                  <span class="min-w-0 flex-1">
                     <span class="block font-mono text-[0.7rem] uppercase tracking-widest text-muted dark:text-dark-muted">{it.label}</span>
-                    <span class="block text-sm font-medium text-ink dark:text-dark-text">{it.value}</span>
+                    <span class="block break-words text-sm font-medium text-ink dark:text-dark-text">{it.value}</span>
                   </span>
                   <Icon name="lucide:arrow-up-right" class="h-4 w-4 text-muted transition group-hover:text-accent dark:text-dark-muted dark:group-hover:text-accent-dark" />
                 </a>
