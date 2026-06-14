@@ -114,11 +114,13 @@
     @apply border-dark-line bg-dark-surface text-dark-text hover:border-accent-dark hover:text-accent-dark;
   }
 
+  /* Pill nav: each link is a rounded block, invisible until hover; the active
+     section keeps a permanent accent pill (set by the scroll spy in Nav.astro). */
   .nav-link {
-    @apply text-sm text-muted transition-colors hover:text-ink;
+    @apply rounded-full px-4 py-1.5 text-[0.95rem] text-muted transition-colors duration-200 hover:bg-ink/5 hover:text-ink dark:text-dark-muted dark:hover:bg-white/10 dark:hover:text-dark-text;
   }
-  html.dark .nav-link {
-    @apply text-dark-muted hover:text-dark-text;
+  .nav-link.is-active {
+    @apply bg-accent/20 text-accent dark:bg-accent-dark/30 dark:text-accent-dark;
   }
 }
 

@@ -32,8 +32,8 @@ const defaultTitle =
     : `${site.name} · Senior Analytics Engineer & Data Platform Specialist`;
 const defaultDescription =
   lang === "fr"
-    ? "Ingénieur data et analytics basé à Paris, France. dbt, BigQuery, Snowflake, avec l'IA intégrée au quotidien. Cinq ans à piloter des plateformes analytiques de bout en bout pour 9 clients dans 5 pays."
-    : "Data and analytics engineer based in Paris, France. dbt, BigQuery, Snowflake, with AI integrated into the workflow. Five years owning analytics platforms end to end for 9 clients across 5 countries.";
+    ? "Ingénieur data et analytics basé à Paris, France. dbt, BigQuery, Snowflake, avec l'IA intégrée au quotidien. Cinq ans à piloter des plateformes analytiques de bout en bout pour 9 entreprises dans 4 pays."
+    : "Data and analytics engineer based in Paris, France. dbt, BigQuery, Snowflake, with AI integrated into the workflow. Five years owning analytics platforms end to end for 9 companies across 4 countries.";
 
 const { title = defaultTitle, description = defaultDescription } = Astro.props;
 
@@ -47,9 +47,10 @@ const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
   name: site.name,
-  jobTitle: "Senior Analytics Engineer",
+  jobTitle: lang === "fr" ? "Ingénieur Analytics Senior" : "Senior Analytics Engineer",
   description,
   url: Astro.site?.toString(),
+  image: new URL("/img/profile.jpg", Astro.site).toString(),
   email: `mailto:${site.email}`,
   address: {
     "@type": "PostalAddress",
@@ -57,6 +58,19 @@ const personSchema = {
     addressCountry: "FR",
   },
   knowsLanguage: ["French", "English", "Vietnamese"],
+  knowsAbout: [
+    "Analytics Engineering",
+    "Data Engineering",
+    "Data Platform Architecture",
+    "dbt",
+    "BigQuery",
+    "Snowflake",
+    "SQL",
+    "Python",
+    "Power BI",
+    "Tableau",
+    "Airflow",
+  ],
   sameAs: [site.links.linkedin, site.links.github],
 };
 ---
@@ -67,8 +81,12 @@ const personSchema = {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    {site.googleSiteVerification && (
+      <meta name="google-site-verification" content={site.googleSiteVerification} />
+    )}
     <link rel="alternate" hreflang="en" href={enHref} />
     <link rel="alternate" hreflang="fr" href={frHref} />
     <link rel="alternate" hreflang="x-default" href={enHref} />

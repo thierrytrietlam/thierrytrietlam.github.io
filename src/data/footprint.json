@@ -1,10 +1,10 @@
 {
-  "comment": "Travel and client footprint shown on the About world map. `times` is the visit count label. Client countries come from 9 clients across 5 countries: France, UK, US, Germany, Vietnam.",
-  "clients": ["fr", "gb", "us", "de", "vn"],
+  "comment": "Travel and client footprint shown on the About world map. `times` is the visit count label. Client countries come from 9 clients across 4 countries: France, UK, US, Germany. Vietnam stays as a traveled country, not a client.",
+  "clients": ["fr", "gb", "us", "de"],
   "home": "fr",
   "countriesTraveled": 35,
   "clientCount": 9,
-  "clientCountries": 5,
+  "clientCountries": 4,
   "countries": [
     { "id": "vn", "en": "Vietnam", "fr": "Vietnam" },
     { "id": "mm", "en": "Myanmar", "fr": "Birmanie" },

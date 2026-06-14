@@ -224,7 +224,7 @@ const caseStudies: RawCaseStudy[] = [
         "Unified the data of companies acquired by Veepee into one centralized cloud warehouse, with shared analytics layers and governance.",
       metrics: [
         { value: "1", label: "governed, centralized warehouse unifying every acquired company" },
-        { value: "E2E", label: "quality and governance rules across the whole data lifecycle" },
+        { value: "End to End", label: "quality and governance rules across the whole data lifecycle" },
       ],
       approach: [
         "Developed dbt transformation models delivering business ready datasets.",
@@ -240,7 +240,7 @@ const caseStudies: RawCaseStudy[] = [
         "Unification des données des sociétés acquises par Veepee au sein d'un entrepôt cloud centralisé, avec des couches analytiques et une gouvernance communes.",
       metrics: [
         { value: "1", label: "entrepôt centralisé et gouverné unifiant toutes les sociétés acquises" },
-        { value: "E2E", label: "règles de qualité et de gouvernance sur tout le cycle de vie de la donnée" },
+        { value: "De bout en bout", label: "règles de qualité et de gouvernance sur tout le cycle de vie de la donnée" },
       ],
       approach: [
         "Développement de modèles de transformation dbt livrant des jeux de données prêts pour le métier.",

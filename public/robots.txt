@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# Keep the CV PDFs out of search results: they carry a phone number that must
+# not be indexed. Humans can still download them; crawlers cannot read them.
+Disallow: /*.pdf$
+
 Sitemap: https://thierrytrietlam.github.io/sitemap-index.xml

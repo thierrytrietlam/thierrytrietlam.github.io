@@ -38,8 +38,14 @@ const contactHref = `${base}#contact`;
       <span class="font-display text-sm font-semibold tracking-tight">{site.name}</span>
     </a>
 
-    <div class="hidden items-center gap-7 md:flex">
-      {links.map((l) => <a href={l.href} class="nav-link">{l.label}</a>)}
+    <div class="hidden items-center gap-1 md:flex">
+      {
+        sections.map((s) => (
+          <a href={`${base}#${s.id}`} class="nav-link" data-nav-link data-target={s.id}>
+            {t(s.key)}
+          </a>
+        ))
+      }
     </div>
 
     <div class="flex items-center gap-2">
@@ -93,4 +99,65 @@ const contactHref = `${base}#contact`;
   document
     .querySelectorAll("[data-mobile-link]")
     .forEach((a) => a.addEventListener("click", () => setOpen(false)));
+</script>
+
+<script>
+  // Scroll spy: the active pill follows the section currently in view. Only the
+  // homepage has these sections; on subpages the observer simply finds none.
+  const navLinks = Array.from(
+    document.querySelectorAll<HTMLAnchorElement>("[data-nav-link]"),
+  );
+  const order = navLinks.map((l) => l.dataset.target ?? "");
+  const sections = order
+    .map((id) => document.getElementById(id))
+    .filter((el): el is HTMLElement => el !== null);
+
+  if (navLinks.length && sections.length) {
+    const setActive = (id: string) =>
+      navLinks.forEach((l) => {
+        const on = l.dataset.target === id;
+        l.classList.toggle("is-active", on);
+        l.setAttribute("aria-current", on ? "true" : "false");
+      });
+    // Active = the last section whose top has scrolled above a line ~30% down
+    // the viewport, that is, the section you are currently reading. Robust to
+    // gaps and to short or tall sections, unlike a thin IntersectionObserver band.
+    // Clicking a link highlights it instantly and briefly locks the spy, so the
+    // pill never lags behind the smooth scroll or flickers through the sections
+    // it passes on the way to the target.
+    let lockUntil = 0;
+    navLinks.forEach((l) =>
+      l.addEventListener("click", () => {
+        const id = l.dataset.target;
+        if (!id) return;
+        setActive(id);
+        lockUntil = Date.now() + 900;
+      }),
+    );
+    let ticking = false;
+    const update = () => {
+      ticking = false;
+      if (Date.now() < lockUntil) return; // honor a recent click
+      // At the very bottom the last section may never cross the line, so pin it.
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+        setActive(order[order.length - 1]);
+        return;
+      }
+      const line = window.innerHeight * 0.3;
+      let active = "";
+      for (const el of sections) {
+        if (el.getBoundingClientRect().top <= line) active = el.id;
+      }
+      if (active) setActive(active);
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll, { passive: true });
+    update();
+  }
 </script>

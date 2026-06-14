@@ -7,6 +7,9 @@ const shared = {
   email: "thierrylam.aifr@gmail.com",
   location: "Paris, France",
   calendly: "https://calendly.com/thierrylam-aifr/30min",
+  // Google Search Console ownership token. Paste the value from the "HTML tag"
+  // verification method; the meta tag below renders only when this is set.
+  googleSiteVerification: "",
   links: {
     linkedin: "https://www.linkedin.com/in/thierrytrietlam",
     github: "https://github.com/thierrytrietlam",
@@ -30,7 +33,7 @@ const byLang = {
     yearsExperience: "5+ years",
     languages: ["French", "English", "Vietnamese"],
     aboutLead:
-      "For five years I have designed and owned analytics platforms end to end, from cloud architecture to the dashboards leadership actually opens. I turn fragmented sources into tested, reconciled data marts for Finance, Marketing, Supply Chain and Sales: nearly 60 dbt data projects for 9 clients across 5 countries, France, the UK, the US, Germany and Vietnam.",
+      "For five years I have designed and owned analytics platforms end to end, from cloud architecture to the dashboards leadership actually opens. I turn fragmented sources into tested, reconciled data marts for Finance, Marketing, Supply Chain and Sales: nearly 60 dbt data projects for 9 companies across 4 countries, France, the UK, the US and Germany.",
     platformsIntro: "I have rebuilt three data platforms from scratch:",
     platforms: [
       { name: "Colonies", text: "225 production dbt models, solo, from Finance to Asset Management." },
@@ -49,7 +52,7 @@ const byLang = {
     yearsExperience: "5+ ans",
     languages: ["Français", "Anglais", "Vietnamien"],
     aboutLead:
-      "Depuis cinq ans, je conçois et pilote des plateformes analytiques de bout en bout, de l'architecture cloud jusqu'aux tableaux de bord que la direction ouvre vraiment. Je transforme des sources éclatées en data marts testés et réconciliés pour la Finance, le Marketing, la Supply Chain et les Ventes : près de 60 projets data en dbt pour 9 clients dans 5 pays, France, Royaume-Uni, États-Unis, Allemagne et Vietnam.",
+      "Depuis cinq ans, je conçois et pilote des plateformes analytiques de bout en bout, de l'architecture cloud jusqu'aux tableaux de bord que la direction ouvre vraiment. Je transforme des sources éclatées en data marts testés et réconciliés pour la Finance, le Marketing, la Supply Chain et les Ventes : près de 60 projets data en dbt pour 9 entreprises dans 4 pays, France, Royaume-Uni, États-Unis et Allemagne.",
     platformsIntro: "J'ai reconstruit trois plateformes data depuis zéro :",
     platforms: [
       { name: "Colonies", text: "225 modèles dbt en production, en solo, de la Finance à l'Asset Management." },

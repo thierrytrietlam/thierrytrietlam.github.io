@@ -19,7 +19,7 @@ The work is shown in two layers. **Case studies** name the client and the impact
 * **A Projects content collection.** Each project is one markdown file with its own page at `/projects/<slug>`. It scales without touching the layout.
 * **A featured data story.** A B2B SaaS sales attainment analysis that shows how the reporting grain decides the answer, with five hand drawn SVG charts and a synthetic dataset.
 * **Company trust band.** Real logos, most recent mission first, each linking to the company site.
-* **An interactive footprint map.** 9 clients across 5 countries and 35 countries traveled, on an inline world map with hover tooltips (built from `@svg-maps/world`, CC BY 4.0).
+* **An interactive footprint map.** 9 companies across 4 countries and 35 countries traveled, on an inline world map with hover tooltips (built from `@svg-maps/world`, CC BY 4.0).
 * **Bilingual.** English at `/` and French at `/fr/`, with a language switcher, localized SEO, and `hreflang`. The French content tracks the CV, and the CV downloads in either language regardless of the site language.
 * **Light and dark themes** with no flash on load, full keyboard focus, alt text on every image, and reduced motion respected.
 * **Deploys itself.** Push to `main` and GitHub Actions builds and publishes to GitHub Pages.
