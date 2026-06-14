@@ -26,6 +26,10 @@ for (const c of footprint.countries) {
 
 const headline = `${footprint.clientCount} clients · ${footprint.clientCountries} ${t("map.clientsLabel")} · ${footprint.countriesTraveled} ${t("map.traveled")}`;
 
+// Cache-bust the static map when its data changes. Files in public/ keep a
+// stable URL, so without this browsers serve a stale world.svg after edits.
+const mapSrc = `/img/world.svg?v=${footprint.clients.join("")}-${footprint.countriesTraveled}`;
+
 const toggleCls =
   "inline-flex items-center gap-1.5 rounded-lg border border-line bg-white px-2.5 py-1 text-xs text-muted transition hover:border-accent hover:text-ink aria-pressed:border-accent/40 aria-pressed:bg-accent-soft aria-pressed:font-medium aria-pressed:text-ink dark:border-dark-line dark:bg-dark-bg dark:text-dark-muted dark:hover:border-accent-dark dark:hover:text-dark-text dark:aria-pressed:border-accent-dark/40 dark:aria-pressed:bg-dark-surface dark:aria-pressed:text-dark-text";
 ---
@@ -41,8 +45,8 @@ const toggleCls =
 
   <p class="mt-2 text-sm font-semibold text-ink dark:text-dark-text">{headline}</p>
 
-  <div class="relative mt-3" data-wm-root data-src="/img/world.svg">
-    <img src="/img/world.svg" alt={`World map: ${headline}`} class="block h-auto w-full" loading="lazy" decoding="async" />
+  <div class="relative mt-3" data-wm-root data-src={mapSrc}>
+    <img src={mapSrc} alt={`World map: ${headline}`} class="block h-auto w-full" loading="lazy" decoding="async" />
     <div
       data-wm-tip
       class="pointer-events-none absolute left-0 top-0 z-10 hidden whitespace-nowrap rounded-lg border border-line bg-white px-2.5 py-1 font-mono text-xs text-ink shadow-card dark:border-dark-line dark:bg-dark-bg dark:text-dark-text"
