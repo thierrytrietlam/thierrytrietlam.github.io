@@ -4,6 +4,8 @@ A fast, static, single page portfolio for a Senior Analytics Engineer and Data P
 
 **Live:** [thierrytrietlam.github.io](https://thierrytrietlam.github.io)
 
+**Public website:** [thierrylam.fr](https://thierrylam.fr/)
+
 ![Portfolio preview](public/og.png)
 
 ## What it is
