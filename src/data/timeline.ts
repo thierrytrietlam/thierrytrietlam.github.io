@@ -149,7 +149,7 @@ const timeline: RawTimeline[] = [
     kind: "education",
     org: "ISAE-ENSMA",
     orgs: [
-      { en: { name: "ISAE-ENSMA", url: "https://www.ensma.fr/en/" }, fr: { name: "ISAE-ENSMA", url: "https://www.ensma.fr" } },
+      { logo: "/img/logos/isae-ensma.jpg", en: { name: "ISAE-ENSMA", url: "https://www.ensma.fr/en/" }, fr: { name: "ISAE-ENSMA", url: "https://www.ensma.fr" } },
     ],
     location: "Poitiers, France",
     en: {
@@ -167,8 +167,9 @@ const timeline: RawTimeline[] = [
     kind: "education",
     org: "ISAE-ENSMA",
     orgs: [
-      { en: { name: "ISAE-ENSMA", url: "https://www.ensma.fr/en/" }, fr: { name: "ISAE-ENSMA", url: "https://www.ensma.fr" } },
+      { logo: "/img/logos/isae-ensma.jpg", en: { name: "ISAE-ENSMA", url: "https://www.ensma.fr/en/" }, fr: { name: "ISAE-ENSMA", url: "https://www.ensma.fr" } },
       {
+        logo: "/img/logos/hcmut.jpg",
         en: { name: "Ho Chi Minh City University of Technology", url: "https://en.wikipedia.org/wiki/Ho_Chi_Minh_City_University_of_Technology" },
         fr: { name: "Université polytechnique de Hô Chi Minh-Ville", url: "https://fr.wikipedia.org/wiki/Université_polytechnique_de_Hô_Chi_Minh-Ville" },
       },
