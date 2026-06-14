@@ -34,31 +34,54 @@ const tr = useTranslations(lang);
               {t.location ? ` · ${t.location}` : ""}
             </p>
             <h3 class="mt-1 font-display text-base font-semibold text-ink dark:text-dark-text">{t.title}</h3>
-            <div class="mt-0.5 flex items-center gap-2">
-              {t.logo && (
-                <span class="flex h-6 items-center justify-center rounded border border-line bg-white px-1.5">
-                  <img
-                    src={t.logo}
-                    alt={`${t.org} logo`}
-                    height="14"
-                    class="max-h-3.5 w-auto object-contain mix-blend-multiply"
-                    loading="lazy"
-                  />
-                </span>
-              )}
-              {t.url ? (
-                <a
-                  href={t.url}
-                  target="_blank"
-                  rel="noopener"
-                  class="text-sm font-medium text-accent hover:underline dark:text-accent-dark"
-                >
-                  {t.org}
-                </a>
+            {
+              t.orgs && t.orgs.length ? (
+                <div class="mt-1 space-y-1">
+                  {t.orgs.map((o) => (
+                    <div class="flex items-center gap-2">
+                      {o.logo && (
+                        <span class="flex h-6 items-center justify-center rounded border border-line bg-white px-1.5">
+                          <img src={o.logo} alt={`${o.name} logo`} height="14" class="max-h-3.5 w-auto object-contain mix-blend-multiply" loading="lazy" />
+                        </span>
+                      )}
+                      {o.url ? (
+                        <a href={o.url} target="_blank" rel="noopener" class="text-sm font-medium text-accent hover:underline dark:text-accent-dark">
+                          {o.name}
+                        </a>
+                      ) : (
+                        <span class="text-sm font-medium text-accent dark:text-accent-dark">{o.name}</span>
+                      )}
+                    </div>
+                  ))}
+                </div>
               ) : (
-                <span class="text-sm font-medium text-accent dark:text-accent-dark">{t.org}</span>
-              )}
-            </div>
+                <div class="mt-0.5 flex items-center gap-2">
+                  {t.logo && (
+                    <span class="flex h-6 items-center justify-center rounded border border-line bg-white px-1.5">
+                      <img
+                        src={t.logo}
+                        alt={`${t.org} logo`}
+                        height="14"
+                        class="max-h-3.5 w-auto object-contain mix-blend-multiply"
+                        loading="lazy"
+                      />
+                    </span>
+                  )}
+                  {t.url ? (
+                    <a
+                      href={t.url}
+                      target="_blank"
+                      rel="noopener"
+                      class="text-sm font-medium text-accent hover:underline dark:text-accent-dark"
+                    >
+                      {t.org}
+                    </a>
+                  ) : (
+                    <span class="text-sm font-medium text-accent dark:text-accent-dark">{t.org}</span>
+                  )}
+                </div>
+              )
+            }
             <p class="mt-1.5 text-sm leading-relaxed text-muted dark:text-dark-muted">{t.detail}</p>
           </li>
         ))

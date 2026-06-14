@@ -1,21 +1,29 @@
 import type { Lang } from "../i18n/utils";
 
+export type TimelineOrg = { name: string; url?: string; logo?: string };
+
 export type TimelineItem = {
   kind: "work" | "education";
   title: string;
   org: string;
   url?: string;
   logo?: string;
+  orgs?: TimelineOrg[];
   period: string;
   location?: string;
   detail: string;
 };
+
+// Per language org, used when an entry lists more than one institution
+// (each renders on its own line) or needs a different link per language.
+type RawOrg = { logo?: string; en: { name: string; url?: string }; fr: { name: string; url?: string } };
 
 type RawTimeline = {
   kind: "work" | "education";
   org: string;
   url?: string;
   logo?: string;
+  orgs?: RawOrg[];
   location?: string;
   en: { title: string; period: string; detail: string };
   fr: { title: string; period: string; detail: string };
@@ -140,7 +148,9 @@ const timeline: RawTimeline[] = [
   {
     kind: "education",
     org: "ISAE-ENSMA",
-    url: "https://www.isae-ensma.fr",
+    orgs: [
+      { en: { name: "ISAE-ENSMA", url: "https://www.ensma.fr/en/" }, fr: { name: "ISAE-ENSMA", url: "https://www.ensma.fr" } },
+    ],
     location: "Poitiers, France",
     en: {
       title: "Master of Software Engineering in Big Data & Embedded Systems",
@@ -155,8 +165,14 @@ const timeline: RawTimeline[] = [
   },
   {
     kind: "education",
-    org: "ISAE-ENSMA · Ho Chi Minh City University of Technology",
-    url: "https://www.isae-ensma.fr",
+    org: "ISAE-ENSMA",
+    orgs: [
+      { en: { name: "ISAE-ENSMA", url: "https://www.ensma.fr/en/" }, fr: { name: "ISAE-ENSMA", url: "https://www.ensma.fr" } },
+      {
+        en: { name: "Ho Chi Minh City University of Technology", url: "https://en.wikipedia.org/wiki/Ho_Chi_Minh_City_University_of_Technology" },
+        fr: { name: "Université polytechnique de Hô Chi Minh-Ville", url: "https://fr.wikipedia.org/wiki/Université_polytechnique_de_Hô_Chi_Minh-Ville" },
+      },
+    ],
     location: "France · Vietnam",
     en: {
       title: "Double Aeronautical Engineering Degree in Data and Systems",
@@ -179,6 +195,7 @@ export function getTimeline(lang: Lang): TimelineItem[] {
     org: t.org,
     url: t.url,
     logo: t.logo,
+    orgs: t.orgs?.map((o) => ({ name: o[lang].name, url: o[lang].url, logo: o.logo })),
     location: t.location,
     ...t[lang],
   }));
