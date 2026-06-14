@@ -3,11 +3,10 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 import icon from "astro-icon";
 
-// User/organization GitHub Pages site (served at the root, no base path).
-// If you ever move this to a project repo, set `base: "/REPO"` and prefix
-// internal asset paths with import.meta.env.BASE_URL.
+// Served at the root on the custom domain thierrylam.fr (GitHub Pages).
+// public/CNAME pins the domain so a deploy never resets it; base stays "/".
 export default defineConfig({
-  site: "https://thierrytrietlam.github.io",
+  site: "https://thierrylam.fr",
   experimental: {
     // Astro auto computes SHA-256 hashes for every inline script and style and
     // emits a <meta> CSP, so the policy never drifts on rebuild. These extra
