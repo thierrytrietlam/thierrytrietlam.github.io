@@ -7,7 +7,7 @@ question: "Why did some salespeople miss their quarterly target when the company
 dataset: "Synthetic data that mirrors a real engagement. Five CRM exports: opportunities, activities, accounts, salespeople, and targets. Fifteen months, around 3,300 opportunities and 8,200 activities."
 goal: "Point coaching and hiring at the exact people who need it, not at the offices that merely look busy."
 outcome: "Found three missed targets hidden inside healthy looking offices, each with a different root cause and a different fix."
-stack: ["dbt", "DuckDB", "SQL", "Python", "BigQuery ready"]
+stack: ["dbt", "DuckDB", "SQL", "Python", "Cloud ready"]
 cover: "/img/projects/b2b-saas-sales-attainment/cover.svg"
 date: "2026-05"
 featured: true
@@ -22,7 +22,7 @@ A B2B SaaS company closed a strong quarter. New business landed at 202 percent o
 
 I treated the case as a production pipeline, not a throwaway query. Eight steps. Explore every file and profile it before trusting one number. Model the target shape as a layered, dbt style warehouse and fix the grain. Diagram the lineage so the model stays legible. Verify the joins and the keys. Catalog every data quality issue with a count and a rule. Read the distributions that drive the result. Produce the answer the question needs. Ship it as a pipeline that anyone can rerun.
 
-The tooling stays deliberately light. Python standard library for profiling, with zero dependency risk against raw files. DuckDB to run the transformation SQL end to end and confirm every figure. dbt for the production model, layered staging to intermediate to marts, so each concern lives in one place. The SQL is standard, so the same models lift to BigQuery by swapping the adapter.
+The tooling stays deliberately light. Python standard library for profiling, with zero dependency risk against raw files. DuckDB to run the transformation SQL end to end and confirm every figure. dbt for the production model, layered staging to intermediate to marts, so each concern lives in one place. The SQL is standard, so the same models lift to a cloud warehouse by swapping the adapter.
 
 Before any analysis, I trust the inputs. Profiling surfaced ten data quality issues across the exports. Each one carries a count and a handling rule. Some get repaired in staging. Some are kept with a flag, so totals still reconcile and nothing is silently dropped.
 
