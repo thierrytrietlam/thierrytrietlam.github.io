@@ -24,27 +24,25 @@ const metricCols = cs.metrics.length >= 3 ? "sm:grid-cols-3" : "sm:grid-cols-2";
         {cs.period}{cs.team ? ` · ${cs.team}` : ""}
       </p>
       <h3 class="mt-1.5 font-display text-2xl font-bold tracking-tight text-ink sm:text-3xl dark:text-dark-text">
+        {cs.role}
+      </h3>
+      <p class="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-xs uppercase tracking-wider text-muted dark:text-dark-muted">
         {
           cs.website ? (
             <a
               href={cs.website}
               target="_blank"
               rel="noopener"
-              class="group/title inline-flex items-center gap-2 transition hover:text-accent dark:hover:text-accent-dark"
+              class="group/co inline-flex items-center gap-1 font-semibold text-ink transition hover:text-accent dark:text-dark-text dark:hover:text-accent-dark"
             >
               {cs.client}
-              <Icon
-                name="lucide:arrow-up-right"
-                class="h-5 w-5 shrink-0 text-muted opacity-40 transition group-hover/title:translate-x-0.5 group-hover/title:opacity-100 dark:text-dark-muted"
-              />
+              <Icon name="lucide:arrow-up-right" class="h-3 w-3 shrink-0 opacity-50 transition group-hover/co:opacity-100" />
             </a>
           ) : (
-            cs.client
+            <span class="font-semibold text-ink dark:text-dark-text">{cs.client}</span>
           )
         }
-      </h3>
-      <p class="mt-1.5 font-mono text-xs uppercase tracking-wider text-muted dark:text-dark-muted">
-        {cs.sector}{cs.sector ? " · " : ""}{cs.role}
+        {cs.sector && <span>· {cs.sector}</span>}
       </p>
     </div>
     {
