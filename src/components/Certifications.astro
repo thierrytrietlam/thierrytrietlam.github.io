@@ -25,6 +25,8 @@ const t = useTranslations(lang);
               href={c.url}
               target="_blank"
               rel="noopener"
+              data-credential-id={c.credentialId}
+              title={c.credentialId ? t("certs.copyHint") : undefined}
               class="group flex h-full items-start gap-3 rounded-xl border border-line bg-white p-3.5 transition hover:border-accent hover:shadow-card dark:border-dark-line dark:bg-dark-surface dark:hover:border-accent-dark"
             >
               <Icon name="lucide:award" class="mt-0.5 h-4 w-4 shrink-0 text-accent dark:text-accent-dark" />
@@ -36,6 +38,7 @@ const t = useTranslations(lang);
                 {c.credentialId && (
                   <span class="mt-0.5 block font-mono text-xs text-muted dark:text-dark-muted">
                     {t("certs.credential")} <span class="text-ink dark:text-dark-text">{c.credentialId}</span>
+                    <span data-copied-note class="ml-1.5 hidden text-emerald-500">{t("certs.copied")}</span>
                   </span>
                 )}
               </span>
@@ -50,3 +53,28 @@ const t = useTranslations(lang);
     </ul>
   </div>
 </section>
+
+<script>
+  // The ITIL card carries a verifiable certificate number. Clicking it opens the
+  // PeopleCert verification page and copies the number so the visitor only pastes.
+  document.querySelectorAll<HTMLAnchorElement>("a[data-credential-id]").forEach((link) => {
+    link.addEventListener("click", async () => {
+      const id = link.dataset.credentialId || "";
+      if (!id) return;
+      try {
+        await navigator.clipboard.writeText(id);
+      } catch {
+        // Clipboard API unavailable (http, old browser): fall back to a hidden input.
+        const input = document.createElement("input");
+        input.value = id;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        input.remove();
+      }
+      const note = link.querySelector("[data-copied-note]");
+      note?.classList.remove("hidden");
+      setTimeout(() => note?.classList.add("hidden"), 1600);
+    });
+  });
+</script>
