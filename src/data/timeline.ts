@@ -202,9 +202,9 @@ export function getTimeline(lang: Lang): TimelineItem[] {
   }));
 }
 
-export type Certification = { name: string; issuer: string; when: string; url?: string };
+export type Certification = { name: string; issuer: string; when: string; url?: string; credentialId?: string };
 
-type RawCertification = { name: string; issuer: string; date: string; until?: string; url?: string };
+type RawCertification = { name: string; issuer: string; date: string; until?: string; url?: string; credentialId?: string };
 
 // Official certificate titles, language invariant. `date` is the month the
 // certificate was earned (YYYY-MM); `until` the expiry when there is one.
@@ -212,7 +212,7 @@ const rawCertifications: RawCertification[] = [
   { name: "Databricks Fundamentals", issuer: "Databricks", date: "2026-06", url: "https://credentials.databricks.com/a15bc340-3a1b-49cc-90ae-e0268cf223ff#acc.jE1Mm6bo" },
   { name: "Claude Code in Action", issuer: "Anthropic", date: "2026-05", url: "https://verify.skilljar.com/c/h2atcz498dwf" },
   { name: "SQL Advanced Certificate", issuer: "HackerRank", date: "2026-03", url: "https://www.hackerrank.com/certificates/b0b7ade4eb52" },
-  { name: "ITIL® v4 Foundation", issuer: "PeopleCert", date: "2026-03", until: "2029-03", url: "https://www.peoplecert.org/for-candidates/certificate-verification-service" },
+  { name: "ITIL® v4 Foundation", issuer: "PeopleCert", date: "2026-03", until: "2029-03", url: "https://www.peoplecert.org/for-candidates/certificate-verification-service", credentialId: "GR671872572ML" },
   { name: "Looker Certification Path", issuer: "Google", date: "2026-03", url: "https://www.skills.google/public_profiles/f0c95410-ced0-4e31-a78c-c64180e8ddd3" },
   { name: "GitHub Foundations", issuer: "GitHub", date: "2024-03", until: "2027-03", url: "https://www.credly.com/badges/afa3c137-fb8d-4e7c-b497-348e91e8e793/public_url" },
   { name: "dbt Fundamentals", issuer: "dbt Labs", date: "2023-09", url: "https://credentials.getdbt.com/50709795-4c1b-4798-b050-17fbed3a19a5" },
@@ -239,6 +239,7 @@ export function getCertifications(lang: Lang): Certification[] {
       name: c.name,
       issuer: c.issuer,
       url: c.url,
+      credentialId: c.credentialId,
       when: c.until ? `${formatMonth(c.date, lang)} → ${formatMonth(c.until, lang)}` : formatMonth(c.date, lang),
     }));
 }

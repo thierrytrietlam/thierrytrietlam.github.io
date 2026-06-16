@@ -33,6 +33,11 @@ const t = useTranslations(lang);
                 <span class="mt-0.5 block font-mono text-xs text-muted dark:text-dark-muted">
                   {c.issuer} · {c.when}
                 </span>
+                {c.credentialId && (
+                  <span class="mt-0.5 block font-mono text-xs text-muted dark:text-dark-muted">
+                    {t("certs.credential")} <span class="text-ink dark:text-dark-text">{c.credentialId}</span>
+                  </span>
+                )}
               </span>
               <Icon
                 name="lucide:arrow-up-right"
