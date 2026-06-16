@@ -2,9 +2,7 @@
 
 A fast, static, single page portfolio for a Senior Analytics Engineer and Data Platform Specialist. It answers four questions in under ten seconds: who I am, what I build, proof, and how to reach me.
 
-**Live:** [thierrytrietlam.github.io](https://thierrytrietlam.github.io)
-
-**Public website:** [thierrylam.fr](https://thierrylam.fr/)
+**Live:** [thierrylam.fr](https://thierrylam.fr)
 
 ![Portfolio preview](public/og.png)
 
