@@ -14,7 +14,7 @@ const shared = {
     linkedin: "https://www.linkedin.com/in/thierrytrietlam",
     github: "https://github.com/thierrytrietlam",
     // One CV per language: visitors pick EN or FR without switching the site
-    // language. These are the real LaTeX CVs copied from the job2026 root by
+    // language. These are the real LaTeX CVs copied from the endeavor root by
     // scripts/gen_assets.py; the explicit filename is what the browser saves,
     // so recruiters immediately see whose CV it is.
     cvEn: "/CV_full_Thierry_Triet_LAM_en.pdf",
