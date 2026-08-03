@@ -1,0 +1,274 @@
+---
+import { Icon } from "astro-icon/components";
+import { getPlatform } from "../data/platform";
+import { getLangFromUrl } from "../i18n/utils";
+import { useTranslations } from "../i18n/ui";
+
+// The pipeline diagram: five stages left to right on desktop, connected by
+// animated SVG flows measured at runtime; stacked with downward connectors on
+// mobile. data-reveal sits on the whole canvas (never on inner stages) so the
+// reveal transform moves cards and overlay together and anchors stay valid.
+const lang = getLangFromUrl(Astro.url);
+const p = getPlatform(lang);
+const t = useTranslations(lang);
+
+const steps = [t("platform.s1"), t("platform.s2"), t("platform.s3"), t("platform.s4"), t("platform.s5")];
+---
+
+<section id="platform" class="border-t border-line py-20 sm:py-24 dark:border-dark-line">
+  <div class="container-content">
+    <div data-reveal>
+      <p class="eyebrow mb-3">{t("platform.eyebrow")}</p>
+      <h2 class="section-title">{t("platform.title")}</h2>
+      <p class="lead mt-4 max-w-2xl">{t("platform.lead")}</p>
+    </div>
+
+    <div id="dp-canvas" class="relative mt-12" data-reveal>
+      <svg id="dp-svg" class="pointer-events-none absolute inset-0 hidden h-full w-full overflow-visible lg:block" aria-hidden="true"></svg>
+
+      <div class="relative grid gap-8 lg:grid-cols-[1fr_0.88fr_1.36fr_0.9fr_1.06fr] lg:gap-9">
+        <!-- 01 · Sources -->
+        <div class="lg:self-center">
+          <p class="dp-stephead"><span class="dp-step">01</span>{steps[0]}</p>
+          <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-1">
+            {
+              p.sources.map((n) => (
+                <div class="dp-node card" data-dp={n.id}>
+                  <span class:list={["dp-chip", n.chip]}>
+                    <Icon name={n.icon} class="h-4 w-4" />
+                  </span>
+                  <span class="min-w-0">
+                    <span class="dp-name">{n.name}</span>
+                    <span class="dp-tag">{n.tag}</span>
+                  </span>
+                </div>
+              ))
+            }
+          </div>
+          <p class="mt-3 font-mono text-[0.62rem] leading-relaxed text-muted dark:text-dark-muted">
+            {t("platform.also")}
+            {p.alsoSources.join(" · ")}
+          </p>
+        </div>
+
+        <!-- 02 · Ingest -->
+        <div class="lg:self-center">
+          <div class="dp-down lg:hidden" aria-hidden="true"><Icon name="lucide:chevron-down" class="h-4 w-4" /></div>
+          <p class="dp-stephead"><span class="dp-step">02</span>{steps[1]}</p>
+          <div class="card space-y-3 p-4" data-dp="el">
+            {
+              p.ingestionTools.map((n) => (
+                <div class="flex items-center gap-2.5">
+                  <span class:list={["dp-chip", n.chip]}>
+                    <Icon name={n.icon} class="h-4 w-4" />
+                  </span>
+                  <span class="min-w-0">
+                    <span class="dp-name">{n.name}</span>
+                    <span class="dp-tag">{n.tag}</span>
+                  </span>
+                </div>
+              ))
+            }
+            <p class="border-t border-line pt-3 text-[0.7rem] leading-relaxed text-muted dark:border-dark-line dark:text-dark-muted">
+              {p.ingestionNote}
+            </p>
+          </div>
+        </div>
+
+        <!-- 03 · Transform (the hub) -->
+        <div class="lg:self-center">
+          <div class="dp-down lg:hidden" aria-hidden="true"><Icon name="lucide:chevron-down" class="h-4 w-4" /></div>
+          <p class="dp-stephead"><span class="dp-step">03</span>{steps[2]}</p>
+          <div
+            class="card bg-gradient-to-br from-accent-soft/80 via-white to-white p-4 ring-1 ring-accent/25 sm:p-5 dark:from-accent-dark/10 dark:via-dark-surface dark:to-dark-surface dark:ring-accent-dark/30"
+            data-dp="wh"
+          >
+            <div class="flex items-center gap-2.5">
+              <span class="dp-chip bg-[#FF694A]/10 text-[#FF694A]"><Icon name="simple-icons:dbt" class="h-4 w-4" /></span>
+              <span class="min-w-0">
+                <span class="dp-name">dbt</span>
+                <span class="dp-tag">{t("platform.modeling")}</span>
+              </span>
+            </div>
+            <!-- The layer funnel: names only, refinement shown by narrowing bars; Raw is dashed (landed by EL, read by dbt as sources). -->
+            <div class="mt-3.5 space-y-1.5">
+              {
+                p.layers.map((l) => (
+                  <div class:list={["flex items-center gap-2 rounded-md border px-2.5 py-[0.3rem]", l.bar, l.w]}>
+                    <span class:list={["h-1.5 w-1.5 shrink-0 rounded-full", l.dot]} />
+                    <span class="font-mono text-[0.62rem] font-medium uppercase tracking-wider text-ink dark:text-dark-text">{l.name}</span>
+                  </div>
+                ))
+              }
+            </div>
+            <div class="mt-3.5 flex flex-wrap gap-1.5">
+              {p.badges.map((b) => <span class="dp-badge">{b}</span>)}
+            </div>
+            <!-- Engines as a footer row: one chip per engine, names never break mid word. -->
+            <div class="mt-3.5 border-t border-line pt-3 dark:border-dark-line">
+              <span class="dp-tag">{t("platform.warehouse")}</span>
+              <div class="mt-2 flex flex-wrap gap-x-3.5 gap-y-2">
+                <span class="inline-flex items-center gap-1.5">
+                  <span class="flex h-6 w-6 items-center justify-center rounded-md bg-[#4386FA]/10 text-[#4386FA]"><Icon name="simple-icons:googlebigquery" class="h-3.5 w-3.5" /></span>
+                  <span class="text-[0.72rem] font-semibold text-ink dark:text-dark-text">BigQuery</span>
+                </span>
+                <span class="inline-flex items-center gap-1.5">
+                  <span class="flex h-6 w-6 items-center justify-center rounded-md bg-[#29B5E8]/10 text-[#29B5E8]"><Icon name="simple-icons:snowflake" class="h-3.5 w-3.5" /></span>
+                  <span class="text-[0.72rem] font-semibold text-ink dark:text-dark-text">Snowflake</span>
+                </span>
+                <span class="inline-flex items-center gap-1.5">
+                  <span class="flex h-6 w-6 items-center justify-center rounded-md bg-[#FF3621]/10 text-[#FF3621]"><Icon name="simple-icons:databricks" class="h-3.5 w-3.5" /></span>
+                  <span class="text-[0.72rem] font-semibold text-ink dark:text-dark-text">Databricks</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 04 · Serve -->
+        <div class="lg:self-center">
+          <div class="dp-down lg:hidden" aria-hidden="true"><Icon name="lucide:chevron-down" class="h-4 w-4" /></div>
+          <p class="dp-stephead"><span class="dp-step">04</span>{steps[3]}</p>
+          <div class="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-1 lg:gap-3">
+            {
+              p.bi.map((n) => (
+                <div class="dp-node card" data-dp={n.id}>
+                  <span class:list={["dp-chip", n.chip]}>
+                    <Icon name={n.icon} class="h-4 w-4" />
+                  </span>
+                  <span class="min-w-0">
+                    <span class="dp-name">{n.name}</span>
+                    <span class="dp-tag">{n.tag}</span>
+                  </span>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        <!-- 05 · Decide -->
+        <div class="lg:self-center">
+          <div class="dp-down lg:hidden" aria-hidden="true"><Icon name="lucide:chevron-down" class="h-4 w-4" /></div>
+          <p class="dp-stephead"><span class="dp-step">05</span>{steps[4]}</p>
+          <div class="grid grid-cols-2 gap-2 lg:grid-cols-1">
+            {
+              p.domains.map((n) => (
+                <div class="dp-node card" data-dp={n.id}>
+                  <span class:list={["dp-chip", n.chip]}>
+                    <Icon name={n.icon} class="h-4 w-4" />
+                  </span>
+                  <span class="min-w-0">
+                    <span class="dp-name">{n.name}</span>
+                    <span class="dp-tag">{n.tag}</span>
+                  </span>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-10 grid gap-4 md:grid-cols-3">
+      {
+        p.crosscut.map((g, i) => (
+          <div class="card p-4" data-reveal style={`--reveal-delay:${i * 60}ms`}>
+            <h3 class="flex items-center gap-2 font-mono text-[0.68rem] uppercase tracking-widest text-muted dark:text-dark-muted">
+              <Icon name={g.icon} class="h-4 w-4 shrink-0 text-accent dark:text-accent-dark" />
+              {g.title}
+            </h3>
+            <ul class="mt-2.5 flex flex-wrap gap-1.5">
+              {g.items.map((item) => (
+                <li class="tag">{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="mt-6 text-sm text-muted dark:text-dark-muted" data-reveal>{t("platform.note")}</p>
+  </div>
+</section>
+
+<script type="application/json" id="dp-edges" set:html={JSON.stringify(p.edges)} />
+
+<script>
+  // Draw the stage-to-stage flows: cubic beziers from the right edge of each
+  // upstream card to the left edge of its downstream card, in the upstream
+  // brand color, each ending in an arrowhead so the direction is unambiguous.
+  // Runs only at lg+; redrawn on resize and after fonts settle.
+  const canvas = document.getElementById("dp-canvas");
+  const svg = document.getElementById("dp-svg");
+  const edgesEl = document.getElementById("dp-edges");
+
+  if (canvas && svg && edgesEl) {
+    type Edge = { from: string; to: string; color: string; width?: number };
+    const edges: Edge[] = JSON.parse(edgesEl.textContent || "[]");
+    const NS = "http://www.w3.org/2000/svg";
+    const lgQuery = window.matchMedia("(min-width: 1024px)");
+
+    const draw = () => {
+      svg.replaceChildren();
+      if (!lgQuery.matches) return;
+      const wb = canvas.getBoundingClientRect();
+      if (!wb.width) return;
+      svg.setAttribute("viewBox", `0 0 ${Math.round(wb.width)} ${Math.round(wb.height)}`);
+      const anchor = (id: string, side: "l" | "r") => {
+        const el = canvas.querySelector(`[data-dp="${id}"]`);
+        if (!el) return null;
+        const b = el.getBoundingClientRect();
+        return { x: (side === "r" ? b.right : b.left) - wb.left, y: b.top + b.height / 2 - wb.top };
+      };
+      // One reusable arrowhead marker per brand color, fixed size regardless
+      // of stroke width (userSpaceOnUse) so the trunk edge keeps a tidy tip.
+      const defs = document.createElementNS(NS, "defs");
+      svg.appendChild(defs);
+      const arrow = (color: string) => {
+        const id = "dp-arr-" + color.slice(1).toLowerCase();
+        if (!defs.querySelector(`[id="${id}"]`)) {
+          const m = document.createElementNS(NS, "marker");
+          m.setAttribute("id", id);
+          m.setAttribute("viewBox", "0 0 8 8");
+          m.setAttribute("markerUnits", "userSpaceOnUse");
+          m.setAttribute("markerWidth", "8");
+          m.setAttribute("markerHeight", "8");
+          m.setAttribute("refX", "7");
+          m.setAttribute("refY", "4");
+          m.setAttribute("orient", "auto");
+          const tip = document.createElementNS(NS, "path");
+          tip.setAttribute("d", "M 0 0 L 8 4 L 0 8 Z");
+          tip.setAttribute("fill", color);
+          m.appendChild(tip);
+          defs.appendChild(m);
+        }
+        return `url(#${id})`;
+      };
+      for (const e of edges) {
+        const a = anchor(e.from, "r");
+        const b = anchor(e.to, "l");
+        if (!a || !b) continue;
+        const bx = b.x - 3;
+        const mx = (a.x + bx) / 2;
+        const path = document.createElementNS(NS, "path");
+        path.setAttribute("d", `M ${a.x} ${a.y} C ${mx} ${a.y}, ${mx} ${b.y}, ${bx} ${b.y}`);
+        path.setAttribute("stroke", e.color);
+        path.setAttribute("stroke-width", String(e.width ?? 1.6));
+        path.setAttribute("fill", "none");
+        path.setAttribute("class", "dp-flow");
+        path.setAttribute("marker-end", arrow(e.color));
+        svg.appendChild(path);
+      }
+    };
+
+    let raf = 0;
+    const queue = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(draw);
+    };
+    new ResizeObserver(queue).observe(canvas);
+    lgQuery.addEventListener("change", queue);
+    document.fonts?.ready.then(queue);
+    queue();
+  }
+</script>

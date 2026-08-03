@@ -33,13 +33,7 @@ const byLang = {
     yearsExperience: "5+ years",
     languages: ["French", "English", "Vietnamese"],
     aboutLead:
-      "For five years I have designed and owned analytics platforms end to end, from cloud architecture to the dashboards leadership actually opens. I turn fragmented sources into tested, reconciled data marts for Finance, Marketing, Supply Chain and Sales: nearly 60 dbt data projects for 9 companies across 4 countries, France, the UK, the US and Germany.",
-    platformsIntro: "I have rebuilt three data platforms from scratch:",
-    platforms: [
-      { name: "Colonies", text: "225 production dbt models, solo, from Finance to Asset Management." },
-      { name: "Kering", text: "a 3,000 line SQL monolith broken into clean dbt models, and the Refused Store project that cut a nearly €2M annual revenue loss by 92%." },
-      { name: "Connecty AI", text: "a full stack (Snowflake, dbt, Power BI) with an LLM semantic layer." },
-    ],
+      "Five years designing and owning analytics platforms end to end, from cloud architecture to the dashboards leadership actually opens: nearly 60 dbt data projects for 9 companies across France, the UK, the US and Germany.",
     aboutClose:
       "What you get is a platform that is tested, documented and self service, so your team spends less time fixing data and more time deciding with it. Building or fixing a data platform? I would like to hear about it.",
   },
@@ -52,13 +46,7 @@ const byLang = {
     yearsExperience: "5+ ans",
     languages: ["Français", "Anglais", "Vietnamien"],
     aboutLead:
-      "Depuis cinq ans, je conçois et pilote des plateformes analytiques de bout en bout, de l'architecture cloud jusqu'aux tableaux de bord que la direction ouvre vraiment. Je transforme des sources éclatées en data marts testés et réconciliés pour la Finance, le Marketing, la Supply Chain et les Ventes : près de 60 projets data en dbt pour 9 entreprises dans 4 pays, France, Royaume-Uni, États-Unis et Allemagne.",
-    platformsIntro: "J'ai reconstruit trois plateformes data depuis zéro :",
-    platforms: [
-      { name: "Colonies", text: "225 modèles dbt en production, en solo, de la Finance à l'Asset Management." },
-      { name: "Kering", text: "un monolithe SQL de 3 000 lignes découpé en modèles dbt propres, et le projet Refused Store qui a réduit de 92 % un manque à gagner annuel de près de 2 M€." },
-      { name: "Connecty AI", text: "une stack complète (Snowflake, dbt, Power BI) avec couche sémantique LLM." },
-    ],
+      "Cinq ans à concevoir et piloter des plateformes analytiques de bout en bout, de l'architecture cloud aux tableaux de bord que la direction ouvre vraiment : près de 60 projets data dbt pour 9 entreprises en France, au Royaume-Uni, aux États-Unis et en Allemagne.",
     aboutClose:
       "Au final, vous obtenez une plateforme testée, documentée et self service : votre équipe passe moins de temps à réparer la donnée et plus de temps à décider avec. Vous construisez ou réparez une plateforme data ? J'aimerais en parler.",
   },

@@ -24,23 +24,6 @@ const facts: { icon: string; label: string; value: string; href?: string }[] = [
       <h2 class="section-title">{t("about.title")}</h2>
       <div class="mt-6 space-y-4 text-base leading-relaxed text-muted dark:text-dark-muted">
         <p>{site.aboutLead}</p>
-        <div>
-          <p>{site.platformsIntro}</p>
-          <ul class="mt-3 space-y-2.5">
-            {
-              site.platforms.map((pf) => (
-                <li class="flex gap-2.5">
-                  <Icon name="lucide:check" class="mt-1 h-4 w-4 shrink-0 text-accent dark:text-accent-dark" />
-                  <span>
-                    <strong class="font-semibold text-ink dark:text-dark-text">{pf.name}</strong>
-                    <span class="px-1 text-accent dark:text-accent-dark">·</span>
-                    {pf.text}
-                  </span>
-                </li>
-              ))
-            }
-          </ul>
-        </div>
         <p>{site.aboutClose}</p>
       </div>
     </div>
