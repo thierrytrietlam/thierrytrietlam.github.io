@@ -1,6 +1,7 @@
 ---
 import { getLangFromUrl } from "../i18n/utils";
 import { useTranslations } from "../i18n/ui";
+import { logoSize } from "../data/logos";
 
 const t = useTranslations(getLangFromUrl(Astro.url));
 
@@ -22,7 +23,8 @@ const companies = [
     <p class="text-center font-mono text-[0.7rem] uppercase tracking-[0.2em] text-muted dark:text-dark-muted">
       {t("companies.heading")}
     </p>
-    <p class="mt-5 text-center font-mono text-[0.6rem] uppercase tracking-[0.25em] text-muted/70 dark:text-dark-muted/70">
+    <!-- Full strength muted: the /70 variant read ~3.1:1, under AA. -->
+    <p class="mt-5 text-center font-mono text-[0.6rem] uppercase tracking-[0.25em] text-muted dark:text-dark-muted">
       {t("companies.selected")}
     </p>
     <ul class="mt-3 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
@@ -40,7 +42,8 @@ const companies = [
               <img
                 src={c.logo}
                 alt={`${c.name} logo`}
-                height="28"
+                width={logoSize(c.logo)?.w}
+                height={logoSize(c.logo)?.h}
                 class="max-h-7 w-auto max-w-full object-contain mix-blend-multiply"
                 loading="lazy"
               />

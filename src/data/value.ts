@@ -33,7 +33,7 @@ const cards: RawCard[] = [
     kicker: { en: "Finance", fr: "Finance" },
     title: { en: "Payment reconciliation", fr: "Réconciliation des paiements" },
     body: {
-      en: "Multi-entity, multi-currency payments consolidated into one Finance mart, safeguarded by reconciliation and automated quality tests.",
+      en: "Multi entity, multi currency payments consolidated into one Finance mart, safeguarded by reconciliation and automated quality tests.",
       fr: "Des paiements multi-entités et multi-devises consolidés dans un Data Mart Finance unique, fiabilisé par réconciliation et tests qualité automatisés.",
     },
     metric: {
@@ -48,7 +48,7 @@ const cards: RawCard[] = [
     kicker: { en: "Supply chain", fr: "Supply chain" },
     title: { en: "Stock distribution", fr: "Distribution des stocks" },
     body: {
-      en: "The Refused Store project: OMS, Salesforce and SAP cross-referenced to expose in-store order refusals and drive corrective action.",
+      en: "The Refused Store project: OMS, Salesforce and SAP crossed to expose in store order refusals and drive corrective action.",
       fr: "Le projet Refused Store : OMS, Salesforce et SAP croisés pour révéler les refus de commandes en magasin et déclencher les actions correctives.",
     },
     metric: {
@@ -82,7 +82,7 @@ const cards: RawCard[] = [
       fr: "Des ventes internationales consolidées avec conversion de devises et contrôle du cycle de vie des commandes : une vue groupe fiable.",
     },
     metric: {
-      en: "4 luxury brands · group-wide KPIs",
+      en: "4 luxury brands · group wide KPIs",
       fr: "4 maisons de luxe · KPIs à l'échelle du groupe",
     },
   },
@@ -106,7 +106,7 @@ const cards: RawCard[] = [
     chip: "text-[#D97706] bg-[#D97706]/10",
     metricColor: "text-[#B45309] dark:text-[#FBBF24]",
     kicker: { en: "AI & LLM", fr: "IA & LLM" },
-    title: { en: "AI-accelerated engineering", fr: "Ingénierie accélérée par l'IA" },
+    title: { en: "AI accelerated engineering", fr: "Ingénierie accélérée par l'IA" },
     body: {
       en: "AI agents run in parallel to analyze context, verify, develop and test automatically, with Claude Code at the core of the workflow.",
       fr: "Des agents IA en parallèle pour analyser le contexte, vérifier, développer et tester automatiquement, avec Claude Code au cœur du workflow.",

@@ -27,7 +27,7 @@ L'outillage reste volontairement léger. La bibliothèque standard de Python pou
 Avant toute analyse, je fais confiance aux entrées. Le profilage a fait remonter dix problèmes de qualité dans les exports. Chacun porte un compte et une règle de traitement. Certains sont réparés en staging. D'autres sont conservés avec un drapeau, pour que les totaux se réconcilient et que rien ne disparaisse en silence.
 
 <figure>
-  <img src="/img/projects/b2b-saas-sales-attainment/fr/data-quality.svg" alt="Diagramme à barres horizontales de dix problèmes de qualité de données avec leurs comptes. Le plus grand est l'ARR posé sur des opportunités non gagnées à 2 795 lignes, puis les dates de clôture sur opportunités ouvertes à 2 019, puis les activités datées après la fenêtre à 582. Les barres rouges sont réparées en staging, les bleues sont signalées et conservées." loading="lazy" />
+  <img src="/img/projects/b2b-saas-sales-attainment/fr/data-quality.svg" width="920" height="560" alt="Diagramme à barres horizontales de dix problèmes de qualité de données avec leurs comptes. Le plus grand est l'ARR posé sur des opportunités non gagnées à 2 795 lignes, puis les dates de clôture sur opportunités ouvertes à 2 019, puis les activités datées après la fenêtre à 582. Les barres rouges sont réparées en staging, les bleues sont signalées et conservées." loading="lazy" />
   <figcaption>Dix problèmes trouvés et traités. Le plus gros piège : un ARR posé sur 2 795 opportunités ouvertes ou perdues. Le prendre pour du revenu et chaque chiffre gonfle plusieurs fois.</figcaption>
 </figure>
 
@@ -38,21 +38,21 @@ Le modèle prend trois décisions qui façonnent chaque chiffre en aval. La mail
 Agrégez le trimestre au niveau du bureau, le niveau choisi par défaut par la plupart des dashboards, et l'équipe paraît saine. Quatre bureaux sur cinq dépassent l'objectif. Un seul, l'Allemagne, semble légèrement court à 87 pour cent. Rien ici ne dit d'envoyer de l'aide.
 
 <figure>
-  <img src="/img/projects/b2b-saas-sales-attainment/fr/by-office.svg" alt="Diagramme à barres divergentes de l'atteinte trimestrielle par bureau autour d'une ligne d'objectif à 100 pour cent. L'Allemagne se situe juste à gauche de la ligne à 87 pour cent en rouge. La France à 118, le Royaume-Uni à 146, les États-Unis à 374 et Singapour à 396 pour cent sont à droite en bleu." loading="lazy" />
+  <img src="/img/projects/b2b-saas-sales-attainment/fr/by-office.svg" width="920" height="470" alt="Diagramme à barres divergentes de l'atteinte trimestrielle par bureau autour d'une ligne d'objectif à 100 pour cent. L'Allemagne se situe juste à gauche de la ligne à 87 pour cent en rouge. La France à 118, le Royaume-Uni à 146, les États-Unis à 374 et Singapour à 396 pour cent sont à droite en bleu." loading="lazy" />
   <figcaption>La vue que montrent la plupart des dashboards. Agrégé au bureau, seule l'Allemagne paraît courte, et de peu.</figcaption>
 </figure>
 
 Descendez à la maille où vivent les objectifs, commercial par bureau, et l'image réelle apparaît. Trois personnes ont manqué. Chacune est masquée dans un bureau d'apparence saine. SP009 a réservé zéro face à un objectif de 45 K. SP001 a atteint 64 pour cent. SP005 a atteint 74 pour cent. Les huit autres lignes ont toutes dépassé leur chiffre.
 
 <figure>
-  <img src="/img/projects/b2b-saas-sales-attainment/fr/by-rep.svg" alt="Diagramme à barres divergentes de l'atteinte trimestrielle pour onze lignes d'objectif commercial par bureau autour d'une ligne à 100 pour cent. Trois barres roses tombent à gauche de la ligne : SP009 Allemagne à 0, SP001 France à 64, SP005 Royaume-Uni à 74 pour cent. Huit barres bleues dépassent l'objectif." loading="lazy" />
+  <img src="/img/projects/b2b-saas-sales-attainment/fr/by-rep.svg" width="920" height="654" alt="Diagramme à barres divergentes de l'atteinte trimestrielle pour onze lignes d'objectif commercial par bureau autour d'une ligne à 100 pour cent. Trois barres roses tombent à gauche de la ligne : SP009 Allemagne à 0, SP001 France à 64, SP005 Royaume-Uni à 74 pour cent. Huit barres bleues dépassent l'objectif." loading="lazy" />
   <figcaption>La vue à la maille des objectifs. Même trimestre, mêmes données. Trois commerciaux tombent à gauche de la ligne. L'Allemagne ne paraissait proche que parce que SP008, un commercial basé aux États-Unis portant aussi un objectif allemand, l'a dépassé à 217 pour cent et a masqué le zéro de SP009.</figcaption>
 </figure>
 
 La vue par bureau et la maille par commercial se contredisent, et c'est là le constat. Les deux tables décrivent le même trimestre. L'une dit qu'une seule équipe a manqué de peu. L'autre dit que trois personnes ont manqué, dans trois bureaux différents, pour trois raisons différentes.
 
 <figure>
-  <img src="/img/projects/b2b-saas-sales-attainment/fr/why-missed.svg" alt="Nuage de points du taux de réussite contre le volume de pipeline pour dix commerciaux, la taille des bulles indiquant les activités par opportunité. SP009 en bas à gauche, pipeline le plus mince et pire taux de réussite. SP001 fort volume et effort mais faible taux de réussite. SP005 meilleur taux de réussite de l'équipe mais trop peu d'affaires new business." loading="lazy" />
+  <img src="/img/projects/b2b-saas-sales-attainment/fr/why-missed.svg" width="920" height="560" alt="Nuage de points du taux de réussite contre le volume de pipeline pour dix commerciaux, la taille des bulles indiquant les activités par opportunité. SP009 en bas à gauche, pipeline le plus mince et pire taux de réussite. SP001 fort volume et effort mais faible taux de réussite. SP005 meilleur taux de réussite de l'équipe mais trop peu d'affaires new business." loading="lazy" />
   <figcaption>Trois manques, trois causes. SP009 est un effondrement de pipeline. SP001 travaille dur mais convertit mal. SP005 clôt le mieux de l'équipe mais signe trop peu de nouveaux logos.</figcaption>
 </figure>
 
@@ -67,7 +67,7 @@ La vue par bureau aurait envoyé l'aide au mauvais endroit. Elle aurait signalé
 Le modèle tourne comme un projet dbt sur DuckDB, donc les cinq CSV deviennent un entrepôt testé en une commande. Staging reflète chaque source une à une et ne fait que du nettoyage. Intermediate porte la logique métier, en joignant les bureaux et en dérivant les mesures et les drapeaux de qualité. Marts exposent des dimensions et des faits conformes, plus une table dédiée qui répond à la question. Quarante tests de données protègent le résultat : unicité des clés, valeurs acceptées, intégrité référentielle, unicité de la maille sur la table de réponse, et tests singuliers liés à chaque constat de qualité. L'intégrité casse le build. Le bruit connu se contente d'avertir. Une commande, `dbt build`, charge les seeds, construit chaque modèle et lance chaque test.
 
 <figure>
-  <img src="/img/projects/b2b-saas-sales-attainment/lineage.png" alt="Graphe de lignage dbt : cinq fichiers seed traversent les modèles staging puis intermediate, jusqu'aux tables de dimensions, de faits et à la table de réponse, avec les tests d'assertion attachés à chaque couche." loading="lazy" />
+  <img src="/img/projects/b2b-saas-sales-attainment/lineage.png" width="1843" height="795" alt="Graphe de lignage dbt : cinq fichiers seed traversent les modèles staging puis intermediate, jusqu'aux tables de dimensions, de faits et à la table de réponse, avec les tests d'assertion attachés à chaque couche." loading="lazy" />
   <figcaption>Le modèle de données tel que dbt le voit. Cinq seeds circulent de gauche à droite à travers staging et intermediate jusqu'aux marts, et les tests d'assertion s'accrochent à la couche qu'ils protègent. C'est le diagramme que je garde lisible avant de faire confiance à un chiffre.</figcaption>
 </figure>
 

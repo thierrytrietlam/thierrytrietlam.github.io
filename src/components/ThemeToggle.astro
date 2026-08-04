@@ -19,8 +19,12 @@ const t = useTranslations(getLangFromUrl(Astro.url));
 
 <script>
   const btn = document.getElementById("theme-toggle");
+  // Expose the current state to assistive tech; the theme itself was already
+  // applied before paint by the inline script in Base.astro.
+  btn?.setAttribute("aria-pressed", String(document.documentElement.classList.contains("dark")));
   btn?.addEventListener("click", () => {
     const isDark = document.documentElement.classList.toggle("dark");
+    btn.setAttribute("aria-pressed", String(isDark));
     try {
       localStorage.setItem("theme", isDark ? "dark" : "light");
     } catch (e) {}

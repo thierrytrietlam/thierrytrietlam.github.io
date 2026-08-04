@@ -41,13 +41,13 @@ const timeline: RawTimeline[] = [
       title: "Senior Analytics Engineer Consultant (Data Platform & Reporting)",
       period: "Since March 2026",
       detail:
-        "Solo rebuild of the analytics platform for a European real estate operator. 225 production dbt models on BigQuery, from Finance to Asset Management.",
+        "Current consulting mission: sole owner of the whole analytics estate, from ingestion to the reporting layer, for a European real estate operator.",
     },
     fr: {
       title: "Consultant Ingénieur Analytics Senior (Plateforme de Données & Reporting)",
       period: "Depuis mars 2026",
       detail:
-        "Refonte en solo de la plateforme analytique d'un opérateur immobilier européen. 225 modèles dbt en production sur BigQuery, de la Finance à l'Asset Management.",
+        "Mission de conseil en cours : seul responsable de tout le périmètre analytique, de l'ingestion à la couche de reporting, pour un opérateur immobilier européen.",
     },
   },
   {
@@ -60,13 +60,13 @@ const timeline: RawTimeline[] = [
       title: "Founding AI Data Analyst",
       period: "Dec 2025 to Mar 2026",
       detail:
-        "First analytics hire at an agentic AI startup. Stood up Snowflake, dbt and Power BI, and validated the LLM SQL engine.",
+        "Founding role held remotely from Paris for a California startup, hired to make analytics exist before the product shipped.",
     },
     fr: {
       title: "Analyste de Données IA Fondateur",
       period: "Déc 2025 à Mars 2026",
       detail:
-        "Premier profil analytics d'une startup IA agentique. Mise en place de Snowflake, dbt et Power BI, et validation du moteur SQL LLM.",
+        "Poste fondateur tenu à distance depuis Paris pour une startup californienne, recruté pour créer l'analytics avant la sortie du produit.",
     },
   },
   {
@@ -79,13 +79,13 @@ const timeline: RawTimeline[] = [
       title: "Senior Analytics Engineer Consultant (Data Platform)",
       period: "Feb 2023 to Dec 2025",
       detail:
-        "Led the migration from AWS to BigQuery on a Medallion architecture. Refactored a 3,000+ line SQL monolith into dbt. The Refused Store project cut a nearly €2M annual revenue loss by 92%. Team of 14.",
+        "Longest mission to date: three years inside Kering Technologies, serving group reporting for the houses through the move to Data Mesh.",
     },
     fr: {
       title: "Consultant Ingénieur Analytics Senior (Plateforme de Données)",
       period: "Fév 2023 à Déc 2025",
       detail:
-        "Migration d'AWS vers BigQuery sur architecture Médaillon. Refonte d'un monolithe SQL de plus de 3 000 lignes en dbt. Le projet Refused Store a réduit de 92 % un manque à gagner annuel de près de 2 M€. Équipe de 14.",
+        "Mission la plus longue à ce jour : trois ans au sein de Kering Technologies, au service du reporting groupe des maisons pendant le passage au Data Mesh.",
     },
   },
   {
@@ -98,13 +98,13 @@ const timeline: RawTimeline[] = [
       title: "CRM Data Architecture Consultant",
       period: "Aug 2022 to Jan 2023",
       detail:
-        "CRM data architecture for Jaguar Land Rover across five continents. SAP S/4HANA and Salesforce Marketing Cloud. 95% incident resolution.",
+        "Consulting delivery through a go live: keeping Jaguar Land Rover's CRM data operations stable alongside an offshore team.",
     },
     fr: {
       title: "Consultant en Architecture de Données CRM",
       period: "Août 2022 à Janv 2023",
       detail:
-        "Architecture de données CRM pour Jaguar Land Rover sur cinq continents. SAP S/4HANA et Salesforce Marketing Cloud. 95 % de résolution d'incidents.",
+        "Delivery de conseil à travers un go live : stabiliser les opérations de données CRM de Jaguar Land Rover avec une équipe offshore.",
     },
   },
   {
@@ -117,13 +117,13 @@ const timeline: RawTimeline[] = [
       title: "Data Governance Engineer",
       period: "Feb 2022 to Jun 2022",
       detail:
-        "Unified multi company data into a centralized warehouse. dbt models with data quality and governance frameworks.",
+        "First role centered on governance, inside the central data team of the e commerce group during its acquisition wave.",
     },
     fr: {
       title: "Ingénieur en Gouvernance de Données",
       period: "Fév 2022 à Juin 2022",
       detail:
-        "Unification de données de plusieurs entités dans un entrepôt centralisé. Modèles dbt avec cadres de qualité et de gouvernance.",
+        "Premier rôle centré sur la gouvernance, dans l'équipe data centrale du groupe e commerce pendant sa vague d'acquisitions.",
     },
   },
   {

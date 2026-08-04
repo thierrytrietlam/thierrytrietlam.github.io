@@ -46,7 +46,7 @@ const toggleCls =
   <p class="mt-2 text-sm font-semibold text-ink dark:text-dark-text">{headline}</p>
 
   <div class="relative mt-3" data-wm-root data-src={mapSrc}>
-    <img src={mapSrc} alt={`World map: ${headline}`} class="block h-auto w-full" loading="lazy" decoding="async" />
+    <img src={mapSrc} alt={`World map: ${headline}`} width="1010" height="666" class="block h-auto w-full" loading="lazy" decoding="async" />
     <div
       data-wm-tip
       class="pointer-events-none absolute left-0 top-0 z-10 hidden whitespace-nowrap rounded-lg border border-line bg-white px-2.5 py-1 font-mono text-xs text-ink shadow-card dark:border-dark-line dark:bg-dark-bg dark:text-dark-text"
@@ -64,11 +64,13 @@ const toggleCls =
       <span class="h-2.5 w-2.5 rounded-[3px] bg-accent dark:bg-accent-dark" aria-hidden="true"></span>
       {t("map.legendTraveled")} ({footprint.countriesTraveled})
     </button>
+    <!-- Full strength muted (the /70 variant failed AA) and enough vertical
+         padding to give this standalone link a 24px tap target. -->
     <a
       href="https://github.com/VictorCazanave/svg-maps"
       target="_blank"
       rel="noopener"
-      class="ml-auto font-mono text-[0.6rem] text-muted/70 hover:underline dark:text-dark-muted/70"
+      class="ml-auto inline-flex items-center py-1.5 font-mono text-[0.6rem] text-muted hover:underline dark:text-dark-muted"
       title="Map data from @svg-maps/world"
     >
       Map © svg-maps · CC BY 4.0

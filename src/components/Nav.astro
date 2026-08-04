@@ -22,10 +22,10 @@ const sections = [
   { id: "about", key: "nav.about" },
   { id: "skills", key: "nav.skills" },
   { id: "platform", key: "nav.platform" },
-  { id: "case-studies", key: "nav.caseStudies" },
+  { id: "experience", key: "nav.caseStudies" },
   { id: "certifications", key: "nav.certifications" },
   { id: "projects", key: "nav.projects" },
-  { id: "experience", key: "nav.experience" },
+  { id: "timeline", key: "nav.experience" },
 ] as const;
 const links = sections.map((s) => ({ href: `${base}#${s.id}`, label: t(s.key) }));
 const homeHref = base ? base : "#top";
@@ -41,7 +41,10 @@ const contactHref = `${base}#contact`;
       <span class="font-display text-sm font-semibold tracking-tight">{site.name}</span>
     </a>
 
-    <div class="hidden items-center gap-1 md:flex">
+    <!-- The full pill nav fits only from the `nav:` breakpoint; below it the
+         burger covers the gap. `md:` left a 768..1069px band with neither:
+         the row needed ~1070px (EN) and pushed the controls off screen. -->
+    <div class="hidden items-center gap-1 nav:flex">
       {
         sections.map((s) => (
           <a href={`${base}#${s.id}`} class="nav-link" data-nav-link data-target={s.id}>
@@ -58,7 +61,7 @@ const contactHref = `${base}#contact`;
       <button
         id="menu-btn"
         type="button"
-        class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white text-ink md:hidden dark:border-dark-line dark:bg-dark-surface dark:text-dark-text"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-line bg-white text-ink nav:hidden dark:border-dark-line dark:bg-dark-surface dark:text-dark-text"
         aria-label={t("nav.openMenu")}
         aria-expanded="false"
         aria-controls="mobile-menu"
@@ -69,7 +72,7 @@ const contactHref = `${base}#contact`;
     </div>
   </nav>
 
-  <div id="mobile-menu" class="hidden border-t border-line bg-paper md:hidden dark:border-dark-line dark:bg-dark-bg">
+  <div id="mobile-menu" class="hidden border-t border-line bg-paper nav:hidden dark:border-dark-line dark:bg-dark-bg">
     <div class="container-content flex flex-col gap-1 py-3">
       {
         links.map((l) => (
@@ -92,16 +95,30 @@ const contactHref = `${base}#contact`;
   const menu = document.getElementById("mobile-menu");
   const openI = document.getElementById("menu-open-icon");
   const closeI = document.getElementById("menu-close-icon");
+  const isOpen = () => btn?.getAttribute("aria-expanded") === "true";
   const setOpen = (open: boolean) => {
     menu?.classList.toggle("hidden", !open);
     openI?.classList.toggle("hidden", open);
     closeI?.classList.toggle("hidden", !open);
     btn?.setAttribute("aria-expanded", String(open));
+    // Keyboard users land inside the panel they just opened instead of
+    // having to tab through the rest of the header to reach it.
+    if (open) menu?.querySelector<HTMLElement>("[data-mobile-link]")?.focus();
   };
   btn?.addEventListener("click", () => setOpen(menu?.classList.contains("hidden") ?? false));
   document
     .querySelectorAll("[data-mobile-link]")
     .forEach((a) => a.addEventListener("click", () => setOpen(false)));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && isOpen()) {
+      setOpen(false);
+      btn?.focus();
+    }
+  });
+  document.addEventListener("click", (e) => {
+    const target = e.target as Node | null;
+    if (isOpen() && target && !menu?.contains(target) && !btn?.contains(target)) setOpen(false);
+  });
 </script>
 
 <script>

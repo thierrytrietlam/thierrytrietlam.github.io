@@ -32,6 +32,12 @@ export default {
       maxWidth: {
         content: "1100px",
       },
+      screens: {
+        // The desktop pill nav appears only when the full row of links fits
+        // next to the logo and the right hand controls, in both languages.
+        // Below this the burger takes over (there is no md: gap in between).
+        nav: "1120px",
+      },
       boxShadow: {
         card: "0 1px 2px rgba(11,18,32,0.04), 0 8px 24px rgba(11,18,32,0.06)",
         lift: "0 2px 4px rgba(11,18,32,0.06), 0 18px 44px rgba(11,18,32,0.12)",

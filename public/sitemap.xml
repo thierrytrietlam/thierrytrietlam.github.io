@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Alias at the conventional path. The generated index lives at
+     /sitemap-index.xml; both point crawlers to the same child sitemap. -->
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://thierrylam.fr/sitemap-0.xml</loc>
+  </sitemap>
+</sitemapindex>

@@ -22,10 +22,11 @@ const items: { code: Lang; href: string }[] = [
       <a
         href={href}
         hreflang={code}
+        data-lang-link
         aria-current={code === current ? "true" : undefined}
         class={`rounded-lg px-2 py-1 font-mono text-xs font-medium transition ${
           code === current
-            ? "bg-accent text-white"
+            ? "bg-accent text-white dark:bg-accent-dark dark:text-ink"
             : "text-muted hover:text-ink dark:text-dark-muted dark:hover:text-dark-text"
         }`}
       >
@@ -34,3 +35,13 @@ const items: { code: Lang; href: string }[] = [
     ))
   }
 </div>
+
+<script>
+  // Keep the reader's place when switching language: the section ids are
+  // identical in both locales, so carry the current #fragment across.
+  document.querySelectorAll<HTMLAnchorElement>("[data-lang-link]").forEach((a) => {
+    a.addEventListener("click", () => {
+      if (location.hash) a.hash = location.hash;
+    });
+  });
+</script>

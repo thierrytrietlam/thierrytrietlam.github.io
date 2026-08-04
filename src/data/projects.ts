@@ -137,7 +137,7 @@ const caseStudies: RawCaseStudy[] = [
       sector: "Luxury retail",
       role: "Senior Analytics Engineer Consultant",
       period: "Feb 2023 to Dec 2025",
-      team: "Digital Business Intelligence (DBI) team",
+      team: "Team of 14 · Digital Business Intelligence (DBI)",
       summary:
         "Inside Kering Technologies, I helped modernize the group analytics platform for global reporting, and my own initiative, the Refused Store project, turned stock distribution insight into recovered revenue.",
       metrics: [
@@ -155,7 +155,7 @@ const caseStudies: RawCaseStudy[] = [
       sector: "Luxe",
       role: "Consultant Ingénieur Analytics Senior",
       period: "Fév 2023 à déc 2025",
-      team: "Équipe Digital Business Intelligence (DBI)",
+      team: "Équipe de 14 · Digital Business Intelligence (DBI)",
       summary:
         "Au sein de Kering Technologies, j'ai contribué à moderniser la plateforme analytique du groupe pour le reporting mondial, et mon initiative, le projet Refused Store, a transformé l'analyse de la distribution des stocks en revenu récupéré.",
       metrics: [

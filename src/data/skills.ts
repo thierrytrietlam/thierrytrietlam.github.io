@@ -35,8 +35,8 @@ const core: RawCore[] = [
     name: "Tableau",
     icon: "simple-icons:tableau",
     color: "#E97627",
-    en: "LOD · the €2M Refused Store dashboard · quality monitoring",
-    fr: "LOD · dashboard Refused Store (2 M€) · monitoring qualité",
+    en: "LOD · the Refused Store dashboard · quality monitoring",
+    fr: "LOD · dashboard Refused Store · monitoring qualité",
   },
   {
     name: "Power BI",

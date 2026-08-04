@@ -3,13 +3,14 @@ import { Icon } from "astro-icon/components";
 import { getTimeline } from "../data/timeline";
 import { getLangFromUrl } from "../i18n/utils";
 import { useTranslations } from "../i18n/ui";
+import { logoSize } from "../data/logos";
 
 const lang = getLangFromUrl(Astro.url);
 const timeline = getTimeline(lang);
 const tr = useTranslations(lang);
 ---
 
-<section id="experience" class="border-t border-line py-20 sm:py-24 dark:border-dark-line">
+<section id="timeline" class="border-t border-line py-20 sm:py-24 dark:border-dark-line">
   <div class="container-content">
     <div data-reveal>
       <p class="eyebrow mb-3">{tr("timeline.eyebrow")}</p>
@@ -41,7 +42,7 @@ const tr = useTranslations(lang);
                     <div class="flex items-center gap-2">
                       {o.logo && (
                         <span class="flex h-6 items-center justify-center rounded border border-line bg-white px-1.5">
-                          <img src={o.logo} alt={`${o.name} logo`} height="14" class="max-h-3.5 w-auto object-contain mix-blend-multiply" loading="lazy" />
+                          <img src={o.logo} alt={`${o.name} logo`} width={logoSize(o.logo)?.w} height={logoSize(o.logo)?.h} class="max-h-3.5 w-auto object-contain mix-blend-multiply" loading="lazy" />
                         </span>
                       )}
                       {o.url ? (
@@ -61,7 +62,8 @@ const tr = useTranslations(lang);
                       <img
                         src={t.logo}
                         alt={`${t.org} logo`}
-                        height="14"
+                        width={logoSize(t.logo)?.w}
+                        height={logoSize(t.logo)?.h}
                         class="max-h-3.5 w-auto object-contain mix-blend-multiply"
                         loading="lazy"
                       />

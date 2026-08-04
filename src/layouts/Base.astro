@@ -26,14 +26,16 @@ const lang = getLangFromUrl(Astro.url);
 const site = getSite(lang);
 const t = useTranslations(lang);
 
+// Kept under ~60 chars (title) and ~155 chars (description) so search
+// snippets show them uncut.
 const defaultTitle =
   lang === "fr"
-    ? `${site.name} · Ingénieur Analytics Senior · dbt, BigQuery, Paris`
-    : `${site.name} · Senior Analytics Engineer · dbt, BigQuery, Paris`;
+    ? `${site.name} · Ingénieur Analytics Senior, Paris`
+    : `${site.name} · Senior Analytics Engineer, Paris`;
 const defaultDescription =
   lang === "fr"
-    ? "Ingénieur data et analytics basé à Paris, France. dbt, BigQuery, Snowflake, avec l'IA intégrée au quotidien. Cinq ans à piloter des plateformes analytiques de bout en bout pour 9 entreprises dans 4 pays."
-    : "Data and analytics engineer based in Paris, France. dbt, BigQuery, Snowflake, with AI integrated into the workflow. Five years owning analytics platforms end to end for 9 companies across 4 countries.";
+    ? "Ingénieur analytics senior à Paris. dbt, BigQuery, Snowflake, IA au quotidien. Cinq ans à piloter des plateformes data pour 9 entreprises dans 4 pays."
+    : "Senior analytics engineer in Paris. dbt, BigQuery, Snowflake, AI in the workflow. Five years owning data platforms for 9 companies across 4 countries.";
 
 const { title = defaultTitle, description = defaultDescription } = Astro.props;
 
@@ -83,7 +85,10 @@ const personSchema = {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     {site.googleSiteVerification && (
       <meta name="google-site-verification" content={site.googleSiteVerification} />
@@ -101,9 +106,15 @@ const personSchema = {
       openGraph={{
         basic: { title, type: "website", image: ogImage, url: canonical },
         optional: { description, siteName: site.name, locale: ogLocale },
-        image: { alt: `${site.name}, ${site.eyebrow}` },
+        image: { alt: `${site.name}, ${site.eyebrow}`, width: 1200, height: 630 },
       }}
-      twitter={{ card: "summary_large_image" }}
+      twitter={{
+        card: "summary_large_image",
+        image: ogImage,
+        imageAlt: `${site.name}, ${site.eyebrow}`,
+        title,
+        description,
+      }}
     />
 
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
@@ -122,6 +133,7 @@ const personSchema = {
     </script>
   </head>
   <body>
+    <a href="#main" class="skip-link">{t("a11y.skip")}</a>
     <slot />
 
     <!-- mailto fallback: shown when no email app handles the click. -->

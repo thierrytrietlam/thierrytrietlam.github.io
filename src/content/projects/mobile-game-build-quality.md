@@ -27,7 +27,7 @@ The first trap is a version label. A third tag, 11.0.1, carries installs dated t
 The second trap is right censoring. Pool every cohort and the new build looks catastrophic: day 7 retention reads 6.8 percent. But cohorts installed less than seven days before the extract have no day 7 row yet and still sit in the day 0 denominator. The honest read compares the builds only over the window where both exist and every cohort is old enough to measure, and there day 7 retention is 12.9 percent. The naive read nearly doubles the apparent damage. A per day maturity gate on the full ninety day history lands on the same verdict, so the window is not doing the work.
 
 <figure>
-  <img src="/img/projects/mobile-game-build-quality/chart3_censoring.png" alt="Grouped bar chart comparing the naive and corrected retention reads for build 11.0 at day 1, day 3 and day 7, with the 10.2 reference marked as a blue line at each day. The naive day 7 bar reads 6.8 percent, the corrected bar 12.9 percent, both under the 10.2 reference at 19.6." loading="lazy" />
+  <img src="/img/projects/mobile-game-build-quality/chart3_censoring.png" width="1140" height="690" alt="Grouped bar chart comparing the naive and corrected retention reads for build 11.0 at day 1, day 3 and day 7, with the 10.2 reference marked as a blue line at each day. The naive day 7 bar reads 6.8 percent, the corrected bar 12.9 percent, both under the 10.2 reference at 19.6." loading="lazy" />
   <figcaption>The methodology chart. Cohorts younger than N days have no day N row yet but still inflate the day 0 denominator. Correcting the censoring is the difference between a real gap and a fake collapse.</figcaption>
 </figure>
 
@@ -38,14 +38,14 @@ A last check protects the comparison itself: the rollout split. Day 0 mix across
 On the matched window, build 11.0 keeps fewer players at every point of the first week, and the gap widens with cohort age: 10 percent fewer on day 1, 24 percent on day 3, 34 percent on day 7. Two proportion z tests between 9.1 and 15.0 rule out sampling noise, and the day 1 gap is negative on all twelve shared install dates. The survivors also play less: 31 minutes per active player per day against 44 on the old build.
 
 <figure>
-  <img src="/img/projects/mobile-game-build-quality/chart1_retention.png" alt="Retention curve from day 0 to day 7 for builds 10.2 and 11.0 on the matched install window. The 11.0 line sits under 10.2 on every day and the distance grows: 50.1 against 55.4 on day 1, 24.2 against 31.9 on day 3, 12.9 against 19.6 on day 7." loading="lazy" />
+  <img src="/img/projects/mobile-game-build-quality/chart1_retention.png" width="1290" height="780" alt="Retention curve from day 0 to day 7 for builds 10.2 and 11.0 on the matched install window. The 11.0 line sits under 10.2 on every day and the distance grows: 50.1 against 55.4 on day 1, 24.2 against 31.9 on day 3, 12.9 against 19.6 on day 7." loading="lazy" />
   <figcaption>The retention answer. A structural gap that widens with age, not a launch day wobble. Cohort sizes: 22,334 players on 10.2, 10,595 on 11.0.</figcaption>
 </figure>
 
-A widening retention gap says players quit, not why. The level funnel answers why. Judged on completion per attempt, the two builds track each other closely on levels 1 to 6. Then level 7 falls off a cliff: completion collapses from 85 to 40 percent, attempts per player double from 1.14 to 1.94, and time per attempt stays flat at about 160 seconds. Players replay a level that plays normally and fails, which points to a difficulty or win condition change, not a crash. A crash would truncate attempts, and a zero playtime check confirms nobody crashes out at launch.
+A widening retention gap says players quit, not why. The level funnel answers why. Judged on completion per attempt, the two builds track each other closely on levels 1 to 6. Then level 7 falls off a cliff: completion collapses from 85 to 40 percent, attempts per player jump 70 percent from 1.14 to 1.94, and time per attempt stays flat at about 160 seconds. Players replay a level that plays normally and fails, which points to a difficulty or win condition change, not a crash. A crash would truncate attempts, and a zero playtime check confirms nobody crashes out at launch.
 
 <figure>
-  <img src="/img/projects/mobile-game-build-quality/chart2_level_funnel.png" alt="Two panel chart by level for builds 10.2 and 11.0. The top panel shows completion rate per level with a collapse at level 7 from 85 to 40 percent, highlighted in red. The bottom panel shows attempts per player spiking at level 7 from 1.14 to 1.94." loading="lazy" />
+  <img src="/img/projects/mobile-game-build-quality/chart2_level_funnel.png" width="1380" height="1080" alt="Two panel chart by level for builds 10.2 and 11.0. The top panel shows completion rate per level with a collapse at level 7 from 85 to 40 percent, highlighted in red. The bottom panel shows attempts per player spiking at level 7 from 1.14 to 1.94." loading="lazy" />
   <figcaption>The cause. One level, highlighted, where completion collapses and retries double, while every neighboring level moves a few points at most.</figcaption>
 </figure>
 

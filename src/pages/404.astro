@@ -3,6 +3,11 @@ import Base from "../layouts/Base.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import { Icon } from "astro-icon/components";
+
+// GitHub Pages serves this single page for every 404, including /fr/* paths.
+// The static markup is English; the small script below swaps the copy and the
+// document language when the missed URL was French, so French visitors get a
+// French error page. Without JS, a properly tagged French line still shows.
 ---
 
 <Base
@@ -10,18 +15,45 @@ import { Icon } from "astro-icon/components";
   description="The page you are looking for does not exist."
 >
   <Nav base="/" />
-  <main class="container-content flex min-h-[62vh] flex-col items-center justify-center py-24 text-center">
+  <main id="main" class="container-content flex min-h-[62vh] flex-col items-center justify-center py-24 text-center">
     <p class="eyebrow mb-3">404</p>
-    <h1 class="section-title">Page not found</h1>
-    <p class="lead mt-4 max-w-md">
-      Page introuvable. The page you are looking for does not exist or has moved.
+    <h1 class="section-title" data-nf-title>Page not found</h1>
+    <p class="lead mt-4 max-w-md" data-nf-body>
+      The page you are looking for does not exist or has moved.
+    </p>
+    <p class="lead mt-2 max-w-md text-sm" lang="fr" data-nf-frline>
+      Page introuvable ? <a href="/fr/" class="text-accent hover:underline dark:text-accent-dark">Version française</a>
     </p>
     <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
-      <a href="/" class="btn btn-primary">
-        <Icon name="lucide:arrow-left" class="h-4 w-4" /> Back home
+      <a href="/" class="btn btn-primary" data-nf-home>
+        <Icon name="lucide:arrow-left" class="h-4 w-4" /> <span data-nf-home-label>Back home</span>
       </a>
-      <a href="/fr/" class="btn btn-ghost">Version française</a>
+      <a href="/fr/" class="btn btn-ghost" data-nf-alt>Version française</a>
     </div>
   </main>
   <Footer />
 </Base>
+
+<script>
+  // French URL missed: present the whole page in French.
+  if (location.pathname.startsWith("/fr")) {
+    document.documentElement.lang = "fr";
+    document.title = "Page introuvable · Thierry Triet LAM";
+    const set = (sel: string, text: string) => {
+      const el = document.querySelector(sel);
+      if (el) el.textContent = text;
+    };
+    set("[data-nf-title]", "Page introuvable");
+    set("[data-nf-body]", "La page que vous cherchez n'existe pas ou a été déplacée.");
+    document.querySelector("[data-nf-frline]")?.remove();
+    const home = document.querySelector<HTMLAnchorElement>("[data-nf-home]");
+    if (home) home.href = "/fr/";
+    set("[data-nf-home-label]", "Retour à l'accueil");
+    const alt = document.querySelector<HTMLAnchorElement>("[data-nf-alt]");
+    if (alt) {
+      alt.href = "/";
+      alt.lang = "en";
+      alt.textContent = "English version";
+    }
+  }
+</script>

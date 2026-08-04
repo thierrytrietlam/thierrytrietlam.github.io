@@ -21,6 +21,9 @@
   body {
     @apply bg-paper text-ink font-sans antialiased;
     text-rendering: optimizeLegibility;
+    /* Safety net: a component wider than the viewport must never give the
+       whole page a horizontal scrollbar. */
+    overflow-x: clip;
   }
   html.dark body {
     @apply bg-dark-bg text-dark-text;
@@ -120,7 +123,14 @@
     @apply rounded-full px-2.5 py-1.5 text-[0.88rem] text-muted transition-colors duration-200 hover:bg-ink/5 hover:text-ink lg:px-3 lg:text-[0.92rem] dark:text-dark-muted dark:hover:bg-white/10 dark:hover:text-dark-text;
   }
   .nav-link.is-active {
-    @apply bg-accent/20 text-accent dark:bg-accent-dark/30 dark:text-accent-dark;
+    /* Dark text is #93B0FF, not accent-dark: over the 30% accent pill the
+       accent itself reads 3.6:1, under the AA 4.5:1 floor for 14px text. */
+    @apply bg-accent/20 text-accent dark:bg-accent-dark/30 dark:text-[#93B0FF];
+  }
+
+  /* Keyboard shortcut past the header: visually hidden until focused. */
+  .skip-link {
+    @apply absolute left-3 top-3 z-[60] -translate-y-20 rounded-xl bg-accent px-4 py-2.5 text-sm font-medium text-white shadow-lift transition-transform focus-visible:translate-y-0;
   }
 }
 

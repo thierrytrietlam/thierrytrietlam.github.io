@@ -139,7 +139,7 @@ const bi: RawNode[] = [
     name: "Looker Studio",
     icon: "simple-icons:looker",
     chip: "text-[#4285F4] bg-[#4285F4]/10",
-    tag: { en: "Self-service reporting", fr: "Reporting self-service" },
+    tag: { en: "Self service reporting", fr: "Reporting self service" },
   },
 ];
 

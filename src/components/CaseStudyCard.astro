@@ -3,6 +3,7 @@ import { Icon } from "astro-icon/components";
 import type { CaseStudy } from "../data/projects";
 import { getLangFromUrl } from "../i18n/utils";
 import { useTranslations } from "../i18n/ui";
+import { logoSize } from "../data/logos";
 
 interface Props {
   cs: CaseStudy;
@@ -51,13 +52,18 @@ const metricCols = cs.metrics.length >= 3 ? "sm:grid-cols-3" : "sm:grid-cols-2";
           href={cs.website}
           target="_blank"
           rel="noopener"
-          aria-label={`${cs.client} website`}
+          aria-hidden="true"
+          tabindex="-1"
           class="flex h-12 w-24 shrink-0 items-center justify-center rounded-xl border border-line bg-white px-3 transition hover:-translate-y-0.5 hover:border-accent hover:shadow-card sm:h-14 sm:w-28"
         >
+          <!-- The company name above links to the same URL, so this logo is a
+               decorative duplicate: hidden from the accessibility tree and
+               skipped by keyboard focus. -->
           <img
             src={cs.logo}
-            alt={`${cs.client} logo`}
-            height="24"
+            alt=""
+            width={logoSize(cs.logo)?.w}
+            height={logoSize(cs.logo)?.h}
             class="max-h-6 w-auto max-w-full object-contain mix-blend-multiply sm:max-h-7"
             loading="lazy"
           />
