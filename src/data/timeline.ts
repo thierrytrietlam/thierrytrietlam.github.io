@@ -209,6 +209,7 @@ type RawCertification = { name: string; issuer: string; date: string; until?: st
 // Official certificate titles, language invariant. `date` is the month the
 // certificate was earned (YYYY-MM); `until` the expiry when there is one.
 const rawCertifications: RawCertification[] = [
+  { name: "Amazon DSP Campaign Certification", issuer: "Amazon Ads", date: "2026-07", url: "https://advertising.amazon.com/academy/student/path/1532/amazon-dsp-certification" },
   { name: "Databricks Fundamentals", issuer: "Databricks", date: "2026-06", url: "https://credentials.databricks.com/a15bc340-3a1b-49cc-90ae-e0268cf223ff#acc.jE1Mm6bo" },
   { name: "Claude Code in Action", issuer: "Anthropic", date: "2026-05", url: "https://verify.skilljar.com/c/h2atcz498dwf" },
   { name: "SQL Advanced Certificate", issuer: "HackerRank", date: "2026-03", url: "https://www.hackerrank.com/certificates/b0b7ade4eb52" },
