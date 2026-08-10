@@ -20,11 +20,18 @@ const stats = [
     <dl class="grid grid-cols-2 gap-x-6 gap-y-10 lg:grid-cols-4">
       {
         stats.map((s) => (
-          <div class="flex flex-col-reverse text-center">
+          <div class="flex h-full flex-col-reverse justify-end text-center">
             <!-- Valid <dl> puts <dt> before <dd>; flex-col-reverse keeps the
                  number visually on top. The real value is server rendered so
                  no JS reader ever sees a zero; the script rewinds to 0 only
-                 when it is about to animate. -->
+                 when it is about to animate.
+
+                 justify-end reads as "top" here: in column-reverse the main
+                 axis runs bottom to top, so main-end is the top edge. Without
+                 it the default main-start packs everything to the bottom, the
+                 labels line up on their last line, and the numbers stair-step
+                 by label height (1, 2, 2, 3 lines). Pinning to the top puts
+                 every number on one horizon and lets the labels hang below. -->
             <dt class="mx-auto mt-3 max-w-[12rem] font-mono text-[0.7rem] uppercase leading-relaxed tracking-widest text-muted dark:text-dark-muted">
               {s.label}
             </dt>
