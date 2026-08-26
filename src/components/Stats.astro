@@ -8,12 +8,13 @@ import { useTranslations } from "../i18n/ui";
 
 const t = useTranslations(getLangFromUrl(Astro.url));
 
-// Truthful, value oriented numbers drawn from the CV. The €2M belongs to a
-// single project (Refused Store at Kering), not to the 60 dbt projects.
+// Two credibility tiles, two outcome tiles, mirroring the CV's shift to
+// business impact. The €2M belongs to one project (Refused Store at Kering);
+// the −80% is SQL generation time at Connecty AI.
 const stats = [
   { value: 5, suffix: "+", label: t("stats.years") },
   { value: 9, label: t("stats.clients") },
-  { value: 60, prefix: "~", label: t("stats.projects") },
+  { value: 80, prefix: "−", suffix: "%", label: t("stats.generation") },
   { value: 2, prefix: "€", suffix: "M", label: t("stats.impact") },
 ];
 ---

@@ -60,13 +60,13 @@ const caseStudies: RawCaseStudy[] = [
         "Solo rebuild of the analytics platform of a European real estate operator across four countries: eight fragmented source systems turned into one tested BigQuery foundation covering Finance, Ops, Sales, Marketing and Asset Management.",
       metrics: [
         { value: "225", label: "production dbt models, owned solo, across five business domains" },
-        { value: "1 + 35", label: "Stripe Connect: platform plus connected accounts (6 entities, 4 countries), reconciled in the Finance Data Mart" },
+        { value: "35", label: "Stripe accounts under one Stripe Connect platform account (6 entities, 4 countries), reconciled in the Finance Data Mart" },
         { value: "139", label: "SCD2 snapshots tracking history, plus 16 automated quality tests" },
       ],
       approach: [
-        "Reconciled payments across the Stripe Connect platform and 35 connected accounts, auditing fund routing through the Express to Standard migration.",
-        "Attributed leads by matching Salesforce, Pipedrive and marketing spend; modeled the lease lifecycle and occupancy as reusable dimensions.",
-        "Orchestrated dbt Cloud pipelines and rebuilt Data Studio into self service reporting.",
+        "Payments consolidated: 35 Stripe accounts under one Connect platform account reconciled, with fund routing audited through the Express to Standard migration.",
+        "Acquisition cost and rental revenue tracked: Salesforce, Pipedrive and marketing spend matched, lease lifecycle and occupancy modeled as reusable dimensions.",
+        "Reporting industrialized: dbt Cloud pipelines orchestrated, 139 SCD2 snapshots for history, Data Studio rebuilt as self service.",
       ],
     },
     fr: {
@@ -78,13 +78,13 @@ const caseStudies: RawCaseStudy[] = [
         "Refonte en solo de la plateforme analytique d'un opérateur immobilier européen sur quatre pays : huit systèmes sources fragmentés transformés en un socle BigQuery testé couvrant Finance, Opérations, Ventes, Marketing et Asset Management.",
       metrics: [
         { value: "225", label: "modèles dbt en production, en solo, sur cinq domaines métier" },
-        { value: "1 + 35", label: "Stripe Connect : plateforme et comptes connectés (6 entités, 4 pays), réconciliés dans le Data Mart Finance" },
+        { value: "35", label: "comptes Stripe sous un compte plateforme Stripe Connect (6 entités, 4 pays), réconciliés dans le Data Mart Finance" },
         { value: "139", label: "snapshots SCD2 pour l'historisation, plus 16 tests qualité automatisés" },
       ],
       approach: [
-        "Réconciliation des paiements entre la plateforme Stripe Connect et 35 comptes connectés, avec audit du fund routing pendant la migration Express vers Standard.",
-        "Attribution des leads par rapprochement de Salesforce, Pipedrive et des dépenses marketing ; cycle de vie des baux et occupation modélisés en dimensions réutilisables.",
-        "Orchestration des pipelines dbt Cloud et refonte de Data Studio en reporting self service.",
+        "Encaissements consolidés : 35 comptes Stripe sous un compte plateforme Connect réconciliés, avec audit du fund routing pendant la migration Express vers Standard.",
+        "Coût d'acquisition et revenu locatif pilotés : Salesforce, Pipedrive et dépenses marketing rapprochés, cycle de vie des baux et occupation modélisés en dimensions réutilisables.",
+        "Reporting industrialisé : pipelines dbt Cloud orchestrés, 139 snapshots SCD2 pour l'historisation, Data Studio refondu en self service.",
       ],
     },
   },
@@ -102,14 +102,14 @@ const caseStudies: RawCaseStudy[] = [
       summary:
         "First analytics hire at an agentic AI startup: stood up the internal data stack (Snowflake, dbt, Power BI) and validated the LLM natural language to SQL engine.",
       metrics: [
-        { value: "20 → 10 min", label: "SQL generation time, halved by the semantic layer redesign" },
+        { value: "−80%", label: "SQL generation time, cut by the semantic layer restructure" },
         { value: "3 axes", label: "LLM benchmark (accuracy, latency, cost) that guided the engine choice" },
         { value: "Power BI (DAX) → dbt", label: "measures extracted from TMDL files into versioned, testable models" },
       ],
       approach: [
-        "Designed the JSON semantic layer and marketing funnel templates.",
-        "Unified Facebook Ads, GA4 and Shopify in dbt, from acquisition to revenue.",
-        "Tuned Snowflake warehouses and deployed resource monitors to keep costs under control.",
+        "Generation time reduced by 80%: semantic layer structure and marketing funnel templates optimized.",
+        "Acquisition-to-revenue chain unified: Facebook Ads, GA4 and Shopify centralized in dbt.",
+        "Cloud budget controlled: warehouse sizing, query profiles and resource monitors catching cost drift before billing.",
       ],
     },
     fr: {
@@ -120,14 +120,14 @@ const caseStudies: RawCaseStudy[] = [
       summary:
         "Premier profil analytics d'une startup d'IA agentique : mise en place de la stack data interne (Snowflake, dbt, Power BI) et validation du moteur LLM de génération SQL en langage naturel.",
       metrics: [
-        { value: "20 → 10 min", label: "de temps de génération SQL, divisé par deux par la refonte de la couche sémantique" },
+        { value: "−80 %", label: "de temps de génération SQL, grâce à la refonte de la structure de la couche sémantique" },
         { value: "3 axes", label: "de benchmark LLM (précision, latence, coût) qui ont orienté le choix du moteur" },
         { value: "Power BI (DAX) → dbt", label: "mesures extraites des fichiers TMDL en modèles versionnés et testables" },
       ],
       approach: [
-        "Conception de la couche sémantique (JSON) et des templates de funnel marketing.",
-        "Unification de Facebook Ads, GA4 et Shopify dans dbt, de l'acquisition au revenu.",
-        "Dimensionnement des warehouses Snowflake et resource monitors pour maîtriser les coûts.",
+        "Temps de génération réduit de 80 % : structure de la couche sémantique et templates de funnel marketing optimisés.",
+        "Chaîne acquisition-revenu unifiée : Facebook Ads, GA4 et Shopify centralisés dans dbt.",
+        "Budget cloud maîtrisé : dimensionnement des warehouses, query profiles et resource monitors pour détecter les dérives avant facturation.",
       ],
     },
   },
@@ -150,9 +150,9 @@ const caseStudies: RawCaseStudy[] = [
         { value: "4", label: "brands consolidated with forex conversion and order lifecycle control for group wide KPIs" },
       ],
       approach: [
-        "Launched the Refused Store project on my own initiative: a Tableau dashboard crossing OMS, Salesforce and SAP on in store order refusals.",
-        "Migrated the dbt project from AWS (Athena, S3) to BigQuery under a Medallion architecture, applying the group's Data Mesh strategy.",
-        "Implemented dbt checks (freshness, volume thresholds, parameter consistency) for technical tests and a Tableau monitoring dashboard for functional tests across all pipelines.",
+        "Revenue loss reduced by 92%: launched the Refused Store project on my own initiative, a Tableau dashboard crossing OMS, Salesforce and SAP on in store order refusals.",
+        "Platform migrated to BigQuery: the dbt project moved off AWS Athena and S3 under a Medallion architecture, applying the group's Data Mesh strategy.",
+        "Data quality industrialized: dbt checks for freshness, volume thresholds and parameter consistency, plus a Tableau dashboard letting business teams validate the metrics themselves.",
       ],
     },
     fr: {
@@ -168,9 +168,9 @@ const caseStudies: RawCaseStudy[] = [
         { value: "4", label: "maisons consolidées avec conversion de devises et contrôle du cycle de vie des commandes pour les KPIs du groupe" },
       ],
       approach: [
-        "Lancement, de ma propre initiative, du projet Refused Store : un dashboard Tableau croisant OMS, Salesforce et SAP sur les refus de commandes en magasin.",
-        "Migration du projet dbt d'AWS (Athena, S3) vers BigQuery selon une architecture Médaillon, en application de la stratégie Data Mesh du groupe.",
-        "Mise en place de contrôles dbt (freshness, seuils de volume, cohérence des paramètres) pour les tests techniques et d'un dashboard Tableau de monitoring pour les tests fonctionnels, sur l'ensemble des pipelines.",
+        "Manque à gagner réduit de 92 % : lancement à mon initiative du projet Refused Store, un dashboard Tableau croisant OMS, Salesforce et SAP sur les refus de commandes en magasin.",
+        "Plateforme migrée vers BigQuery : projet dbt sorti d'AWS Athena et S3 selon une architecture Médaillon, en application de la stratégie Data Mesh du groupe.",
+        "Qualité des données industrialisée : contrôles dbt (freshness, seuils de volume, cohérence des paramètres) et dashboard Tableau permettant aux équipes métier de valider elles-mêmes les indicateurs.",
       ],
     },
   },
@@ -192,8 +192,8 @@ const caseStudies: RawCaseStudy[] = [
         { value: "95%", label: "incident resolution rate with SAP R&D through go live and hyper care" },
       ],
       approach: [
-        "Built SQL extraction and segmentation pipelines automating de duplication, normalization and cleansing.",
-        "Guaranteed data integrity across multiple sources and geographies, stabilizing operations through go live.",
+        "CRM data reliability at international scale: SQL extraction and segmentation pipelines automating de duplication, normalization and cleansing.",
+        "Stakeholder and incident management: 95% resolution rate with SAP R&D, stabilizing operations through go live and hyper care.",
       ],
     },
     fr: {
@@ -208,8 +208,8 @@ const caseStudies: RawCaseStudy[] = [
         { value: "95 %", label: "de taux de résolution d'incidents avec la R&D SAP durant go live et hyper care" },
       ],
       approach: [
-        "Construction de pipelines d'extraction et de segmentation SQL automatisant dédoublonnage, normalisation et nettoyage.",
-        "Intégrité des données garantie sur des sources et géographies multiples, opérations stabilisées durant le go live.",
+        "Données CRM fiabilisées à l'échelle internationale : pipelines SQL d'extraction et de segmentation automatisant dédoublonnage, normalisation et nettoyage.",
+        "Pilotage des parties prenantes et des incidents : 95 % de résolution avec la R&D SAP, opérations stabilisées durant le go live et l'hyper care.",
       ],
     },
   },
@@ -231,8 +231,8 @@ const caseStudies: RawCaseStudy[] = [
         { value: "End to End", label: "quality and governance rules across the whole data lifecycle" },
       ],
       approach: [
-        "Developed dbt transformation models delivering business ready datasets.",
-        "Established quality and governance rules, ensuring reliability across the data lifecycle.",
+        "Business-oriented dbt models: transformation models delivering business ready datasets to the teams.",
+        "Data quality and governance: rules established across the full data lifecycle, ensuring reliability.",
       ],
     },
     fr: {
@@ -247,8 +247,8 @@ const caseStudies: RawCaseStudy[] = [
         { value: "De bout en bout", label: "règles de qualité et de gouvernance sur tout le cycle de vie de la donnée" },
       ],
       approach: [
-        "Développement de modèles de transformation dbt livrant des jeux de données prêts pour le métier.",
-        "Définition des règles de qualité et de gouvernance, fiabilisant l'ensemble du cycle de vie.",
+        "Modèles dbt orientés métier : modèles de transformation livrant des jeux de données directement exploitables.",
+        "Qualité et gouvernance des données : règles définies sur l'ensemble du cycle de vie, avec fiabilisation de la donnée.",
       ],
     },
   },
@@ -270,8 +270,8 @@ const caseStudies: RawCaseStudy[] = [
         { value: "WASM", label: "components integrated via Emscripten, aligned with application constraints" },
       ],
       approach: [
-        "Engineered data models, metadata frameworks and storage layers for the data lake foundation.",
-        "Integrated components via WebAssembly (Emscripten), aligning the data system with application constraints.",
+        "Data lake foundations: data models, metadata frameworks and storage layers engineered for scalable SaaS systems.",
+        "Data and application integration: components integrated through WebAssembly and Emscripten, aligning the data system with application constraints.",
       ],
     },
     fr: {
@@ -286,8 +286,8 @@ const caseStudies: RawCaseStudy[] = [
         { value: "WASM", label: "composants intégrés via Emscripten, alignés sur les contraintes applicatives" },
       ],
       approach: [
-        "Élaboration des modèles de données, des frameworks de métadonnées et des couches de stockage du data lake.",
-        "Intégration de composants via WebAssembly (Emscripten), alignant le système de données sur les contraintes applicatives.",
+        "Fondations du data lake : modèles de données, frameworks de métadonnées et couches de stockage pour des systèmes SaaS scalables.",
+        "Intégration data et applicative : composants intégrés via WebAssembly et Emscripten, alignant le système de données sur les contraintes applicatives.",
       ],
     },
   },

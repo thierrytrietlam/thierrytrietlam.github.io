@@ -31,9 +31,9 @@ const byLang = {
   en: {
     role: "Senior Analytics Engineer · Data Platform & Business Impact",
     eyebrow: "Senior Analytics Engineer",
-    headline: "I turn raw data into platforms teams trust.",
+    headline: "I turn business questions into reliable numbers.",
     subhead:
-      "Data and analytics engineer based in Paris, France. Five years designing and owning analytics platforms end to end, from cloud architecture and dbt modeling to BI delivery and business adoption, with AI integrated into my daily workflow.",
+      "Senior Analytics Engineer based in Paris, France. Five years designing and owning analytics platforms end to end, from cloud architecture and dbt modeling to BI delivery and business adoption. What I deliver is measured in decisions enabled, not models deployed.",
     yearsExperience: "5+ years",
     languages: ["French", "English", "Vietnamese"],
     aboutLead:
@@ -44,9 +44,9 @@ const byLang = {
   fr: {
     role: "Ingénieur Analytics Senior · Plateforme de Données & Impact Métier",
     eyebrow: "Ingénieur Analytics Senior",
-    headline: "Je transforme la donnée brute en plateformes de confiance.",
+    headline: "Je transforme les questions métier en chiffres fiables.",
     subhead:
-      "Ingénieur data et analytics basé à Paris, France. Cinq ans à concevoir et piloter des plateformes analytiques de bout en bout, de l'architecture cloud et la modélisation dbt à la livraison BI et l'adoption métier, avec l'IA intégrée à mon quotidien.",
+      "Ingénieur Analytics Senior basé à Paris, France. Cinq ans à concevoir et piloter des plateformes analytiques de bout en bout, de l'architecture cloud et la modélisation dbt à la livraison BI et l'adoption métier. Ce que je livre se mesure en décisions prises, pas en modèles déployés.",
     yearsExperience: "5+ ans",
     languages: ["Français", "Anglais", "Vietnamien"],
     aboutLead:

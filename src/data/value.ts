@@ -41,8 +41,8 @@ const cards: RawCard[] = [
       fr: "Des paiements multi-entités et multi-devises consolidés dans un Data Mart Finance unique, fiabilisé par réconciliation et tests qualité automatisés.",
     },
     metric: {
-      en: "35 Stripe accounts · 6 entities · 4 countries",
-      fr: "35 comptes Stripe · 6 entités · 4 pays",
+      en: "35 Stripe accounts · 1 Connect platform · 6 entities",
+      fr: "35 comptes Stripe · 1 plateforme Connect · 6 entités",
     },
   },
   {
@@ -116,8 +116,8 @@ const cards: RawCard[] = [
       fr: "Des agents IA en parallèle pour analyser le contexte, vérifier, développer et tester automatiquement, avec Claude Code au cœur du workflow.",
     },
     metric: {
-      en: "~80% of working time saved",
-      fr: "~80 % de temps de travail économisé",
+      en: "Claude Code daily · parallel agents · LLM benchmarking",
+      fr: "Claude Code au quotidien · agents en parallèle · benchmark LLM",
     },
   },
 ];
