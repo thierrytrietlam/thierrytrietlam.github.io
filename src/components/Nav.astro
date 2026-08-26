@@ -45,7 +45,7 @@ const contactHref = `${base}#contact`;
     <!-- The full pill nav fits only from the `nav:` breakpoint; below it the
          burger covers the gap. `md:` left a 768..1069px band with neither:
          the row needed ~1070px (EN) and pushed the controls off screen. -->
-    <div class="hidden items-center gap-1 nav:flex">
+    <div class="hidden items-center gap-0.5 nav:flex">
       {
         sections.map((s) => (
           <a href={`${base}#${s.id}`} class="nav-link" data-nav-link data-target={s.id}>

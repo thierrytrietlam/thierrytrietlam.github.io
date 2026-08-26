@@ -15,7 +15,12 @@
 
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 5.5rem; /* clear the sticky nav when jumping to anchors */
+    /* Anchor landing offset. The sticky header is 65px, but every section
+       already carries 80-96px of its own top padding, so reserving the full
+       header height here stacked the two and left a ~120px dead band under
+       the bar. 1rem lets the section edge tuck behind the header and the
+       section padding alone provide the breathing room. */
+    scroll-padding-top: 1rem;
   }
 
   body {
@@ -120,7 +125,7 @@
   /* Pill nav: each link is a rounded block, invisible until hover; the active
      section keeps a permanent accent pill (set by the scroll spy in Nav.astro). */
   .nav-link {
-    @apply rounded-full px-2.5 py-1.5 text-[0.88rem] text-muted transition-colors duration-200 hover:bg-ink/5 hover:text-ink lg:px-3 lg:text-[0.92rem] dark:text-dark-muted dark:hover:bg-white/10 dark:hover:text-dark-text;
+    @apply rounded-full px-2 py-1.5 text-[0.83rem] text-muted transition-colors duration-200 hover:bg-ink/5 hover:text-ink lg:px-2.5 lg:text-[0.875rem] dark:text-dark-muted dark:hover:bg-white/10 dark:hover:text-dark-text;
   }
   .nav-link.is-active {
     /* Dark text is #93B0FF, not accent-dark: over the 30% accent pill the
