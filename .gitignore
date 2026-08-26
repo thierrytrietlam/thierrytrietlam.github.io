@@ -17,3 +17,7 @@
 .DS_Store
 Thumbs.db
 *.log
+
+# Recommendation letters: they carry the referees' personal contact
+# details. Quotes are published from src/data/reviews.ts, the PDFs never are.
+/reclet/

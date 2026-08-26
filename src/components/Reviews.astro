@@ -1,26 +1,97 @@
 ---
+import { Icon } from "astro-icon/components";
 import ReviewCard from "./ReviewCard.astro";
-import { reviews } from "../data/reviews";
+import { getRecommendations } from "../data/reviews";
 import { getLangFromUrl } from "../i18n/utils";
 import { useTranslations } from "../i18n/ui";
 
-const t = useTranslations(getLangFromUrl(Astro.url));
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const recs = getRecommendations(lang);
 ---
 
 {
-  reviews.length > 0 && (
+  recs.length > 0 && (
     <section id="reviews" class="border-t border-line py-20 sm:py-24 dark:border-dark-line">
       <div class="container-content">
         <div data-reveal>
           <p class="eyebrow mb-3">{t("reviews.eyebrow")}</p>
           <h2 class="section-title">{t("reviews.title")}</h2>
+          <p class="lead mt-4 max-w-2xl">{t("reviews.lead")}</p>
         </div>
-        <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {reviews.map((r) => (
-            <ReviewCard review={r} />
-          ))}
+
+        {/* Horizontal rail. Scrollable by drag, wheel or keyboard on every
+            device; the arrows are an extra affordance on pointer devices and
+            hide themselves at the ends of the track. */}
+        <div class="relative mt-10" data-reveal>
+          <div
+            id="reviews-rail"
+            role="group"
+            aria-label={t("reviews.title")}
+            tabindex="0"
+            class="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2"
+          >
+            {recs.map((rec) => (
+              <ReviewCard rec={rec} translatedLabel={t("reviews.translated")} />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            data-rail-prev
+            aria-label={t("reviews.prev")}
+            class="absolute -left-3 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white text-muted shadow-sm transition hover:text-accent disabled:pointer-events-none disabled:opacity-0 lg:flex dark:border-dark-line dark:bg-dark-surface dark:text-dark-muted dark:hover:text-accent-dark"
+          >
+            <Icon name="lucide:chevron-left" class="h-5 w-5" />
+          </button>
+          <button
+            type="button"
+            data-rail-next
+            aria-label={t("reviews.next")}
+            class="absolute -right-3 top-1/2 hidden h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-line bg-white text-muted shadow-sm transition hover:text-accent disabled:pointer-events-none disabled:opacity-0 lg:flex dark:border-dark-line dark:bg-dark-surface dark:text-dark-muted dark:hover:text-accent-dark"
+          >
+            <Icon name="lucide:chevron-right" class="h-5 w-5" />
+          </button>
         </div>
       </div>
     </section>
   )
 }
+
+<style>
+  /* The rail scrolls; the scrollbar itself is noise next to the cards. */
+  #reviews-rail {
+    scrollbar-width: none;
+  }
+  #reviews-rail::-webkit-scrollbar {
+    display: none;
+  }
+</style>
+
+<script>
+  const rail = document.getElementById("reviews-rail");
+  if (rail) {
+    const prev = document.querySelector<HTMLButtonElement>("[data-rail-prev]");
+    const next = document.querySelector<HTMLButtonElement>("[data-rail-next]");
+
+    // One card plus its gap, read from the DOM so the step stays correct at
+    // every breakpoint rather than being hard coded.
+    const step = () => {
+      const card = rail.firstElementChild as HTMLElement | null;
+      const gap = parseFloat(getComputedStyle(rail).columnGap || "20") || 20;
+      return card ? card.offsetWidth + gap : rail.clientWidth * 0.8;
+    };
+
+    const sync = () => {
+      const max = rail.scrollWidth - rail.clientWidth - 1;
+      if (prev) prev.disabled = rail.scrollLeft <= 0;
+      if (next) next.disabled = rail.scrollLeft >= max;
+    };
+
+    prev?.addEventListener("click", () => rail.scrollBy({ left: -step(), behavior: "smooth" }));
+    next?.addEventListener("click", () => rail.scrollBy({ left: step(), behavior: "smooth" }));
+    rail.addEventListener("scroll", sync, { passive: true });
+    window.addEventListener("resize", sync);
+    sync();
+  }
+</script>
