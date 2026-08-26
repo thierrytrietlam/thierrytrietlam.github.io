@@ -16,6 +16,8 @@ import type { Lang } from "../i18n/utils";
 export type Recommendation = {
   role: string;
   company: string;
+  /** Reporting line to me during the engagement. */
+  relationship: string;
   logo?: string;
   quote: string;
   /** Set only when the quote language differs from the page language. */
@@ -28,6 +30,7 @@ type RawRecommendation = {
   company: string;
   logo?: string;
   role: Record<Lang, string>;
+  relationship: Record<Lang, string>;
   /** Verbatim, exactly as written in the letter. Never edited. */
   quote: string;
   sourceLang: Lang;
@@ -40,6 +43,7 @@ const recommendations: RawRecommendation[] = [
     company: "Colonies",
     logo: "/img/logos/colonies.jpg",
     role: { en: "Tech Lead", fr: "Tech Lead" },
+    relationship: { en: "Direct manager", fr: "Manager direct" },
     sourceLang: "en",
     quote:
       "He was not simply keeping the lights on; he improved what he inherited. Any organisation looking for a data engineer who can own a modern stack and speak credibly to the business at the same time would be fortunate to have him.",
@@ -51,6 +55,7 @@ const recommendations: RawRecommendation[] = [
     company: "Kering Technologies",
     logo: "/img/logos/kering.jpg",
     role: { en: "Lead, Data Analytics", fr: "Lead Data Analytics" },
+    relationship: { en: "Direct manager", fr: "Manager direct" },
     sourceLang: "en",
     quote:
       "His initiative has helped the commercial teams make data-driven decisions to optimize sales processes. His ability to combine technical rigor with business understanding makes him a valuable asset to any data team.",
@@ -65,6 +70,7 @@ const recommendations: RawRecommendation[] = [
       en: "Delivery Market Lead, Senior Manager",
       fr: "Delivery Market Lead, Senior Manager",
     },
+    relationship: { en: "Direct manager", fr: "Manager direct" },
     sourceLang: "en",
     quote:
       "Always focused on the task at hand, quick and diligent and with a very pleasant personality. Any venture who will consider Triet as an employee will get an excellent individual who is hard working with profound data science knowledge that will strengthen the team's performance.",
@@ -79,6 +85,7 @@ const recommendations: RawRecommendation[] = [
       en: "R&D Software Engineering Director",
       fr: "Directeur R&D Software Engineering",
     },
+    relationship: { en: "Manager's manager (N+2)", fr: "Manager de mon manager (N+2)" },
     sourceLang: "fr",
     quote:
       "Minh Triet LAM est très volontaire et organisé dans les missions qui lui sont confiées. Il va de l'avant et surmonte les difficultés avec persévérance.",
@@ -93,6 +100,7 @@ export function getRecommendations(lang: Lang): Recommendation[] {
   return recommendations.map((r) => ({
     role: r.role[lang],
     company: r.company,
+    relationship: r.relationship[lang],
     logo: r.logo,
     quote: r.quote,
     sourceLang: r.sourceLang,

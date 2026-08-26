@@ -26,6 +26,7 @@ const sections = [
   { id: "certifications", key: "nav.certifications" },
   { id: "projects", key: "nav.projects" },
   { id: "timeline", key: "nav.experience" },
+  { id: "reviews", key: "nav.references" },
 ] as const;
 const links = sections.map((s) => ({ href: `${base}#${s.id}`, label: t(s.key) }));
 const homeHref = base ? base : "#top";
