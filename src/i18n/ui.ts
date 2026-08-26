@@ -89,7 +89,7 @@ export const ui = {
     "reviews.lead":
       "Quoted verbatim from written recommendation letters. Each is identified by role and company; a quote written in the other language keeps its original wording, with the translation underneath.",
     "reviews.available":
-      "References are available upon request and can be shared for specific position applications.",
+      "Reference letters are available upon request and can be shared for specific position applications.",
     "reviews.translated": "Translation:",
     "reviews.prev": "Previous recommendations",
     "reviews.next": "More recommendations",
@@ -200,7 +200,7 @@ export const ui = {
     "reviews.lead":
       "Extraits mot pour mot de lettres de recommandation. Chacune est identifiée par le poste et l'entreprise ; une citation rédigée dans l'autre langue conserve sa formulation d'origine, avec la traduction en dessous.",
     "reviews.available":
-      "Les références sont disponibles sur demande et peuvent être communiquées dans le cadre d'une candidature précise.",
+      "Les lettres de recommandation sont disponibles sur demande et peuvent être communiquées dans le cadre d'une candidature précise.",
     "reviews.translated": "Traduction :",
     "reviews.prev": "Recommandations précédentes",
     "reviews.next": "Plus de recommandations",

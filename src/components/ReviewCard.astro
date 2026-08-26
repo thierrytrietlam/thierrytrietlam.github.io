@@ -6,8 +6,10 @@ import { logoSize } from "../data/logos";
 interface Props {
   rec: Recommendation;
   translatedLabel: string;
+  index: number;
+  total: number;
 }
-const { rec, translatedLabel } = Astro.props;
+const { rec, translatedLabel, index, total } = Astro.props;
 const dim = logoSize(rec.logo);
 ---
 
@@ -63,4 +65,10 @@ const dim = logoSize(rec.logo);
       </p>
     )
   }
+
+  {/* Position in the rail. The third card is clipped at most widths, so this
+      is what tells a reader there is more to scroll to. */}
+  <p class="mt-4 text-right font-mono text-[0.7rem] tracking-wide text-muted/70 dark:text-dark-muted/70">
+    {index}/{total}
+  </p>
 </figure>

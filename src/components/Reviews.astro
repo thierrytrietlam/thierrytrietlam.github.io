@@ -32,8 +32,13 @@ const recs = getRecommendations(lang);
             tabindex="0"
             class="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth pb-2"
           >
-            {recs.map((rec) => (
-              <ReviewCard rec={rec} translatedLabel={t("reviews.translated")} />
+            {recs.map((rec, i) => (
+              <ReviewCard
+                rec={rec}
+                translatedLabel={t("reviews.translated")}
+                index={i + 1}
+                total={recs.length}
+              />
             ))}
           </div>
 
