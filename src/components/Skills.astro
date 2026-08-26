@@ -1,11 +1,12 @@
 ---
 import { Icon } from "astro-icon/components";
-import { getCoreSkills } from "../data/skills";
+import { getCoreSkills, getDeliverySkills } from "../data/skills";
 import { getLangFromUrl } from "../i18n/utils";
 import { useTranslations } from "../i18n/ui";
 
 const lang = getLangFromUrl(Astro.url);
 const core = getCoreSkills(lang);
+const delivery = getDeliverySkills(lang);
 const t = useTranslations(lang);
 
 // Brand color tints for the core stack icons. Written as literal Tailwind
@@ -51,5 +52,21 @@ const tint: Record<string, string> = {
         ))
       }
     </div>
+
+    <!-- Delivery and business impact: the CV now leads its competencies with
+         this block, so it belongs beside the tools rather than being implied by
+         them. A light chip row keeps the four column tile grid above intact. -->
+    <h3 class="mt-10 font-mono text-xs uppercase tracking-widest text-muted dark:text-dark-muted" data-reveal>
+      {t("skills.delivery")}
+    </h3>
+    <ul class="mt-4 flex flex-wrap gap-2" data-reveal>
+      {
+        delivery.map((d) => (
+          <li class="rounded-lg border border-line bg-white px-3 py-1.5 text-xs text-muted dark:border-dark-line dark:bg-dark-surface dark:text-dark-muted">
+            {d}
+          </li>
+        ))
+      }
+    </ul>
   </div>
 </section>

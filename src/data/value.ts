@@ -1,3 +1,7 @@
+// CV-SYNC | CV source of truth: c:/Users/lammi/endeavor/en.tex (EN), c:/Users/lammi/endeavor/fr.tex (FR).
+// CV-SYNC | This file repeats CV facts. Edit the .tex first, then propagate here.
+// CV-SYNC | Full propagation list: search CV-SYNC-REGISTRY inside either .tex file.
+
 import type { Lang } from "../i18n/utils";
 
 // Value proposition: six cards, each one a shipped result from the CV.

@@ -1,3 +1,9 @@
+<!--
+  CV-SYNC | CV source of truth: c:/Users/lammi/endeavor/en.tex (EN), c:/Users/lammi/endeavor/fr.tex (FR).
+  CV-SYNC | This file repeats CV facts. Edit the .tex first, then propagate here.
+  CV-SYNC | Full propagation list: search CV-SYNC-REGISTRY inside either .tex file.
+-->
+
 # Thierry Triet LAM — Portfolio
 
 A fast, static, single page portfolio for a Senior Analytics Engineer and Data Platform Specialist. It answers four questions in under ten seconds: who I am, what I build, proof, and how to reach me.

@@ -1,3 +1,7 @@
+// CV-SYNC | CV source of truth: c:/Users/lammi/endeavor/en.tex (EN), c:/Users/lammi/endeavor/fr.tex (FR).
+// CV-SYNC | This file repeats CV facts. Edit the .tex first, then propagate here.
+// CV-SYNC | Full propagation list: search CV-SYNC-REGISTRY inside either .tex file.
+
 import type { Lang } from "./utils";
 
 // UI chrome strings only. Substantive content (profile, skills, roles,
@@ -62,6 +66,7 @@ export const ui = {
     "skills.title": "Skills and tools",
     "skills.lead": "The stack I use to design, build and ship analytics platforms, from ingestion to the dashboard.",
     "skills.core": "Core stack",
+    "skills.delivery": "Delivery & business impact",
     "cases.eyebrow": "Career",
     "cases.title": "Professional experience",
     "cases.lead": "Six roles since 2021, consulting and permanent, each told through the change it made.",
@@ -173,6 +178,7 @@ export const ui = {
     "skills.lead":
       "La stack avec laquelle je conçois, construis et livre des plateformes analytiques, de l'ingestion au tableau de bord.",
     "skills.core": "Cœur de stack",
+    "skills.delivery": "Pilotage & impact métier",
     "cases.eyebrow": "Carrière",
     "cases.title": "Expérience professionnelle",
     "cases.lead": "Six postes depuis 2021, en conseil comme en poste permanent, racontés par ce qu'ils ont changé.",

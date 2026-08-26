@@ -1,3 +1,7 @@
+// CV-SYNC | CV source of truth: c:/Users/lammi/endeavor/en.tex (EN), c:/Users/lammi/endeavor/fr.tex (FR).
+// CV-SYNC | This file repeats CV facts. Edit the .tex first, then propagate here.
+// CV-SYNC | Full propagation list: search CV-SYNC-REGISTRY inside either .tex file.
+
 import type { Lang } from "../i18n/utils";
 
 // Language invariant facts.
@@ -22,14 +26,14 @@ const shared = {
   },
 };
 
-// Localized facts. Text mirrors the CV (en.MD / fr.md).
+// Localized facts. Text mirrors the CV (api_freew/cv_detail.md).
 const byLang = {
   en: {
-    role: "Senior Analytics Engineer · Data Platform & Architecture Specialist",
+    role: "Senior Analytics Engineer · Data Platform & Business Impact",
     eyebrow: "Senior Analytics Engineer",
     headline: "I turn raw data into platforms teams trust.",
     subhead:
-      "Data and analytics engineer based in Paris, France. Five years designing and owning analytics platforms end to end, from cloud architecture and dbt modeling to BI delivery, with AI integrated into my daily workflow.",
+      "Data and analytics engineer based in Paris, France. Five years designing and owning analytics platforms end to end, from cloud architecture and dbt modeling to BI delivery and business adoption, with AI integrated into my daily workflow.",
     yearsExperience: "5+ years",
     languages: ["French", "English", "Vietnamese"],
     aboutLead:
@@ -38,11 +42,11 @@ const byLang = {
       "What you get is a platform that is tested, documented and self service, so your team spends less time fixing data and more time deciding with it. Building or fixing a data platform? I would like to hear about it.",
   },
   fr: {
-    role: "Ingénieur Analytics Senior · Spécialiste Plateforme & Architecture de Données",
+    role: "Ingénieur Analytics Senior · Plateforme de Données & Impact Métier",
     eyebrow: "Ingénieur Analytics Senior",
     headline: "Je transforme la donnée brute en plateformes de confiance.",
     subhead:
-      "Ingénieur data et analytics basé à Paris, France. Cinq ans à concevoir et piloter des plateformes analytiques de bout en bout, de l'architecture cloud et la modélisation dbt à la livraison BI, avec l'IA intégrée à mon quotidien.",
+      "Ingénieur data et analytics basé à Paris, France. Cinq ans à concevoir et piloter des plateformes analytiques de bout en bout, de l'architecture cloud et la modélisation dbt à la livraison BI et l'adoption métier, avec l'IA intégrée à mon quotidien.",
     yearsExperience: "5+ ans",
     languages: ["Français", "Anglais", "Vietnamien"],
     aboutLead:

@@ -1,3 +1,7 @@
+// CV-SYNC | CV source of truth: c:/Users/lammi/endeavor/en.tex (EN), c:/Users/lammi/endeavor/fr.tex (FR).
+// CV-SYNC | This file repeats CV facts. Edit the .tex first, then propagate here.
+// CV-SYNC | Full propagation list: search CV-SYNC-REGISTRY inside either .tex file.
+
 import type { Lang } from "../i18n/utils";
 
 // Core stack: 8 tiles, two rows of four on desktop. Each tile carries the
@@ -70,4 +74,40 @@ const core: RawCore[] = [
 
 export function getCoreSkills(lang: Lang): CoreSkill[] {
   return core.map((c) => ({ name: c.name, icon: c.icon, color: c.color, note: c[lang] }));
+}
+
+// Delivery and business impact: the block the CV now leads its competencies
+// with, ahead of the tooling. It renders as a light chip row under the tiles
+// rather than a ninth tile, which would orphan on the four column grid.
+const delivery: Record<Lang, string[]> = {
+  en: [
+    "Business requirements scoping",
+    "Product Vision",
+    "Roadmap",
+    "KPIs & reporting",
+    "Variance analysis",
+    "Business adoption",
+    "Prioritization",
+    "Documentation",
+    "Jira",
+    "Confluence",
+    "Notion",
+  ],
+  fr: [
+    "Cadrage du besoin métier",
+    "Vision Produit",
+    "Roadmap",
+    "KPIs & reporting",
+    "Analyse d'écarts",
+    "Adoption métier",
+    "Priorisation",
+    "Documentation",
+    "Jira",
+    "Confluence",
+    "Notion",
+  ],
+};
+
+export function getDeliverySkills(lang: Lang): string[] {
+  return delivery[lang];
 }

@@ -1,3 +1,7 @@
+// CV-SYNC | CV source of truth: c:/Users/lammi/endeavor/en.tex (EN), c:/Users/lammi/endeavor/fr.tex (FR).
+// CV-SYNC | This file repeats CV facts. Edit the .tex first, then propagate here.
+// CV-SYNC | Full propagation list: search CV-SYNC-REGISTRY inside either .tex file.
+
 import type { Lang } from "../i18n/utils";
 
 // The reference pipeline: source systems → managed ingestion → governed
@@ -136,8 +140,8 @@ const bi: RawNode[] = [
   },
   {
     id: "lkr",
-    name: "Looker Studio",
-    icon: "simple-icons:looker",
+    name: "Data Studio",
+    icon: "simple-icons:googledatastudio",
     chip: "text-[#4285F4] bg-[#4285F4]/10",
     tag: { en: "Self service reporting", fr: "Reporting self service" },
   },

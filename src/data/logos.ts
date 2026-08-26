@@ -1,3 +1,7 @@
+// CV-SYNC | CV source of truth: c:/Users/lammi/endeavor/en.tex (EN), c:/Users/lammi/endeavor/fr.tex (FR).
+// CV-SYNC | This file repeats CV facts. Edit the .tex first, then propagate here.
+// CV-SYNC | Full propagation list: search CV-SYNC-REGISTRY inside either .tex file.
+
 // Natural pixel dimensions of every raster logo, so each <img> can declare
 // width and height (no layout shift, no guessing). CSS still controls the
 // rendered size. Measured from the files in public/img/logos/.

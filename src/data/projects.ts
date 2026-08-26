@@ -1,3 +1,7 @@
+// CV-SYNC | CV source of truth: c:/Users/lammi/endeavor/en.tex (EN), c:/Users/lammi/endeavor/fr.tex (FR).
+// CV-SYNC | This file repeats CV facts. Edit the .tex first, then propagate here.
+// CV-SYNC | Full propagation list: search CV-SYNC-REGISTRY inside either .tex file.
+
 import type { Lang } from "../i18n/utils";
 
 export type CaseMetric = { value: string; label: string };
@@ -46,14 +50,14 @@ const caseStudies: RawCaseStudy[] = [
     client: "Colonies",
     website: "https://www.livecolonies.com",
     logo: "/img/logos/colonies.jpg",
-    stack: ["dbt Cloud", "BigQuery", "Looker Studio", "Fivetran", "Stripe", "Salesforce", "Pipedrive", "SQL", "GitHub"],
+    stack: ["dbt Cloud", "BigQuery", "Data Studio", "Fivetran", "Stripe", "Salesforce", "Pipedrive", "SQL", "GitHub"],
     en: {
       sector: "Real estate · PropTech",
       role: "Senior Analytics Engineer Consultant",
       period: "Since March 2026",
       team: "Solo",
       summary:
-        "Solo rebuild of the analytics platform of a European real estate operator: eight fragmented source systems turned into one tested BigQuery foundation covering Finance, Ops, Sales, Marketing and Asset Management.",
+        "Solo rebuild of the analytics platform of a European real estate operator across four countries: eight fragmented source systems turned into one tested BigQuery foundation covering Finance, Ops, Sales, Marketing and Asset Management.",
       metrics: [
         { value: "225", label: "production dbt models, owned solo, across five business domains" },
         { value: "1 + 35", label: "Stripe Connect: platform plus connected accounts (6 entities, 4 countries), reconciled in the Finance Data Mart" },
@@ -62,7 +66,7 @@ const caseStudies: RawCaseStudy[] = [
       approach: [
         "Reconciled payments across the Stripe Connect platform and 35 connected accounts, auditing fund routing through the Express to Standard migration.",
         "Attributed leads by matching Salesforce, Pipedrive and marketing spend; modeled the lease lifecycle and occupancy as reusable dimensions.",
-        "Orchestrated dbt Cloud pipelines and rebuilt Looker Studio into self service reporting.",
+        "Orchestrated dbt Cloud pipelines and rebuilt Data Studio into self service reporting.",
       ],
     },
     fr: {
@@ -71,7 +75,7 @@ const caseStudies: RawCaseStudy[] = [
       period: "Depuis mars 2026",
       team: "En solo",
       summary:
-        "Refonte en solo de la plateforme analytique d'un opérateur immobilier européen : huit systèmes sources fragmentés transformés en un socle BigQuery testé couvrant Finance, Opérations, Ventes, Marketing et Asset Management.",
+        "Refonte en solo de la plateforme analytique d'un opérateur immobilier européen sur quatre pays : huit systèmes sources fragmentés transformés en un socle BigQuery testé couvrant Finance, Opérations, Ventes, Marketing et Asset Management.",
       metrics: [
         { value: "225", label: "modèles dbt en production, en solo, sur cinq domaines métier" },
         { value: "1 + 35", label: "Stripe Connect : plateforme et comptes connectés (6 entités, 4 pays), réconciliés dans le Data Mart Finance" },
@@ -80,7 +84,7 @@ const caseStudies: RawCaseStudy[] = [
       approach: [
         "Réconciliation des paiements entre la plateforme Stripe Connect et 35 comptes connectés, avec audit du fund routing pendant la migration Express vers Standard.",
         "Attribution des leads par rapprochement de Salesforce, Pipedrive et des dépenses marketing ; cycle de vie des baux et occupation modélisés en dimensions réutilisables.",
-        "Orchestration des pipelines dbt Cloud et refonte de Looker Studio en reporting self service.",
+        "Orchestration des pipelines dbt Cloud et refonte de Data Studio en reporting self service.",
       ],
     },
   },
@@ -132,14 +136,14 @@ const caseStudies: RawCaseStudy[] = [
     client: "Kering",
     website: "https://www.kering.com",
     logo: "/img/logos/kering.jpg",
-    stack: ["BigQuery", "dbt", "AWS (Athena, Redshift, S3)", "PySpark", "Airflow", "Airbyte", "Tableau", "Power BI", "Terraform", "Docker"],
+    stack: ["BigQuery", "dbt", "AWS (Athena, Redshift, S3)", "PySpark", "Airflow", "Airbyte", "Tableau", "Power BI", "Terraform", "Docker", "Agile (Scrum)"],
     en: {
       sector: "Luxury retail",
       role: "Senior Analytics Engineer Consultant",
       period: "Feb 2023 to Dec 2025",
       team: "Team of 14 · Digital Business Intelligence (DBI)",
       summary:
-        "Inside Kering Technologies, I helped modernize the group analytics platform for global reporting, and my own initiative, the Refused Store project, turned stock distribution insight into recovered revenue.",
+        "Inside Kering Technologies, I helped modernize the group analytics platform for global reporting across Sales, Omnichannel, Consumer Journey, Supply Chain and Marketing, and my own initiative, the Refused Store project, turned stock distribution insight into recovered revenue.",
       metrics: [
         { value: "€2M", label: "annual revenue loss (2022 global sales): cut by 92% with the Refused Store project" },
         { value: "3,000", label: "line SQL monolith refactored into modular, tested dbt models" },
@@ -157,7 +161,7 @@ const caseStudies: RawCaseStudy[] = [
       period: "Fév 2023 à déc 2025",
       team: "Équipe de 14 · Digital Business Intelligence (DBI)",
       summary:
-        "Au sein de Kering Technologies, j'ai contribué à moderniser la plateforme analytique du groupe pour le reporting mondial, et mon initiative, le projet Refused Store, a transformé l'analyse de la distribution des stocks en revenu récupéré.",
+        "Au sein de Kering Technologies, j'ai contribué à moderniser la plateforme analytique du groupe pour le reporting mondial, sur les domaines Ventes, Omnicanal, Parcours Consommateur, Supply Chain et Marketing, et mon initiative, le projet Refused Store, a transformé l'analyse de la distribution des stocks en revenu récupéré.",
       metrics: [
         { value: "2 M€", label: "de manque à gagner annuel (ventes mondiales 2022) : réduit de 92 % par le projet Refused Store" },
         { value: "3 000", label: "lignes de SQL monolithique refondues en modèles dbt modulaires et testés" },
@@ -175,14 +179,14 @@ const caseStudies: RawCaseStudy[] = [
     client: "Accenture",
     website: "https://www.accenture.com",
     logo: "/img/logos/accenture.jpg",
-    stack: ["SAP S/4HANA", "Salesforce SFMC", "SQL", "Tableau", "UML", "Data integration & ETL"],
+    stack: ["SAP S/4HANA", "Salesforce Marketing Cloud", "SQL", "Tableau", "UML", "Data integration & ETL"],
     en: {
       sector: "Automotive CRM · Jaguar Land Rover",
       role: "CRM Data Architecture Consultant",
       period: "Aug 2022 to Jan 2023",
-      team: "Team of 3 + offshore ops",
+      team: "Team of 3 in Paris + offshore ops in Mumbai",
       summary:
-        "CRM data architecture and integration for Jaguar Land Rover: SAP S/4HANA and Salesforce Marketing Cloud, serving sales, customer service and campaigns across five continents.",
+        "International CRM transformation program for Jaguar Land Rover: SAP S/4HANA and Salesforce Marketing Cloud integrated to serve sales, customer service and campaigns across five continents.",
       metrics: [
         { value: "5", label: "continents served by the CRM data integration" },
         { value: "95%", label: "incident resolution rate with SAP R&D through go live and hyper care" },
@@ -196,9 +200,9 @@ const caseStudies: RawCaseStudy[] = [
       sector: "CRM automobile · Jaguar Land Rover",
       role: "Consultant en Architecture de Données CRM",
       period: "Août 2022 à janv 2023",
-      team: "Équipe de 3 + ops offshore",
+      team: "Équipe de 3 à Paris + ops offshore à Mumbai",
       summary:
-        "Architecture et intégration des données CRM pour Jaguar Land Rover : SAP S/4HANA et Salesforce Marketing Cloud, au service des ventes, du service client et des campagnes sur cinq continents.",
+        "Programme international de transformation CRM pour Jaguar Land Rover : intégration des données entre SAP S/4HANA et Salesforce Marketing Cloud, au service des ventes, du service client et des campagnes sur cinq continents.",
       metrics: [
         { value: "5", label: "continents servis par l'intégration des données CRM" },
         { value: "95 %", label: "de taux de résolution d'incidents avec la R&D SAP durant go live et hyper care" },
@@ -221,7 +225,7 @@ const caseStudies: RawCaseStudy[] = [
       period: "Feb 2022 to Jun 2022",
       team: "Team of 6",
       summary:
-        "Unified the data of companies acquired by Veepee into one centralized cloud warehouse, with shared analytics layers and governance.",
+        "Post acquisition integration: unified the data of acquired companies into one centralized cloud warehouse, with shared analytics layers and governance.",
       metrics: [
         { value: "1", label: "governed, centralized warehouse unifying every acquired company" },
         { value: "End to End", label: "quality and governance rules across the whole data lifecycle" },
@@ -237,7 +241,7 @@ const caseStudies: RawCaseStudy[] = [
       period: "Fév 2022 à juin 2022",
       team: "Équipe de 6",
       summary:
-        "Unification des données des sociétés acquises par Veepee au sein d'un entrepôt cloud centralisé, avec des couches analytiques et une gouvernance communes.",
+        "Intégration post acquisition : unification des données des sociétés rachetées au sein d'un entrepôt cloud centralisé, avec des couches analytiques et une gouvernance communes.",
       metrics: [
         { value: "1", label: "entrepôt centralisé et gouverné unifiant toutes les sociétés acquises" },
         { value: "De bout en bout", label: "règles de qualité et de gouvernance sur tout le cycle de vie de la donnée" },
